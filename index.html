@@ -50,42 +50,20 @@ body {
 /* ===== الهيدر ===== */
 header {
     background: linear-gradient(to bottom, var(--dark-gray), var(--black));
-    padding: 40px 20px;
+    padding: 30px 20px;
     text-align: center;
     border-bottom: 1px solid rgba(197, 160, 89, 0.3);
 }
 
-.logo-container {
-    position: relative;
-    display: inline-block;
-}
-
-.logo-star {
-    font-size: 2rem;
-    color: var(--gold);
+.main-logo-img {
+    max-height: 80px;
     margin-bottom: 10px;
-    animation: twinkle 3s infinite;
-}
-
-@keyframes twinkle {
-    0%, 100% { opacity: 1; transform: scale(1); }
-    50% { opacity: 0.5; transform: scale(1.2); }
-}
-
-.logo-text {
-    font-size: 3.5rem;
-    font-weight: 300;
-    color: var(--ivory);
-    letter-spacing: 8px;
-    font-family: 'Times New Roman', serif;
-    text-transform: uppercase;
 }
 
 .logo-subtitle {
     color: var(--gold);
-    font-size: 0.9rem;
+    font-size: 0.8rem;
     letter-spacing: 4px;
-    margin-top: 10px;
     text-transform: uppercase;
 }
 
@@ -104,21 +82,12 @@ header {
     padding: 30px;
     max-width: 600px;
     margin: 0 auto 40px;
-    position: relative;
-}
-
-.quote-icon {
-    font-size: 3rem;
-    color: var(--gold);
-    opacity: 0.5;
-    margin-bottom: 15px;
 }
 
 .testimonial-text {
-    font-size: 1.3rem;
+    font-size: 1.1rem;
     color: var(--ivory);
     font-style: italic;
-    line-height: 2;
 }
 
 .product-title {
@@ -128,17 +97,11 @@ header {
     font-weight: 600;
 }
 
-.product-subtitle {
-    font-size: 1.2rem;
-    color: #888;
-    margin-bottom: 40px;
-}
-
 /* ===== صور المنتج ===== */
 .product-showcase {
     display: flex;
     flex-direction: column;
-    gap: 40px;
+    gap: 30px;
     align-items: center;
     margin: 40px 0;
 }
@@ -147,84 +110,45 @@ header {
     max-width: 500px;
     width: 90%;
     border-radius: 20px;
-    box-shadow: 0 20px 60px rgba(197, 160, 89, 0.2);
-    transition: transform 0.5s ease;
+    box-shadow: 0 10px 40px rgba(197, 160, 89, 0.15);
 }
 
-.product-image:hover {
-    transform: scale(1.02);
+/* صور انسيابية دايبة في الخلفية */
+.blended-visual {
+    width: 100%;
+    max-width: 700px;
+    mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
+    opacity: 0.8;
 }
 
 /* ===== المميزات ===== */
 .features-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
+    gap: 15px;
     max-width: 600px;
     margin: 40px auto;
-    padding: 0 20px;
 }
 
 .feature-item {
     background: rgba(255,255,255,0.03);
     border: 1px solid rgba(197, 160, 89, 0.2);
-    padding: 25px 15px;
+    padding: 20px;
     border-radius: 15px;
-    text-align: center;
-    transition: all 0.3s ease;
-}
-
-.feature-item:hover {
-    background: rgba(197, 160, 89, 0.1);
-    transform: translateY(-5px);
 }
 
 .feature-icon {
-    font-size: 2rem;
+    font-size: 1.8rem;
     color: var(--gold);
     margin-bottom: 10px;
 }
 
-.feature-text {
-    font-size: 0.95rem;
-    color: var(--ivory);
-    font-weight: 500;
-}
-
-/* ===== النصوص التسويقية ===== */
-.marketing-text {
-    max-width: 700px;
-    margin: 60px auto;
-    padding: 0 30px;
-    text-align: center;
-}
-
-.marketing-headline {
-    font-size: 2rem;
-    color: var(--gold);
-    margin-bottom: 25px;
-    font-weight: 600;
-    line-height: 1.6;
-}
-
-.marketing-body {
-    font-size: 1.1rem;
-    color: #aaa;
-    line-height: 2;
-    margin-bottom: 20px;
-}
-
-.highlight {
-    color: var(--gold);
-    font-weight: 600;
-}
-
 /* ===== قسم الطلب ===== */
 .order-section {
-    background: linear-gradient(to bottom, var(--dark-gray), var(--black));
+    background: var(--dark-gray);
     padding: 60px 20px;
     text-align: center;
-    border-top: 1px solid rgba(197, 160, 89, 0.2);
 }
 
 .order-card {
@@ -234,45 +158,6 @@ header {
     padding: 40px 30px;
     max-width: 450px;
     margin: 0 auto;
-    position: relative;
-    overflow: hidden;
-}
-
-.order-card::before {
-    content: '';
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: radial-gradient(circle, rgba(197, 160, 89, 0.1) 0%, transparent 70%);
-    animation: rotate 20s linear infinite;
-}
-
-@keyframes rotate {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
-}
-
-.urgency-badge {
-    background: #c62828;
-    color: white;
-    padding: 8px 20px;
-    border-radius: 50px;
-    font-size: 0.85rem;
-    font-weight: 700;
-    display: inline-block;
-    margin-bottom: 20px;
-    animation: flash 1.5s infinite;
-}
-
-@keyframes flash {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.7; }
-}
-
-.price-container {
-    margin: 25px 0;
 }
 
 .current-price {
@@ -281,234 +166,116 @@ header {
     font-weight: 700;
 }
 
-.old-price {
-    font-size: 1.5rem;
-    color: #666;
-    text-decoration: line-through;
-    margin-right: 15px;
-}
-
-.benefits-list {
-    list-style: none;
-    margin: 25px 0;
-    text-align: right;
-}
-
-.benefits-list li {
-    padding: 10px 0;
-    color: #aaa;
-    font-size: 1rem;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.benefits-list li i {
-    color: var(--gold);
-}
-
-/* ===== زر الطلب ===== */
 .cta-button {
     display: inline-block;
-    background: linear-gradient(135deg, var(--emerald), #065f46);
+    background: var(--emerald);
     color: white;
-    padding: 20px 60px;
+    padding: 20px 50px;
     border-radius: 50px;
     text-decoration: none;
-    font-size: 1.3rem;
+    font-size: 1.2rem;
     font-weight: 700;
     margin-top: 20px;
-    transition: all 0.3s ease;
-    border: 2px solid var(--gold);
-    box-shadow: 0 10px 30px rgba(197, 160, 89, 0.3);
-    position: relative;
-    z-index: 1;
-}
-
-.cta-button:hover {
-    transform: translateY(-3px) scale(1.05);
-    box-shadow: 0 15px 40px rgba(197, 160, 89, 0.4);
-    background: linear-gradient(135deg, #065f46, var(--emerald));
+    border: 1px solid var(--gold);
+    box-shadow: 0 10px 30px rgba(4, 57, 39, 0.4);
 }
 
 /* ===== السوشيال ميديا ===== */
-.social-section {
-    padding: 60px 20px;
-    text-align: center;
-    background: var(--black);
-}
-
-.social-title {
-    font-size: 1.5rem;
-    color: var(--gold);
-    margin-bottom: 30px;
-}
-
 .social-links {
     display: flex;
     justify-content: center;
-    gap: 30px;
+    gap: 25px;
+    margin: 30px 0;
 }
 
 .social-links a {
-    width: 60px;
-    height: 60px;
-    border: 2px solid var(--gold);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     color: var(--gold);
-    font-size: 1.5rem;
-    transition: all 0.3s ease;
-    text-decoration: none;
+    font-size: 2rem;
+    transition: 0.3s;
 }
 
-.social-links a:hover {
-    background: var(--gold);
-    color: var(--black);
-    transform: translateY(-5px);
-}
-
-/* ===== الفوتر ===== */
 footer {
-    background: var(--dark-gray);
-    color: #666;
-    padding: 30px 20px;
+    padding: 30px;
     text-align: center;
-    font-size: 0.9rem;
-    border-top: 1px solid rgba(197, 160, 89, 0.2);
-}
-
-/* ===== للموبايل ===== */
-@media (max-width: 768px) {
-    .logo-text { font-size: 2.5rem; letter-spacing: 4px; }
-    .product-title { font-size: 1.8rem; }
-    .marketing-headline { font-size: 1.5rem; }
-    .features-grid { grid-template-columns: 1fr; }
-    .current-price { font-size: 2.5rem; }
-    .cta-button { padding: 18px 40px; font-size: 1.1rem; }
+    background: #000;
+    color: #555;
+    border-top: 1px solid #222;
 }
 </style>
 </head>
 
 <body>
 
-<!-- شريط التوصيل -->
-<div class="delivery-bar">
-    🚚 توصيل مجاني اليوم فقط 🚨
-</div>
+<div class="delivery-bar">🚚 توصيل مجاني لكل المحافظات اليوم فقط 🚨</div>
 
-<!-- الهيدر -->
 <header>
-    <div class="logo-container">
-        <div class="logo-star">✦</div>
-        <h1 class="logo-text">Niliana</h1>
-        <p class="logo-subtitle">Luxury Skincare</p>
-    </div>
+    <img src="images/logo.jpg" alt="Niliana" class="main-logo-img">
+    <p class="logo-subtitle">Luxury Skincare Experience</p>
 </header>
 
-<!-- السكشن الرئيسي -->
 <section class="hero-section">
-    <!-- تقييم العملاء -->
     <div class="testimonial-box">
-        <div class="quote-icon">"</div>
-        <p class="testimonial-text">
-            عنجد قناع رهيب! صحّيت ووجهي أطرى وأنعم وفيه لمعة حلوة. رطّب بشرتي بدون ما يترك أي لزوجة، وثبت مكانه طول الليل. بنصح فيه!
-        </p>
+        <p class="testimonial-text">"عنجد قناع رهيب! صحّيت ووجهي أطرى وأنعم وفيه لمعة Glass Skin حلوة كتير."</p>
     </div>
 
-    <h2 class="product-title">قناع الكولاجين الكوري الليلي</h2>
-    <p class="product-subtitle">السرّ الكوري لبشرة متوهّجة من أول استخدام</p>
+    <h2 class="product-title">قناع الكولاجين الكوري</h2>
+    <p style="color: #aaa;">السرّ لترطيب عميق ونضارة فورية من أول ليلة</p>
 
-    <!-- المميزات -->
-    <div class="features-grid">
-        <div class="feature-item">
-            <div class="feature-icon">✨</div>
-            <div class="feature-text">نتيجة ملموسة من أول استخدام</div>
-        </div>
-        <div class="feature-item">
-            <div class="feature-icon">🌙</div>
-            <div class="feature-text">يلتصق بالبشرة دون انزلاق</div>
-        </div>
-        <div class="feature-item">
-            <div class="feature-icon">💎</div>
-            <div class="feature-text">شدّ البشرة وتقليل الخطوط</div>
-        </div>
-        <div class="feature-item">
-            <div class="feature-icon">💧</div>
-            <div class="feature-text">بشرة مشرقة وملساء من أول ليلة</div>
-        </div>
-    </div>
-
-    <!-- صور المنتج -->
     <div class="product-showcase">
         <img src="images/product-main.jpg" alt="Niliana Mask" class="product-image">
     </div>
+
+    <div class="features-grid">
+        <div class="feature-item"><div class="feature-icon">✨</div><div class="feature-text">نضارة زجاجية فورية</div></div>
+        <div class="feature-item"><div class="feature-icon">🌙</div><div class="feature-text">ثبات كامل أثناء النوم</div></div>
+        <div class="feature-item"><div class="feature-icon">💎</div><div class="feature-text">شدّ وتقليل الخطوط</div></div>
+        <div class="feature-item"><div class="feature-icon">💧</div><div class="feature-text">ترطيب هيدروجيل مكثف</div></div>
+    </div>
 </section>
 
-<!-- النصوص التسويقية -->
-<section class="marketing-text">
-    <h3 class="marketing-headline">"قناع يغيّر بشرتِك من أول ليلة."</h3>
-    <p class="marketing-body">
-        اكتشفي سرّ الإشراقة الليليّة مع قناع <span class="highlight">نيليانا</span> الهيدروجيل بالكولاجين.
-    </p>
-    <p class="marketing-body">
-        تم تصميم القناع ليُطلق السيروم تدريجياً أثناء النوم – بدون أي جهد، بدون خطوات طويلة، وبدون فوضى.
-    </p>
-    <p class="marketing-body">
-        جرعة عناية كورية مركّزة تمنح بشرتك ترطيباً عميقاً ونعومة واضحة بمجرد الاستيقاظ.
-    </p>
+<section style="text-align:center; background: #000;">
+    <img src="images/aesthetic.jpg" class="blended-visual" alt="Niliana Beauty">
 </section>
 
-<section class="marketing-text">
-    <h3 class="marketing-headline">"وأحلى جزء؟ بتصحي ووجهِك مشرق وكأنك طالعِة من جلسة علاج بشرة محترفة."</h3>
-    <p class="marketing-body">
-        تخيّلي الإحساس لما تطلعي من البيت وثقتك أعلى؛ ملامحك أنعم، الخطوط أخف، والبشرة فيها لمعة صحية <span class="highlight">Glass-Skin</span> تلفت النظر.
+<section class="hero-section" style="padding-top:0;">
+    <h3 style="color: var(--gold); font-size: 1.8rem; margin-bottom: 20px;">لماذا تختارين نيليانا؟</h3>
+    <p style="max-width: 600px; margin: 0 auto; color: #aaa;">
+        تصميم القناع يسمح لبشرتك بامتصاص السيروم تدريجياً، ليعطيكِ مظهر النضارة الطبيعي وكأنكِ في جلسة سبا محترفة في منزلك.
     </p>
+    
+    <div style="margin-top: 40px;">
+        <img src="images/usage.png" style="max-width: 800px; width: 100%; border-radius: 15px;" alt="Usage">
+    </div>
 </section>
 
-<!-- قسم الطلب -->
 <section class="order-section">
     <div class="order-card">
-        <span class="urgency-badge">🔥 العرض ينتهي اليوم</span>
+        <span style="background:#c62828; color:white; padding:5px 15px; border-radius:20px; font-size:0.8rem;">🔥 عرض محدود</span>
         
-        <div class="price-container">
-            <span class="old-price">350 EGP</span>
+        <div style="margin: 20px 0;">
+            <img src="images/branding.jpg" style="max-width:100%; border-radius: 10px; margin-bottom: 15px;">
+            <span style="text-decoration:line-through; color:#666; font-size:1.2rem;">350 EGP</span>
             <div class="current-price">275 EGP</div>
         </div>
 
-        <ul class="benefits-list">
-            <li><i class="fas fa-check"></i> شحن مجاني لكل المحافظات</li>
-            <li><i class="fas fa-check"></i> الدفع عند الاستلام</li>
-            <li><i class="fas fa-check"></i> ضمان استعادة الأموال</li>
-        </ul>
+        <p>✅ شحن مجاني | ✅ دفع عند الاستلام</p>
 
         <a href="https://wa.me/201109048989" class="cta-button">
-            اطلبي الآن عبر واتساب <i class="fab fa-whatsapp" style="margin-right: 10px;"></i>
+            اطلبي الآن عبر واتساب <i class="fab fa-whatsapp"></i>
         </a>
     </div>
 </section>
 
-<!-- السوشيال ميديا -->
-<section class="social-section">
-    <h3 class="social-title">تابعينا لمعرفة جديدنا 💎</h3>
+<section style="padding: 50px 20px; text-align: center;">
+    <h3 style="color: var(--gold);">تابعينا لمعرفة جديدنا 💎</h3>
     <div class="social-links">
-        <a href="https://www.facebook.com/share/1DmqQysbE4/" target="_blank">
-            <i class="fab fa-facebook-f"></i>
-        </a>
-        <a href="https://www.instagram.com/niliana.eg" target="_blank">
-            <i class="fab fa-instagram"></i>
-        </a>
-        <a href="https://wa.me/201109048989" target="_blank">
-            <i class="fab fa-whatsapp"></i>
-        </a>
+        <a href="https://www.facebook.com/share/1DmqQysbE4/" target="_blank"><i class="fab fa-facebook"></i></a>
+        <a href="https://www.instagram.com/niliana.eg" target="_blank"><i class="fab fa-instagram"></i></a>
     </div>
 </section>
 
-<!-- الفوتر -->
 <footer>
-    <p>© 2026 Niliana - جميع الحقوق محفوظة | Luxury Skincare</p>
+    <p>© 2026 Niliana Luxury Skincare - جميع الحقوق محفوظة</p>
 </footer>
 
 </body>
