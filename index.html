@@ -1,10 +1,11 @@
-
-'''<!DOCTYPE html>
+html_code = '''<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Niliana | ماسك الكولاجين الكوري الفاخر</title>
+<title>Niliana | ماسك الكولاجين الكوري الفاخر - توصيل لكل مصر</title>
+<meta name="description" content="ماسك الكولاجين الكوري الفاخر من نيليانا - نضارة زجاجية فورية، ترطيب 48 ساعة، شد البشرة وتقليل الخطوط. توصيل لكل محافظات مصر خلال شهر. اطلبي الآن!">
+<meta name="keywords" content="ماسك كولاجين كوري, نيليانا, عناية بالبشرة, ترطيب البشرة, نضارة زجاجية, كولاجين مصري, توصيل مصر">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -49,6 +50,100 @@ body {
     50% { opacity: 0.8; }
 }
 
+/* ===== سيكشن التشويق ===== */
+.teaser-section {
+    background: linear-gradient(135deg, #1a0000 0%, var(--red) 50%, #8b0000 100%);
+    padding: 40px 20px;
+    text-align: center;
+    border-bottom: 3px solid var(--gold);
+    position: relative;
+    overflow: hidden;
+}
+
+.teaser-section::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: repeating-linear-gradient(
+        45deg,
+        transparent,
+        transparent 10px,
+        rgba(255,255,255,0.03) 10px,
+        rgba(255,255,255,0.03) 20px
+    );
+    animation: shimmer 20s linear infinite;
+}
+
+@keyframes shimmer {
+    0% { transform: translate(0, 0); }
+    100% { transform: translate(50px, 50px); }
+}
+
+.teaser-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255,255,255,0.15);
+    border: 2px solid var(--gold);
+    color: var(--gold);
+    padding: 10px 25px;
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: 1rem;
+    margin-bottom: 20px;
+    position: relative;
+    z-index: 1;
+    animation: glowBadge 2s ease-in-out infinite alternate;
+}
+
+@keyframes glowBadge {
+    from { box-shadow: 0 0 10px rgba(197, 160, 89, 0.3); }
+    to { box-shadow: 0 0 25px rgba(197, 160, 89, 0.6), 0 0 15px rgba(197, 160, 89, 0.4); }
+}
+
+.teaser-title {
+    font-size: 2rem;
+    color: white;
+    font-weight: 800;
+    margin-bottom: 15px;
+    position: relative;
+    z-index: 1;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+}
+
+.teaser-subtitle {
+    font-size: 1.3rem;
+    color: rgba(255,255,255,0.9);
+    font-weight: 600;
+    margin-bottom: 20px;
+    position: relative;
+    z-index: 1;
+}
+
+.teaser-warning {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(0,0,0,0.3);
+    border: 1px solid rgba(255,255,255,0.3);
+    padding: 15px 30px;
+    border-radius: 15px;
+    font-size: 1.1rem;
+    color: white;
+    font-weight: 700;
+    position: relative;
+    z-index: 1;
+    animation: urgentPulse 1.5s ease-in-out infinite;
+}
+
+@keyframes urgentPulse {
+    0%, 100% { transform: scale(1); box-shadow: 0 0 0 rgba(197, 160, 89, 0); }
+    50% { transform: scale(1.02); box-shadow: 0 0 20px rgba(197, 160, 89, 0.4); }
+}
+
 /* ===== الهيدر المحسن ===== */
 header {
     background: linear-gradient(180deg, var(--dark-gray) 0%, var(--black) 70%);
@@ -58,7 +153,6 @@ header {
     overflow: hidden;
 }
 
-/* تأثير الضوء الخلفي */
 header::before {
     content: '';
     position: absolute;
@@ -72,7 +166,6 @@ header::before {
     z-index: 0;
 }
 
-/* حاوية الشعار */
 .logo-container {
     position: relative;
     z-index: 1;
@@ -81,34 +174,16 @@ header::before {
     width: 90%;
 }
 
-/* الشعار الكبير الانسيابي */
 .main-logo-img {
     width: 100%;
     max-width: 450px;
     height: auto;
     display: block;
     margin: 0 auto;
-    
-    /* تأثير الانسيابية مع الخلفية */
-    mask-image: linear-gradient(to bottom, 
-        transparent 0%, 
-        black 10%, 
-        black 85%, 
-        transparent 100%);
-    -webkit-mask-image: linear-gradient(to bottom, 
-        transparent 0%, 
-        black 10%, 
-        black 85%, 
-        transparent 100%);
-    
-    /* تأثير الظل الذهبي */
-    filter: drop-shadow(0 0 30px rgba(197, 160, 89, 0.4)) 
-            drop-shadow(0 0 60px rgba(197, 160, 89, 0.2));
-    
-    /* حواف ناعمة */
+    mask-image: linear-gradient(to bottom, transparent 0%, black 10%, black 85%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 10%, black 85%, transparent 100%);
+    filter: drop-shadow(0 0 30px rgba(197, 160, 89, 0.4)) drop-shadow(0 0 60px rgba(197, 160, 89, 0.2));
     border-radius: 20px;
-    
-    /* تأثير fade in */
     animation: logoReveal 1.5s ease-out;
 }
 
@@ -125,7 +200,6 @@ header::before {
     }
 }
 
-/* خط ذهبي تحت الشعار */
 .logo-underline {
     width: 200px;
     height: 2px;
@@ -190,7 +264,6 @@ header::before {
     box-shadow: 0 10px 40px rgba(197, 160, 89, 0.15);
 }
 
-/* صور انسيابية دايبة في الخلفية */
 .blended-visual {
     width: 100%;
     max-width: 700px;
@@ -221,7 +294,7 @@ header::before {
     margin-bottom: 10px;
 }
 
-/* ===== قسم التفاصيل المنسدلة (أكورديون) ===== */
+/* ===== قسم التفاصيل المنسدلة ===== */
 .details-section {
     background: linear-gradient(180deg, var(--black) 0%, #0d0d0d 50%, var(--black) 100%);
     padding: 60px 20px;
@@ -746,13 +819,27 @@ header::before {
     font-size: 1.1rem;
 }
 
-/* ===== التوقيع ===== */
+/* ===== التوقيع المحسن ===== */
 .designer-signature {
     text-align: center;
-    padding: 20px;
+    padding: 25px 20px;
     background: linear-gradient(90deg, transparent, rgba(197, 160, 89, 0.1), transparent);
     border-top: 1px solid rgba(197, 160, 89, 0.2);
     margin-top: 20px;
+}
+
+.designer-signature a {
+    text-decoration: none;
+    color: inherit;
+    display: inline-block;
+    transition: all 0.3s ease;
+    padding: 10px 20px;
+    border-radius: 10px;
+}
+
+.designer-signature a:hover {
+    background: rgba(197, 160, 89, 0.1);
+    transform: translateY(-3px);
 }
 
 .designer-signature p {
@@ -760,18 +847,32 @@ header::before {
     font-size: 0.9rem;
     font-weight: 300;
     letter-spacing: 2px;
+    margin-bottom: 5px;
 }
 
 .designer-signature .name {
-    font-weight: 700;
-    font-size: 1.1rem;
+    font-weight: 800;
+    font-size: 1.3rem;
     color: var(--ivory);
-    margin-top: 5px;
+    display: block;
+    margin-top: 8px;
+    transition: color 0.3s ease;
+}
+
+.designer-signature a:hover .name {
+    color: var(--gold);
 }
 
 .designer-signature i {
     color: var(--emerald);
     margin: 0 5px;
+}
+
+.designer-signature .link-hint {
+    font-size: 0.75rem;
+    color: rgba(197, 160, 89, 0.6);
+    margin-top: 8px;
+    display: block;
 }
 
 footer {
@@ -790,21 +891,22 @@ footer {
     .video-card { min-width: calc(50% - 10px); }
     .accordion-header { font-size: 1.1rem; padding: 20px; }
     .faq-question { font-size: 1rem; padding: 20px; }
-    
-    /* تعديلات الشعار للموبايل */
     header { padding: 40px 20px 30px; }
     .main-logo-img { max-width: 320px; }
     .logo-underline { width: 150px; }
+    .teaser-title { font-size: 1.5rem; }
+    .teaser-subtitle { font-size: 1.1rem; }
+    .teaser-warning { font-size: 0.95rem; padding: 12px 20px; }
 }
 
 @media (max-width: 480px) {
     .video-card { min-width: 100%; }
     .product-title { font-size: 2rem; }
     .section-title { font-size: 1.8rem; }
-    
-    /* تعديلات الشعار للشاشات الصغيرة */
     .main-logo-img { max-width: 280px; }
     header { padding: 30px 15px 25px; }
+    .teaser-title { font-size: 1.3rem; }
+    .teaser-subtitle { font-size: 1rem; }
 }
 </style>
 </head>
@@ -813,9 +915,25 @@ footer {
 
 <div class="delivery-bar">🚚 توصيل مجاني لكل المحافظات اليوم فقط 🚨</div>
 
+<!-- ===== سيكشن التشويق ===== -->
+<section class="teaser-section">
+    <div class="teaser-badge">
+        <i class="fas fa-plane"></i>
+        شحنة جديدة في الطريق
+        <i class="fas fa-box-open"></i>
+    </div>
+    <h2 class="teaser-title">✨ المنتج في طريقه إلى مصر الآن ✨</h2>
+    <p class="teaser-subtitle">الكمية محدودة جداً - الحجز بالأولوية</p>
+    <div class="teaser-warning">
+        <i class="fas fa-exclamation-triangle"></i>
+        <span>أسرع! احجزي الآن قبل نفاد الكمية</span>
+        <i class="fas fa-clock"></i>
+    </div>
+</section>
+
 <header>
     <div class="logo-container">
-        <img src="images/logo.jpg" alt="Niliana" class="main-logo-img">
+        <img src="images/logo.jpg" alt="Niliana" class="main-logo-img" width="450" height="150">
         <div class="logo-underline"></div>
         <p class="logo-subtitle">Luxury Skincare Experience</p>
     </div>
@@ -830,7 +948,7 @@ footer {
     <p style="color: #aaa;">السرّ لترطيب عميق ونضارة فورية من أول ليلة</p>
 
     <div class="product-showcase">
-        <img src="images/product-main.jpg" alt="Niliana Mask" class="product-image">
+        <img src="images/product-main.jpg" alt="Niliana Mask" class="product-image" width="500" height="500" loading="lazy">
     </div>
 
     <div class="features-grid">
@@ -842,7 +960,7 @@ footer {
 </section>
 
 <section style="text-align:center; background: #000;">
-    <img src="images/aesthetic.jpg" class="blended-visual" alt="Niliana Beauty">
+    <img src="images/aesthetic.jpg" class="blended-visual" alt="Niliana Beauty" width="700" height="400" loading="lazy">
 </section>
 
 <section class="hero-section" style="padding-top:0;">
@@ -852,16 +970,15 @@ footer {
     </p>
     
     <div style="margin-top: 40px;">
-        <img src="images/usage.png" style="max-width: 800px; width: 100%; border-radius: 15px;" alt="Usage">
+        <img src="images/usage.png" style="max-width: 800px; width: 100%; border-radius: 15px;" alt="Usage" width="800" height="400" loading="lazy">
     </div>
 </section>
 
-<!-- ===== قسم التفاصيل المنسدلة (أكورديون) ===== -->
+<!-- ===== قسم التفاصيل المنسدلة ===== -->
 <section class="details-section">
     <h2 class="section-title">تفاصيل المنتج 📋</h2>
     
     <div class="accordion-container">
-        <!-- الفوائد -->
         <div class="accordion-item">
             <button class="accordion-header" onclick="toggleAccordion(this)">
                 <span><i class="fas fa-star"></i> الفوائد</span>
@@ -879,7 +996,6 @@ footer {
             </div>
         </div>
 
-        <!-- المكونات -->
         <div class="accordion-item">
             <button class="accordion-header" onclick="toggleAccordion(this)">
                 <span><i class="fas fa-flask"></i> المكونات</span>
@@ -897,7 +1013,6 @@ footer {
             </div>
         </div>
 
-        <!-- طريقة الاستخدام -->
         <div class="accordion-item">
             <button class="accordion-header" onclick="toggleAccordion(this)">
                 <span><i class="fas fa-hand-sparkles"></i> طريقة الاستخدام</span>
@@ -975,7 +1090,7 @@ footer {
             <div class="videos-track" id="videosTrack">
                 <div class="video-card">
                     <div class="video-wrapper">
-                        <video src="images/review1.mp4" loop playsinline></video>
+                        <video src="images/review1.mp4" loop playsinline preload="none" poster="images/review1-thumb.jpg"></video>
                         <div class="play-overlay" onclick="toggleVideo(this)">
                             <div class="play-icon"><i class="fas fa-play"></i></div>
                         </div>
@@ -983,7 +1098,7 @@ footer {
                 </div>
                 <div class="video-card">
                     <div class="video-wrapper">
-                        <video src="images/review2.mp4" loop playsinline></video>
+                        <video src="images/review2.mp4" loop playsinline preload="none" poster="images/review2-thumb.jpg"></video>
                         <div class="play-overlay" onclick="toggleVideo(this)">
                             <div class="play-icon"><i class="fas fa-play"></i></div>
                         </div>
@@ -991,7 +1106,7 @@ footer {
                 </div>
                 <div class="video-card">
                     <div class="video-wrapper">
-                        <video src="images/review3.mp4" loop playsinline></video>
+                        <video src="images/review3.mp4" loop playsinline preload="none" poster="images/review3-thumb.jpg"></video>
                         <div class="play-overlay" onclick="toggleVideo(this)">
                             <div class="play-icon"><i class="fas fa-play"></i></div>
                         </div>
@@ -999,7 +1114,7 @@ footer {
                 </div>
                 <div class="video-card">
                     <div class="video-wrapper">
-                        <video src="images/review4.mp4" loop playsinline></video>
+                        <video src="images/review4.mp4" loop playsinline preload="none" poster="images/review4-thumb.jpg"></video>
                         <div class="play-overlay" onclick="toggleVideo(this)">
                             <div class="play-icon"><i class="fas fa-play"></i></div>
                         </div>
@@ -1065,7 +1180,7 @@ footer {
                 <i class="fas fa-chevron-down"></i>
             </button>
             <div class="faq-answer">
-                نعم، بنوصل لكل محافظات مصر. التوصيل مجاني للطلبات فوق 400 جنيه، وبتدفعي عند الاستلام.
+                نعم، بنوصل لكل محافظات مصر خلال شهر. التوصيل مجاني للطلبات فوق 400 جنيه، وبتدفعي عند الاستلام.
             </div>
         </div>
     </div>
@@ -1074,19 +1189,22 @@ footer {
 <section style="padding: 50px 20px; text-align: center;">
     <h3 style="color: var(--gold); margin-bottom: 20px;">تابعينا لمعرفة جديدنا 💎</h3>
     <div class="social-links">
-        <a href="https://www.facebook.com/share/1DmqQysbE4/" target="_blank" onclick="handleFacebookClick(event)">
+        <a href="https://www.facebook.com/share/1DmqQysbE4/" target="_blank" onclick="handleFacebookClick(event)" aria-label="صفحة نيليانا على فيسبوك">
             <i class="fab fa-facebook"></i>
         </a>
-        <a href="https://www.instagram.com/niliana.eg" target="_blank">
+        <a href="https://www.instagram.com/niliana.eg" target="_blank" aria-label="صفحة نيليانا على انستغرام">
             <i class="fab fa-instagram"></i>
         </a>
     </div>
 </section>
 
-<!-- ===== التوقيع ===== -->
+<!-- ===== التوقيع المحسن ===== -->
 <div class="designer-signature">
-    <p>Designed & Developed with <i class="fas fa-heart"></i> by</p>
-    <div class="name">Amro Abd Elaziz</div>
+    <a href="https://www.facebook.com/share/1CNhzcFDaA/" target="_blank" rel="noopener noreferrer">
+        <p>Designed & Developed with <i class="fas fa-heart"></i> by</p>
+        <span class="name">Amro Abd Elaziz</span>
+        <span class="link-hint">اضغط هنا لمتابعة صفحتي</span>
+    </a>
 </div>
 
 <footer>
@@ -1105,12 +1223,10 @@ function toggleAccordion(element) {
     const item = element.parentElement;
     const isActive = item.classList.contains('active');
     
-    // إغلاق كل الأكورديونات
     document.querySelectorAll('.accordion-item').forEach(acc => {
         acc.classList.remove('active');
     });
     
-    // فتح المضغوط لو كان مغلق
     if (!isActive) {
         item.classList.add('active');
     }
@@ -1232,3 +1348,6 @@ initVisitorCounter();
 </script>
 
 </body>
+</html>'''
+
+print(html_code)
