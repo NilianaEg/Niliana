@@ -1,9 +1,11 @@
- '''<!DOCTYPE html>
+'''<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Niliana | ماسك الكولاجين الكوري الفاخر</title>
+<title>Niliana | ماسك الكولاجين الكوري الفاخر - توصيل لكل مصر</title>
+<meta name="description" content="ماسك الكولاجين الكوري الفاخر من نيليانا - نضارة زجاجية فورية، ترطيب 48 ساعة، شد البشرة وتقليل الخطوط. توصيل لكل محافظات مصر خلال شهر. اطلبي الآن!">
+<meta name="keywords" content="ماسك كولاجين كوري, نيليانا, عناية بالبشرة, ترطيب البشرة, نضارة زجاجية, كولاجين مصري, توصيل مصر">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -57,7 +59,6 @@ header {
     overflow: hidden;
 }
 
-/* تأثير الضوء الخلفي */
 header::before {
     content: '';
     position: absolute;
@@ -71,7 +72,6 @@ header::before {
     z-index: 0;
 }
 
-/* حاوية الشعار */
 .logo-container {
     position: relative;
     z-index: 1;
@@ -80,34 +80,16 @@ header::before {
     width: 90%;
 }
 
-/* الشعار الكبير الانسيابي */
 .main-logo-img {
     width: 100%;
     max-width: 450px;
     height: auto;
     display: block;
     margin: 0 auto;
-    
-    /* تأثير الانسيابية مع الخلفية */
-    mask-image: linear-gradient(to bottom, 
-        transparent 0%, 
-        black 10%, 
-        black 85%, 
-        transparent 100%);
-    -webkit-mask-image: linear-gradient(to bottom, 
-        transparent 0%, 
-        black 10%, 
-        black 85%, 
-        transparent 100%);
-    
-    /* تأثير الظل الذهبي */
-    filter: drop-shadow(0 0 30px rgba(197, 160, 89, 0.4)) 
-            drop-shadow(0 0 60px rgba(197, 160, 89, 0.2));
-    
-    /* حواف ناعمة */
+    mask-image: linear-gradient(to bottom, transparent 0%, black 10%, black 85%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 10%, black 85%, transparent 100%);
+    filter: drop-shadow(0 0 30px rgba(197, 160, 89, 0.4)) drop-shadow(0 0 60px rgba(197, 160, 89, 0.2));
     border-radius: 20px;
-    
-    /* تأثير fade in */
     animation: logoReveal 1.5s ease-out;
 }
 
@@ -124,7 +106,6 @@ header::before {
     }
 }
 
-/* خط ذهبي تحت الشعار */
 .logo-underline {
     width: 200px;
     height: 2px;
@@ -141,6 +122,66 @@ header::before {
     margin-top: 15px;
     opacity: 0.8;
     font-weight: 300;
+}
+
+/* ===== عداد تنازلي للعروض ===== */
+.urgency-section {
+    background: linear-gradient(135deg, var(--red) 0%, #8b0000 100%);
+    padding: 30px 20px;
+    text-align: center;
+    border-bottom: 2px solid var(--gold);
+}
+
+.urgency-title {
+    color: white;
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.countdown-container {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin: 20px 0;
+    flex-wrap: wrap;
+}
+
+.countdown-box {
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.3);
+    border-radius: 10px;
+    padding: 15px 20px;
+    min-width: 80px;
+}
+
+.countdown-number {
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--gold);
+    display: block;
+    line-height: 1;
+}
+
+.countdown-label {
+    font-size: 0.8rem;
+    color: rgba(255,255,255,0.8);
+    margin-top: 5px;
+}
+
+.urgency-note {
+    color: rgba(255,255,255,0.9);
+    font-size: 1rem;
+    margin-top: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    flex-wrap: wrap;
 }
 
 /* ===== السكشن الرئيسي ===== */
@@ -189,7 +230,6 @@ header::before {
     box-shadow: 0 10px 40px rgba(197, 160, 89, 0.15);
 }
 
-/* صور انسيابية دايبة في الخلفية */
 .blended-visual {
     width: 100%;
     max-width: 700px;
@@ -220,7 +260,7 @@ header::before {
     margin-bottom: 10px;
 }
 
-/* ===== قسم التفاصيل المنسدلة (أكورديون) ===== */
+/* ===== قسم التفاصيل المنسدلة ===== */
 .details-section {
     background: linear-gradient(180deg, var(--black) 0%, #0d0d0d 50%, var(--black) 100%);
     padding: 60px 20px;
@@ -618,8 +658,9 @@ header::before {
     color: var(--black);
 }
 
-.carousel-btn.prev { right: 0; }
-.carousel-btn.next { left: 0; }
+/* تعديل الاتجاه للـ RTL */
+.carousel-btn.prev { left: 0; right: auto; }
+.carousel-btn.next { right: 0; left: auto; }
 
 /* ===== الأسئلة المتكررة ===== */
 .faq-section {
@@ -754,6 +795,16 @@ header::before {
     margin-top: 20px;
 }
 
+.designer-signature a {
+    text-decoration: none;
+    display: inline-block;
+    transition: all 0.3s ease;
+}
+
+.designer-signature a:hover {
+    transform: scale(1.05);
+}
+
 .designer-signature p {
     color: var(--gold);
     font-size: 0.9rem;
@@ -763,9 +814,10 @@ header::before {
 
 .designer-signature .name {
     font-weight: 700;
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     color: var(--ivory);
     margin-top: 5px;
+    display: block;
 }
 
 .designer-signature i {
@@ -789,21 +841,20 @@ footer {
     .video-card { min-width: calc(50% - 10px); }
     .accordion-header { font-size: 1.1rem; padding: 20px; }
     .faq-question { font-size: 1rem; padding: 20px; }
-    
-    /* تعديلات الشعار للموبايل */
     header { padding: 40px 20px 30px; }
     .main-logo-img { max-width: 320px; }
     .logo-underline { width: 150px; }
+    .countdown-number { font-size: 1.5rem; }
+    .countdown-box { padding: 10px 15px; min-width: 60px; }
 }
 
 @media (max-width: 480px) {
     .video-card { min-width: 100%; }
     .product-title { font-size: 2rem; }
     .section-title { font-size: 1.8rem; }
-    
-    /* تعديلات الشعار للشاشات الصغيرة */
     .main-logo-img { max-width: 280px; }
     header { padding: 30px 15px 25px; }
+    .urgency-title { font-size: 1.1rem; }
 }
 </style>
 </head>
@@ -814,11 +865,43 @@ footer {
 
 <header>
     <div class="logo-container">
-        <img src="images/logo.jpg" alt="Niliana" class="main-logo-img">
+        <img src="images/logo.jpg" alt="شعار نيليانا - ماسك الكولاجين الكوري الفاخر" class="main-logo-img" width="450" height="150">
         <div class="logo-underline"></div>
         <p class="logo-subtitle">Luxury Skincare Experience</p>
     </div>
 </header>
+
+<!-- ===== عداد تنازلي للاستعجال ===== -->
+<section class="urgency-section">
+    <div class="urgency-title">
+        <i class="fas fa-fire"></i>
+        عرض محدود! اطلبي قبل نفاد الكمية
+        <i class="fas fa-fire"></i>
+    </div>
+    
+    <div class="countdown-container" id="countdown">
+        <div class="countdown-box">
+            <span class="countdown-number" id="hours">00</span>
+            <div class="countdown-label">ساعة</div>
+        </div>
+        <div class="countdown-box">
+            <span class="countdown-number" id="minutes">00</span>
+            <div class="countdown-label">دقيقة</div>
+        </div>
+        <div class="countdown-box">
+            <span class="countdown-number" id="seconds">00</span>
+            <div class="countdown-label">ثانية</div>
+        </div>
+    </div>
+    
+    <div class="urgency-note">
+        <i class="fas fa-shipping-fast"></i>
+        <span>التوصيل لكل المحافظات خلال شهر</span>
+        <span style="color: var(--gold);">|</span>
+        <i class="fas fa-box-open"></i>
+        <span>الكمية محدودة جداً</span>
+    </div>
+</section>
 
 <section class="hero-section">
     <div class="testimonial-box">
@@ -829,7 +912,7 @@ footer {
     <p style="color: #aaa;">السرّ لترطيب عميق ونضارة فورية من أول ليلة</p>
 
     <div class="product-showcase">
-        <img src="images/product-main.jpg" alt="Niliana Mask" class="product-image">
+        <img src="images/product-main.jpg" alt="ماسك الكولاجين الكوري الفاخر من نيليانا - عبوة فاخرة للعناية بالبشرة" class="product-image" width="500" height="500" loading="lazy">
     </div>
 
     <div class="features-grid">
@@ -841,7 +924,7 @@ footer {
 </section>
 
 <section style="text-align:center; background: #000;">
-    <img src="images/aesthetic.jpg" class="blended-visual" alt="Niliana Beauty">
+    <img src="images/aesthetic.jpg" class="blended-visual" alt="صورة جمالية لبشرة ناعمة ومشرقة بعد استخدام ماسك نيليانا" width="700" height="400" loading="lazy">
 </section>
 
 <section class="hero-section" style="padding-top:0;">
@@ -851,16 +934,15 @@ footer {
     </p>
     
     <div style="margin-top: 40px;">
-        <img src="images/usage.png" style="max-width: 800px; width: 100%; border-radius: 15px;" alt="Usage">
+        <img src="images/usage.png" style="max-width: 800px; width: 100%; border-radius: 15px;" alt="طريقة استخدام ماسك الكولاجين الكوري - خطوات سهلة للعناية بالبشرة" width="800" height="400" loading="lazy">
     </div>
 </section>
 
-<!-- ===== قسم التفاصيل المنسدلة (أكورديون) ===== -->
+<!-- ===== قسم التفاصيل المنسدلة ===== -->
 <section class="details-section">
     <h2 class="section-title">تفاصيل المنتج 📋</h2>
     
     <div class="accordion-container">
-        <!-- الفوائد -->
         <div class="accordion-item">
             <button class="accordion-header" onclick="toggleAccordion(this)">
                 <span><i class="fas fa-star"></i> الفوائد</span>
@@ -878,7 +960,6 @@ footer {
             </div>
         </div>
 
-        <!-- المكونات -->
         <div class="accordion-item">
             <button class="accordion-header" onclick="toggleAccordion(this)">
                 <span><i class="fas fa-flask"></i> المكونات</span>
@@ -896,7 +977,6 @@ footer {
             </div>
         </div>
 
-        <!-- طريقة الاستخدام -->
         <div class="accordion-item">
             <button class="accordion-header" onclick="toggleAccordion(this)">
                 <span><i class="fas fa-hand-sparkles"></i> طريقة الاستخدام</span>
@@ -967,14 +1047,14 @@ footer {
     
     <div class="videos-carousel-container">
         <button class="carousel-btn prev" onclick="moveCarousel(-1)">
-            <i class="fas fa-chevron-right"></i>
+            <i class="fas fa-chevron-left"></i>
         </button>
         
         <div class="videos-wrapper">
             <div class="videos-track" id="videosTrack">
                 <div class="video-card">
                     <div class="video-wrapper">
-                        <video src="images/review1.mp4" loop playsinline></video>
+                        <video src="images/review1.mp4" loop playsinline poster="images/review1-thumb.jpg" preload="none"></video>
                         <div class="play-overlay" onclick="toggleVideo(this)">
                             <div class="play-icon"><i class="fas fa-play"></i></div>
                         </div>
@@ -982,7 +1062,7 @@ footer {
                 </div>
                 <div class="video-card">
                     <div class="video-wrapper">
-                        <video src="images/review2.mp4" loop playsinline></video>
+                        <video src="images/review2.mp4" loop playsinline poster="images/review2-thumb.jpg" preload="none"></video>
                         <div class="play-overlay" onclick="toggleVideo(this)">
                             <div class="play-icon"><i class="fas fa-play"></i></div>
                         </div>
@@ -990,7 +1070,7 @@ footer {
                 </div>
                 <div class="video-card">
                     <div class="video-wrapper">
-                        <video src="images/review3.mp4" loop playsinline></video>
+                        <video src="images/review3.mp4" loop playsinline poster="images/review3-thumb.jpg" preload="none"></video>
                         <div class="play-overlay" onclick="toggleVideo(this)">
                             <div class="play-icon"><i class="fas fa-play"></i></div>
                         </div>
@@ -998,7 +1078,7 @@ footer {
                 </div>
                 <div class="video-card">
                     <div class="video-wrapper">
-                        <video src="images/review4.mp4" loop playsinline></video>
+                        <video src="images/review4.mp4" loop playsinline poster="images/review4-thumb.jpg" preload="none"></video>
                         <div class="play-overlay" onclick="toggleVideo(this)">
                             <div class="play-icon"><i class="fas fa-play"></i></div>
                         </div>
@@ -1008,7 +1088,7 @@ footer {
         </div>
         
         <button class="carousel-btn next" onclick="moveCarousel(1)">
-            <i class="fas fa-chevron-left"></i>
+            <i class="fas fa-chevron-right"></i>
         </button>
     </div>
 </section>
@@ -1064,7 +1144,7 @@ footer {
                 <i class="fas fa-chevron-down"></i>
             </button>
             <div class="faq-answer">
-                نعم، بنوصل لكل محافظات مصر. التوصيل مجاني للطلبات فوق 400 جنيه، وبتدفعي عند الاستلام.
+                نعم، بنوصل لكل محافظات مصر خلال شهر. التوصيل مجاني للطلبات فوق 400 جنيه، وبتدفعي عند الاستلام.
             </div>
         </div>
     </div>
@@ -1073,10 +1153,10 @@ footer {
 <section style="padding: 50px 20px; text-align: center;">
     <h3 style="color: var(--gold); margin-bottom: 20px;">تابعينا لمعرفة جديدنا 💎</h3>
     <div class="social-links">
-        <a href="https://www.facebook.com/share/1DmqQysbE4/" target="_blank" onclick="handleFacebookClick(event)">
+        <a href="https://www.facebook.com/share/1DmqQysbE4/" target="_blank" onclick="handleFacebookClick(event)" aria-label="صفحة نيليانا على فيسبوك">
             <i class="fab fa-facebook"></i>
         </a>
-        <a href="https://www.instagram.com/niliana.eg" target="_blank">
+        <a href="https://www.instagram.com/niliana.eg" target="_blank" aria-label="صفحة نيليانا على انستغرام">
             <i class="fab fa-instagram"></i>
         </a>
     </div>
@@ -1084,8 +1164,10 @@ footer {
 
 <!-- ===== التوقيع ===== -->
 <div class="designer-signature">
-    <p>Designed & Developed with <i class="fas fa-heart"></i> by</p>
-    <div class="name">Amro Abd Elaziz</div>
+    <a href="https://www.facebook.com/share/1CNhzcFDaA/" target="_blank" rel="noopener noreferrer">
+        <p>Designed & Developed with <i class="fas fa-heart"></i> by</p>
+        <span class="name">Amro Abd Elaziz</span>
+    </a>
 </div>
 
 <footer>
@@ -1104,12 +1186,10 @@ function toggleAccordion(element) {
     const item = element.parentElement;
     const isActive = item.classList.contains('active');
     
-    // إغلاق كل الأكورديونات
     document.querySelectorAll('.accordion-item').forEach(acc => {
         acc.classList.remove('active');
     });
     
-    // فتح المضغوط لو كان مغلق
     if (!isActive) {
         item.classList.add('active');
     }
@@ -1127,6 +1207,40 @@ function toggleFaq(element) {
     if (!isActive) {
         item.classList.add('active');
     }
+}
+
+// ===== عداد تنازلي 24 ساعة =====
+function initCountdown() {
+    // تحديد نهاية الـ 24 ساعة من الآن
+    let endTime = localStorage.getItem('countdownEnd');
+    
+    if (!endTime) {
+        endTime = new Date().getTime() + (24 * 60 * 60 * 1000); // 24 ساعة
+        localStorage.setItem('countdownEnd', endTime);
+    }
+    
+    function updateCountdown() {
+        const now = new Date().getTime();
+        const distance = endTime - now;
+        
+        if (distance < 0) {
+            // إعادة تعيين العداد بعد انتهاء الـ 24 ساعة
+            endTime = new Date().getTime() + (24 * 60 * 60 * 1000);
+            localStorage.setItem('countdownEnd', endTime);
+            return;
+        }
+        
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+        
+        document.getElementById('hours').textContent = String(hours).padStart(2, '0');
+        document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
+        document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
+    }
+    
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
 }
 
 // ===== باقي الفنكشنز =====
@@ -1167,15 +1281,23 @@ function showNotification(message) {
     }, 4000);
 }
 
-// ===== Carousel =====
+// ===== Carousel RTL محسن =====
 let currentIndex = 0;
 const track = document.getElementById('videosTrack');
 const cards = document.querySelectorAll('.video-card');
 
 function moveCarousel(dir) {
-    const maxIndex = cards.length - (window.innerWidth <= 768 ? 2 : 4);
-    currentIndex = Math.max(0, Math.min(maxIndex, currentIndex + dir));
-    track.style.transform = `translateX(${currentIndex * (cards[0].offsetWidth + 20)}px)`;
+    const visibleCards = window.innerWidth <= 768 ? 2 : 4;
+    const maxIndex = Math.max(0, cards.length - visibleCards);
+    
+    // تعديل الاتجاه للـ RTL
+    currentIndex = Math.max(0, Math.min(maxIndex, currentIndex - dir));
+    
+    const cardWidth = cards[0].offsetWidth + 20;
+    const translateX = currentIndex * cardWidth;
+    
+    // للـ RTL نستخدم translateX بالموجب
+    track.style.transform = `translateX(${translateX}px)`;
 }
 
 function toggleVideo(overlay) {
@@ -1227,10 +1349,10 @@ style.textContent = `
 document.head.appendChild(style);
 
 // Initialize
+initCountdown();
 initVisitorCounter();
 </script>
 
 </body>
 </html>'''
-
 
