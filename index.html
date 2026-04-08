@@ -10,108 +10,266 @@
 
     <style>
         :root {
-            --emerald: #043927; /* اللون الزمردي الداكن */
-            --gold: #C5A059;    /* الذهبي الملكي */
-            --ivory: #F9F5F0;   /* العاجي الفاتح */
+            --emerald: #043927;
+            --gold: #C5A059;
+            --ivory: #F9F5F0;
             --black: #0a0a0a;
             --dark-gray: #1a1a1a;
             --red: #c62828;
         }
 
-        /* تحسينات عامة */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
         body {
             font-family: 'Cairo', sans-serif;
             background: var(--black);
             color: var(--ivory);
             line-height: 1.8;
-            scroll-behavior: smooth;
+            overflow-x: hidden;
         }
 
-        /* شريط التوصيل - حركة أنعم */
+        /* شريط التوصيل */
         .delivery-bar {
             background: var(--emerald);
             color: var(--gold);
             text-align: center;
-            padding: 10px;
+            padding: 12px;
             font-weight: 700;
             font-size: 0.9rem;
             border-bottom: 1px solid var(--gold);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
         }
 
-        /* الهيدر - التركيز على اللوجو */
+        /* الهيدر */
         header {
-            padding: 50px 20px;
+            padding: 40px 20px;
+            text-align: center;
             background: radial-gradient(circle at center, #151515 0%, #0a0a0a 100%);
-            border-bottom: 1px solid rgba(197, 160, 89, 0.1);
         }
 
-        .main-logo-img {
-            max-width: 280px;
-            filter: drop-shadow(0 0 15px rgba(197, 160, 89, 0.2));
-            transition: transform 0.5s ease;
+        .logo-img {
+            max-width: 250px;
+            filter: drop-shadow(0 0 15px rgba(197, 160, 89, 0.3));
         }
 
-        .main-logo-img:hover {
-            transform: scale(1.02);
+        /* سيكشن المنتج الرئيسي */
+        .hero {
+            padding: 40px 20px;
+            text-align: center;
         }
 
-        /* كروت العروض - لمسة ديور */
-        .offer-card {
-            background: linear-gradient(145deg, #111, #050505);
+        .product-main-img {
+            width: 100%;
+            max-width: 500px;
+            border-radius: 20px;
+            margin: 20px 0;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
             border: 1px solid rgba(197, 160, 89, 0.2);
-            border-radius: 0px; /* تصميم حاد وأنيق */
+        }
+
+        .product-title {
+            color: var(--gold);
+            font-size: 2.2rem;
+            font-weight: 800;
+            margin-bottom: 10px;
+        }
+
+        /* المميزات */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            max-width: 600px;
+            margin: 30px auto;
+        }
+
+        .feature-card {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(197, 160, 89, 0.1);
+            padding: 15px;
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .feature-card i {
+            color: var(--gold);
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        /* العروض */
+        .offers {
+            padding: 60px 20px;
+            background: #0d0d0d;
+        }
+
+        .section-title {
+            text-align: center;
+            color: var(--gold);
+            margin-bottom: 40px;
+            font-size: 1.8rem;
+        }
+
+        .offers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .offer-card {
+            background: #151515;
+            border: 1px solid rgba(197, 160, 89, 0.2);
             padding: 30px 20px;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            text-align: center;
+            position: relative;
+            transition: 0.3s;
         }
 
         .offer-card.best {
-            border: 1px solid var(--gold);
-            background: linear-gradient(145deg, #0d1a15, #043927);
+            border: 2px solid var(--gold);
+            transform: scale(1.05);
+            background: linear-gradient(145deg, #0d1a15, #0a0a0a);
+        }
+
+        .best-tag {
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--gold);
+            color: var(--black);
+            padding: 4px 20px;
+            font-weight: 800;
+            font-size: 0.8rem;
+        }
+
+        .price {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--gold);
+            margin: 15px 0;
+        }
+
+        .old-price {
+            text-decoration: line-through;
+            opacity: 0.5;
+            font-size: 1.1rem;
         }
 
         .order-btn {
-            background: transparent;
-            color: var(--gold);
+            width: 100%;
+            padding: 15px;
+            background: var(--emerald);
+            color: white;
             border: 1px solid var(--gold);
-            padding: 15px 30px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
+            font-family: 'Cairo';
             font-weight: 700;
+            font-size: 1.1rem;
             cursor: pointer;
-            transition: all 0.3s;
+            transition: 0.3s;
         }
 
         .order-btn:hover {
             background: var(--gold);
-            color: var(--emerald);
-            box-shadow: 0 0 20px rgba(197, 160, 89, 0.4);
+            color: var(--black);
         }
 
-        /* تحسين الأكورديون */
-        .accordion-item {
+        /* الأكورديون (التفاصيل) */
+        .accordion {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .acc-item {
+            border-bottom: 1px solid rgba(197, 160, 89, 0.2);
+            margin-bottom: 10px;
+        }
+
+        .acc-header {
+            width: 100%;
+            padding: 20px;
+            background: none;
             border: none;
-            border-bottom: 1px solid rgba(197, 160, 89, 0.1);
-            background: transparent;
-        }
-
-        .accordion-header {
             color: var(--ivory);
-            padding: 20px 0;
-            font-weight: 400;
+            text-align: right;
+            font-size: 1.1rem;
+            font-family: 'Cairo';
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
         }
 
-        .accordion-item.active .accordion-header {
-            color: var(--gold);
+        .acc-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: 0.3s ease;
+            padding: 0 20px;
+            color: #aaa;
         }
 
-        /* توقيع المصمم - أكثر هدوءاً */
-        .designer-signature {
-            opacity: 0.6;
-            font-size: 0.8rem;
-            margin-top: 50px;
+        .acc-item.active .acc-content {
+            max-height: 500px;
+            padding-bottom: 20px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px;
+            border-top: 1px solid #222;
+            font-size: 0.9rem;
+            color: #555;
+        }
+
+        @media (max-width: 768px) {
+            .offer-card.best { transform: scale(1); margin: 20px 0; }
+            .product-title { font-size: 1.8rem; }
         }
     </style>
 </head>
 <body>
-    </body>
-</html>
+
+    <div class="delivery-bar">🚚 توصيل مجاني لكل محافظات مصر اليوم فقط 🚨</div>
+
+    <header>
+        <img src="images/logo.jpg" alt="Niliana Logo" class="logo-img">
+    </header>
+
+    <section class="hero">
+        <h1 class="product-title">قناع الكولاجين الكوري</h1>
+        <p>بشرة زجاجية (Glass Skin) ونضارة فورية من أول ليلة</p>
+        
+        <img src="images/product-main.jpg" alt="Niliana Mask" class="product-main-img">
+
+        <div class="features-grid">
+            <div class="feature-card">
+                <i class="fas fa-sparkles"></i>
+                <span>نضارة فورية</span>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-moon"></i>
+                <span>ثبات طوال الليل</span>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-tint"></i>
+                <span>ترطيب مكثف</span>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-gem"></i>
+                <span>جودة فاخرة</span>
+            </div>
+        </div>
+    </section>
+
+    <section class="offers">
+        <h2 class="section-title">اختاري عرضك المفضل 🎁</h2>
+        <div class="offers-grid">
+            <div class="offer-card">
+                <h3>ماسك واحد</h3>
+                <div class="old-price">350 ج.م</div>
+                <div class="price">275 ج.م
