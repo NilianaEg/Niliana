@@ -17,7 +17,11 @@
     --dark-gray: #1a1a1a;
 }
 
-* { margin: 0; padding: 0; box-sizing: border-box; }
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
 body {
     font-family: 'Cairo', sans-serif;
@@ -27,7 +31,7 @@ body {
     line-height: 1.8;
 }
 
-/* ===== شريط التوصيل ===== */
+/* ===== شريط التوصيل المجاني ===== */
 .delivery-bar {
     background: var(--emerald);
     color: var(--gold);
@@ -35,8 +39,15 @@ body {
     padding: 12px;
     font-weight: 600;
     font-size: 0.95rem;
+    animation: pulse 2s infinite;
 }
 
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.8; }
+}
+
+/* ===== الهيدر ===== */
 header {
     background: linear-gradient(to bottom, var(--dark-gray), var(--black));
     padding: 30px 20px;
@@ -44,54 +55,314 @@ header {
     border-bottom: 1px solid rgba(197, 160, 89, 0.3);
 }
 
-.main-logo-img { max-height: 80px; }
+.main-logo-img {
+    max-height: 80px;
+    margin-bottom: 10px;
+}
 
-/* ===== سكشن الفيديوهات (التنسيق الأول الأنيق) ===== */
-.video-section {
+.logo-subtitle {
+    color: var(--gold);
+    font-size: 0.8rem;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+}
+
+/* ===== السكشن الرئيسي ===== */
+.hero-section {
+    background: var(--black);
     padding: 60px 20px;
     text-align: center;
-    background: var(--black);
+    position: relative;
 }
 
-.video-grid {
+.testimonial-box {
+    background: rgba(197, 160, 89, 0.1);
+    border: 1px solid rgba(197, 160, 89, 0.3);
+    border-radius: 20px;
+    padding: 30px;
+    max-width: 600px;
+    margin: 0 auto 40px;
+}
+
+.testimonial-text {
+    font-size: 1.1rem;
+    color: var(--ivory);
+    font-style: italic;
+}
+
+.product-title {
+    font-size: 2.5rem;
+    color: var(--gold);
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+/* ===== صور المنتج ===== */
+.product-showcase {
     display: flex;
-    overflow-x: auto;
-    gap: 20px;
-    padding: 20px 10px;
-    scroll-snap-type: x mandatory;
-    scrollbar-width: none;
+    flex-direction: column;
+    gap: 30px;
+    align-items: center;
+    margin: 40px 0;
 }
 
-.video-grid::-webkit-scrollbar { display: none; }
+.product-image {
+    max-width: 500px;
+    width: 90%;
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(197, 160, 89, 0.15);
+}
 
-.video-item {
-    flex: 0 0 300px;
-    scroll-snap-align: center;
+/* صور انسيابية دايبة في الخلفية */
+.blended-visual {
+    width: 100%;
+    max-width: 700px;
+    mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
+    opacity: 0.8;
+}
+
+/* ===== المميزات ===== */
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    max-width: 600px;
+    margin: 40px auto;
+}
+
+.feature-item {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(197, 160, 89, 0.2);
+    padding: 20px;
+    border-radius: 15px;
+}
+
+.feature-icon {
+    font-size: 1.8rem;
+    color: var(--gold);
+    margin-bottom: 10px;
+}
+
+/* ===== قسم فيديوهات التجارب ===== */
+.videos-section {
+    background: linear-gradient(180deg, var(--black) 0%, #0d0d0d 50%, var(--black) 100%);
+    padding: 80px 20px;
+    position: relative;
+    overflow: hidden;
+}
+
+.videos-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+}
+
+.section-title {
+    text-align: center;
+    font-size: 2.2rem;
+    color: var(--gold);
+    margin-bottom: 15px;
+    position: relative;
+    display: inline-block;
+    width: 100%;
+}
+
+.section-subtitle {
+    text-align: center;
+    color: #888;
+    margin-bottom: 50px;
+    font-size: 1.1rem;
+}
+
+/* Carousel Container */
+.videos-carousel-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    padding: 0 60px;
+}
+
+.videos-wrapper {
+    overflow: hidden;
+    border-radius: 20px;
+}
+
+.videos-track {
+    display: flex;
+    gap: 25px;
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.video-card {
+    min-width: calc(33.333% - 17px);
+    background: rgba(255,255,255,0.02);
+    border: 1px solid rgba(197, 160, 89, 0.2);
     border-radius: 20px;
     overflow: hidden;
-    border: 1px solid var(--gold);
-    background: #000;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    transition: all 0.4s ease;
+    position: relative;
 }
 
-.video-item video {
+.video-card:hover {
+    transform: translateY(-10px);
+    border-color: var(--gold);
+    box-shadow: 0 20px 40px rgba(197, 160, 89, 0.2);
+}
+
+.video-wrapper {
+    position: relative;
     width: 100%;
-    height: 500px;
+    aspect-ratio: 9/16;
+    background: #000;
+    overflow: hidden;
+}
+
+.video-wrapper video {
+    width: 100%;
+    height: 100%;
     object-fit: cover;
     display: block;
 }
 
-/* ===== باقي الأقسام ===== */
-.hero-section { padding: 40px 20px; text-align: center; }
-.product-title { font-size: 2.5rem; color: var(--gold); margin-bottom: 15px; }
-.product-image { max-width: 500px; width: 90%; border-radius: 20px; }
+/* Play Button Overlay */
+.play-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,0,0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 2;
+}
 
-.features-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; max-width: 600px; margin: 40px auto; }
-.feature-item { background: rgba(255,255,255,0.03); border: 1px solid rgba(197, 160, 89, 0.2); padding: 20px; border-radius: 15px; }
+.play-overlay:hover {
+    background: rgba(0,0,0,0.2);
+}
 
-.order-section { background: var(--dark-gray); padding: 60px 20px; text-align: center; }
-.order-card { border: 2px solid var(--gold); border-radius: 25px; padding: 40px 30px; max-width: 450px; margin: 0 auto; }
-.current-price { font-size: 3rem; color: var(--gold); font-weight: 700; }
+.play-icon {
+    width: 70px;
+    height: 70px;
+    background: rgba(197, 160, 89, 0.9);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255,255,255,0.3);
+}
+
+.play-icon i {
+    color: white;
+    font-size: 24px;
+    margin-right: -4px;
+}
+
+.play-overlay:hover .play-icon {
+    transform: scale(1.1);
+    background: var(--gold);
+    box-shadow: 0 0 30px rgba(197, 160, 89, 0.6);
+}
+
+.video-card.playing .play-overlay {
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* Navigation Buttons */
+.carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 50px;
+    height: 50px;
+    background: rgba(197, 160, 89, 0.1);
+    border: 1px solid rgba(197, 160, 89, 0.3);
+    border-radius: 50%;
+    color: var(--gold);
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.carousel-btn:hover {
+    background: var(--gold);
+    color: var(--black);
+    transform: translateY(-50%) scale(1.1);
+}
+
+.carousel-btn.prev {
+    right: 0;
+}
+
+.carousel-btn.next {
+    left: 0;
+}
+
+.carousel-btn:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+}
+
+/* Dots Indicator */
+.carousel-dots {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 30px;
+}
+
+.dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: rgba(197, 160, 89, 0.3);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: none;
+}
+
+.dot.active {
+    background: var(--gold);
+    width: 30px;
+    border-radius: 5px;
+}
+
+/* ===== قسم الطلب ===== */
+.order-section {
+    background: var(--dark-gray);
+    padding: 60px 20px;
+    text-align: center;
+}
+
+.order-card {
+    background: rgba(255,255,255,0.02);
+    border: 2px solid var(--gold);
+    border-radius: 25px;
+    padding: 40px 30px;
+    max-width: 450px;
+    margin: 0 auto;
+}
+
+.current-price {
+    font-size: 3rem;
+    color: var(--gold);
+    font-weight: 700;
+}
 
 .cta-button {
     display: inline-block;
@@ -100,31 +371,94 @@ header {
     padding: 20px 50px;
     border-radius: 50px;
     text-decoration: none;
+    font-size: 1.2rem;
     font-weight: 700;
     margin-top: 20px;
     border: 1px solid var(--gold);
+    box-shadow: 0 10px 30px rgba(4, 57, 39, 0.4);
+    transition: all 0.3s ease;
 }
 
-/* ===== التوقيع والفوتر ===== */
-.designer-signature {
-    padding: 20px;
-    background: #000;
-    text-align: center;
-    font-size: 0.8rem;
-    color: #444;
-    border-top: 1px solid #111;
+.cta-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 40px rgba(4, 57, 39, 0.6);
 }
 
-.designer-signature span {
+/* ===== السوشيال ميديا ===== */
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    margin: 30px 0;
+}
+
+.social-links a {
     color: var(--gold);
-    font-weight: bold;
-    letter-spacing: 1px;
+    font-size: 2rem;
+    transition: 0.3s;
 }
 
-footer { padding: 20px; text-align: center; background: #000; color: #555; }
+.social-links a:hover {
+    transform: translateY(-5px);
+    color: #fff;
+}
 
-@media (max-width: 768px) {
-    .video-item { flex: 0 0 280px; }
+/* ===== التوقيع ===== */
+.designer-signature {
+    text-align: center;
+    padding: 20px;
+    background: linear-gradient(90deg, transparent, rgba(197, 160, 89, 0.1), transparent);
+    border-top: 1px solid rgba(197, 160, 89, 0.2);
+    margin-top: 20px;
+}
+
+.designer-signature p {
+    color: var(--gold);
+    font-size: 0.9rem;
+    font-weight: 300;
+    letter-spacing: 2px;
+}
+
+.designer-signature .name {
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: var(--ivory);
+    margin-top: 5px;
+}
+
+.designer-signature i {
+    color: var(--emerald);
+    margin: 0 5px;
+}
+
+footer {
+    padding: 30px;
+    text-align: center;
+    background: #000;
+    color: #555;
+    border-top: 1px solid #222;
+}
+
+/* Responsive */
+@media (max-width: 968px) {
+    .video-card {
+        min-width: calc(50% - 13px);
+    }
+}
+
+@media (max-width: 600px) {
+    .videos-carousel-container {
+        padding: 0 40px;
+    }
+    
+    .video-card {
+        min-width: 100%;
+    }
+    
+    .carousel-btn {
+        width: 40px;
+        height: 40px;
+    }
 }
 </style>
 </head>
@@ -135,64 +469,252 @@ footer { padding: 20px; text-align: center; background: #000; color: #555; }
 
 <header>
     <img src="images/logo.jpg" alt="Niliana" class="main-logo-img">
+    <p class="logo-subtitle">Luxury Skincare Experience</p>
 </header>
 
 <section class="hero-section">
+    <div class="testimonial-box">
+        <p class="testimonial-text">"عنجد قناع رهيب! صحّيت ووجهي أطرى وأنعم وفيه لمعة Glass Skin حلوة كتير."</p>
+    </div>
+
     <h2 class="product-title">قناع الكولاجين الكوري</h2>
-    <p style="color: #aaa;">نضارة فورية من أول استخدام</p>
-    <div style="margin-top: 30px;">
+    <p style="color: #aaa;">السرّ لترطيب عميق ونضارة فورية من أول ليلة</p>
+
+    <div class="product-showcase">
         <img src="images/product-main.jpg" alt="Niliana Mask" class="product-image">
     </div>
-</section>
 
-<section class="video-section">
-    <h3 style="color: var(--gold); margin-bottom: 20px;">تجارب Niliana الواقعية ✨</h3>
-    <div class="video-grid">
-        <div class="video-item"><video controls><source src="images/review1.mp4" type="video/mp4"></video></div>
-        <div class="video-item"><video controls><source src="images/review2.mp4" type="video/mp4"></video></div>
-        <div class="video-item"><video controls><source src="images/review3.mp4" type="video/mp4"></video></div>
-        <div class="video-item"><video controls><source src="images/review4.mp4" type="video/mp4"></video></div>
-    </div>
-</section>
-
-<section class="hero-section">
     <div class="features-grid">
-        <div class="feature-item">✨ نضارة زجاجية</div>
-        <div class="feature-item">🌙 ثبات كامل</div>
-        <div class="feature-item">💎 شد فوري</div>
-        <div class="feature-item">💧 ترطيب مكثف</div>
+        <div class="feature-item"><div class="feature-icon">✨</div><div class="feature-text">نضارة زجاجية فورية</div></div>
+        <div class="feature-item"><div class="feature-icon">🌙</div><div class="feature-text">ثبات كامل أثناء النوم</div></div>
+        <div class="feature-item"><div class="feature-icon">💎</div><div class="feature-text">شدّ وتقليل الخطوط</div></div>
+        <div class="feature-item"><div class="feature-icon">💧</div><div class="feature-text">ترطيب هيدروجيل مكثف</div></div>
     </div>
+</section>
+
+<section style="text-align:center; background: #000;">
+    <img src="images/aesthetic.jpg" class="blended-visual" alt="Niliana Beauty">
+</section>
+
+<section class="hero-section" style="padding-top:0;">
+    <h3 style="color: var(--gold); font-size: 1.8rem; margin-bottom: 20px;">لماذا تختارين نيليانا؟</h3>
+    <p style="max-width: 600px; margin: 0 auto; color: #aaa;">
+        تصميم القناع يسمح لبشرتك بامتصاص السيروم تدريجياً، ليعطيكِ مظهر النضارة الطبيعي وكأنكِ في جلسة سبا محترفة في منزلك.
+    </p>
+    
+    <div style="margin-top: 40px;">
+        <img src="images/usage.png" style="max-width: 800px; width: 100%; border-radius: 15px;" alt="Usage">
+    </div>
+</section>
+
+<!-- ===== قسم فيديوهات التجارب ===== -->
+<section class="videos-section">
+    <h2 class="section-title">تجارب حقيقية من عملائنا ✨</h2>
+    <p class="section-subtitle">شوفي بنفسك النتائج المذهلة بعد استخدام قناع نيليانا</p>
+    
+    <div class="videos-carousel-container">
+        <button class="carousel-btn prev" onclick="moveCarousel(-1)">
+            <i class="fas fa-chevron-right"></i>
+        </button>
+        
+        <div class="videos-wrapper">
+            <div class="videos-track" id="videosTrack">
+                <!-- Video 1 -->
+                <div class="video-card">
+                    <div class="video-wrapper">
+                        <video src="images/review1.mp4" loop playsinline></video>
+                        <div class="play-overlay" onclick="toggleVideo(this)">
+                            <div class="play-icon">
+                                <i class="fas fa-play"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Video 2 -->
+                <div class="video-card">
+                    <div class="video-wrapper">
+                        <video src="images/review2.mp4" loop playsinline></video>
+                        <div class="play-overlay" onclick="toggleVideo(this)">
+                            <div class="play-icon">
+                                <i class="fas fa-play"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Video 3 -->
+                <div class="video-card">
+                    <div class="video-wrapper">
+                        <video src="images/review3.mp4" loop playsinline></video>
+                        <div class="play-overlay" onclick="toggleVideo(this)">
+                            <div class="play-icon">
+                                <i class="fas fa-play"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Video 4 -->
+                <div class="video-card">
+                    <div class="video-wrapper">
+                        <video src="images/review4.mp4" loop playsinline></video>
+                        <div class="play-overlay" onclick="toggleVideo(this)">
+                            <div class="play-icon">
+                                <i class="fas fa-play"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <button class="carousel-btn next" onclick="moveCarousel(1)">
+            <i class="fas fa-chevron-left"></i>
+        </button>
+    </div>
+    
+    <div class="carousel-dots" id="carouselDots"></div>
 </section>
 
 <section class="order-section">
     <div class="order-card">
-        <img src="images/branding.jpg" style="max-width:100%; border-radius:10px; margin-bottom:15px;">
-        <div class="current-price">275 EGP</div>
-        <a href="https://wa.me/201109048989" class="cta-button">اطلبي الآن <i class="fab fa-whatsapp"></i></a>
+        <span style="background:#c62828; color:white; padding:5px 15px; border-radius:20px; font-size:0.8rem;">🔥 عرض محدود</span>
+        
+        <div style="margin: 20px 0;">
+            <img src="images/branding.jpg" style="max-width:100%; border-radius: 10px; margin-bottom: 15px;">
+            <span style="text-decoration:line-through; color:#666; font-size:1.2rem;">350 EGP</span>
+            <div class="current-price">275 EGP</div>
+        </div>
+
+        <p>✅ شحن مجاني | ✅ دفع عند الاستلام</p>
+
+        <a href="https://wa.me/201109048989" class="cta-button">
+            اطلبي الآن عبر واتساب <i class="fab fa-whatsapp"></i>
+        </a>
     </div>
 </section>
 
-<footer>
-    <p>© 2026 Niliana Luxury Skincare</p>
-</footer>
+<section style="padding: 50px 20px; text-align: center;">
+    <h3 style="color: var(--gold);">تابعينا لمعرفة جديدنا 💎</h3>
+    <div class="social-links">
+        <a href="https://www.facebook.com/share/1DmqQysbE4/" target="_blank"><i class="fab fa-facebook"></i></a>
+        <a href="https://www.instagram.com/niliana.eg" target="_blank"><i class="fab fa-instagram"></i></a>
+    </div>
+</section>
 
+<!-- ===== التوقيع ===== -->
 <div class="designer-signature">
-    Designed with Luxury by <span>Amro Abd Elaziz</span>
+    <p>Designed & Developed with <i class="fas fa-heart"></i> by</p>
+    <div class="name">Amro Abd Elaziz</div>
 </div>
 
-<script>
-    const allVideos = document.querySelectorAll('video');
+<footer>
+    <p>© 2026 Niliana Luxury Skincare - جميع الحقوق محفوظة</p>
+</footer>
 
-    allVideos.forEach(video => {
-        video.addEventListener('play', function() {
-            // لما فيديو يشتغل، وقف كل الفيديوهات التانية
-            allVideos.forEach(otherVideo => {
-                if (otherVideo !== video) {
-                    otherVideo.pause();
-                }
-            });
-        });
+<script>
+let currentIndex = 0;
+const track = document.getElementById('videosTrack');
+const cards = document.querySelectorAll('.video-card');
+const totalCards = cards.length;
+let cardsPerView = getCardsPerView();
+
+function getCardsPerView() {
+    if (window.innerWidth <= 600) return 1;
+    if (window.innerWidth <= 968) return 2;
+    return 3;
+}
+
+function updateCarousel() {
+    const cardWidth = cards[0].offsetWidth + 25;
+    track.style.transform = `translateX(${currentIndex * cardWidth}px)`;
+    
+    document.querySelectorAll('.dot').forEach((dot, idx) => {
+        dot.classList.toggle('active', idx === currentIndex);
     });
+    
+    document.querySelector('.carousel-btn.prev').disabled = currentIndex === 0;
+    document.querySelector('.carousel-btn.next').disabled = 
+        currentIndex >= totalCards - cardsPerView;
+}
+
+function moveCarousel(direction) {
+    const maxIndex = totalCards - cardsPerView;
+    currentIndex += direction;
+    
+    if (currentIndex < 0) currentIndex = 0;
+    if (currentIndex > maxIndex) currentIndex = maxIndex;
+    
+    updateCarousel();
+}
+
+function createDots() {
+    const dotsContainer = document.getElementById('carouselDots');
+    const maxIndex = totalCards - cardsPerView;
+    
+    for (let i = 0; i <= maxIndex; i++) {
+        const dot = document.createElement('button');
+        dot.className = 'dot' + (i === 0 ? ' active' : '');
+        dot.onclick = () => {
+            currentIndex = i;
+            updateCarousel();
+        };
+        dotsContainer.appendChild(dot);
+    }
+}
+
+function toggleVideo(overlay) {
+    const card = overlay.closest('.video-card');
+    const video = card.querySelector('video');
+    
+    document.querySelectorAll('.video-card').forEach(c => {
+        if (c !== card) {
+            c.classList.remove('playing');
+            c.querySelector('video').pause();
+        }
+    });
+    
+    if (card.classList.contains('playing')) {
+        video.pause();
+        card.classList.remove('playing');
+    } else {
+        video.muted = false; // تشغيل الصوت
+        video.play();
+        card.classList.add('playing');
+    }
+}
+
+createDots();
+updateCarousel();
+
+window.addEventListener('resize', () => {
+    const newCardsPerView = getCardsPerView();
+    if (newCardsPerView !== cardsPerView) {
+        cardsPerView = newCardsPerView;
+        currentIndex = 0;
+        document.getElementById('carouselDots').innerHTML = '';
+        createDots();
+        updateCarousel();
+    }
+});
+
+let touchStartX = 0;
+let touchEndX = 0;
+
+track.addEventListener('touchstart', e => {
+    touchStartX = e.changedTouches[0].screenX;
+});
+
+track.addEventListener('touchend', e => {
+    touchEndX = e.changedTouches[0].screenX;
+    handleSwipe();
+});
+
+function handleSwipe() {
+    if (touchEndX < touchStartX - 50) moveCarousel(1);
+    if (touchEndX > touchStartX + 50) moveCarousel(-1);
+}
 </script>
 
 </body>
