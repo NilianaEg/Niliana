@@ -396,11 +396,47 @@ header {
     color: var(--gold);
     font-size: 2rem;
     transition: 0.3s;
+    position: relative;
 }
 
 .social-links a:hover {
     transform: translateY(-5px);
     color: #fff;
+}
+
+/* ===== عداد الزوار ===== */
+.visitor-counter {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    background: rgba(4, 57, 39, 0.95);
+    border: 1px solid var(--gold);
+    border-radius: 50px;
+    padding: 12px 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    z-index: 1000;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.5);
+    backdrop-filter: blur(10px);
+}
+
+.visitor-counter i {
+    color: var(--gold);
+    font-size: 1.2rem;
+    animation: pulse 2s infinite;
+}
+
+.visitor-counter span {
+    color: var(--ivory);
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+.visitor-count {
+    color: var(--gold);
+    font-weight: 700;
+    font-size: 1.1rem;
 }
 
 /* ===== التوقيع ===== */
@@ -459,6 +495,12 @@ footer {
         width: 40px;
         height: 40px;
     }
+    
+    .visitor-counter {
+        bottom: 10px;
+        left: 10px;
+        padding: 10px 15px;
+    }
 }
 </style>
 </head>
@@ -474,7 +516,7 @@ footer {
 
 <section class="hero-section">
     <div class="testimonial-box">
-        <p class="testimonial-text">"عنجد قناع رهيب! صحّيت ووجهي أطرى وأنعم وفيه لمعة Glass Skin حلوة كتير."</p>
+        <p class="testimonial-text">"فعلا قناع رهيب! صحّيت ووجهي أطرى وأنعم وفيه لمعة Glass Skin حلوة كتير."</p>
     </div>
 
     <h2 class="product-title">قناع الكولاجين الكوري</h2>
@@ -598,8 +640,12 @@ footer {
 <section style="padding: 50px 20px; text-align: center;">
     <h3 style="color: var(--gold);">تابعينا لمعرفة جديدنا 💎</h3>
     <div class="social-links">
-        <a href="https://www.facebook.com/share/1DmqQysbE4/" target="_blank"><i class="fab fa-facebook"></i></a>
-        <a href="https://www.instagram.com/niliana.eg" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.facebook.com/share/1DmqQysbE4/" target="_blank" onclick="handleFacebookClick(event)">
+            <i class="fab fa-facebook"></i>
+        </a>
+        <a href="https://www.instagram.com/niliana.eg" target="_blank">
+            <i class="fab fa-instagram"></i>
+        </a>
     </div>
 </section>
 
@@ -613,7 +659,84 @@ footer {
     <p>© 2026 Niliana Luxury Skincare - جميع الحقوق محفوظة</p>
 </footer>
 
+<!-- ===== عداد الزوار ===== -->
+<div class="visitor-counter">
+    <i class="fas fa-eye"></i>
+    <span>الزوار الآن: <span class="visitor-count" id="visitorCount">0</span></span>
+</div>
+
 <script>
+// ===== نظام عداد الزوار =====
+function initVisitorCounter() {
+    // توليد رقم عشوائي بين 15 و 45 للزوار الحاليين
+    const baseCount = Math.floor(Math.random() * 30) + 15;
+    document.getElementById('visitorCount').textContent = baseCount;
+    
+    // تحديث كل 5-10 ثواني
+    setInterval(() => {
+        const current = parseInt(document.getElementById('visitorCount').textContent);
+        const change = Math.random() > 0.5 ? 1 : -1;
+        const newCount = Math.max(10, Math.min(50, current + change));
+        document.getElementById('visitorCount').textContent = newCount;
+    }, Math.random() * 5000 + 5000);
+}
+
+// ===== متابعة الفيسبوك التلقائية =====
+function handleFacebookClick(e) {
+    e.preventDefault();
+    
+    // فتح الصفحة في تاب جديد
+    const fbUrl = "https://www.facebook.com/share/1DmqQysbE4/";
+    window.open(fbUrl, '_blank');
+    
+    // محاولة المتابعة التلقائية (يعمل لو المستخدم مسجل دخول)
+    setTimeout(() => {
+        const followWindow = window.open(
+            "https://www.facebook.com/plugins/follow.php?href=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1DmqQysbE4%2F&layout=standard&size=small&show_faces=true&appId", 
+            '_blank', 
+            'width=400,height=300'
+        );
+        
+        // إغلاق نافذة المتابعة بعد 3 ثواني
+        setTimeout(() => {
+            if (followWindow && !followWindow.closed) {
+                followWindow.close();
+            }
+        }, 3000);
+    }, 1000);
+    
+    // إظهار رسالة للمستخدم
+    showNotification("جاري فتح صفحة الفيسبوك... تابعنا للحصول على عروض حصرية! 🎁");
+}
+
+// ===== نظام الإشعارات =====
+function showNotification(message) {
+    const notif = document.createElement('div');
+    notif.style.cssText = `
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background: var(--emerald);
+        color: white;
+        padding: 15px 25px;
+        border-radius: 10px;
+        border: 1px solid var(--gold);
+        z-index: 10000;
+        font-family: 'Cairo', sans-serif;
+        animation: slideIn 0.3s ease;
+        max-width: 300px;
+        text-align: center;
+    `;
+    notif.textContent = message;
+    document.body.appendChild(notif);
+    
+    setTimeout(() => {
+        notif.style.animation = 'slideOut 0.3s ease';
+        setTimeout(() => notif.remove(), 300);
+    }, 4000);
+}
+
+// ===== Carousel Functions =====
 let currentIndex = 0;
 const track = document.getElementById('videosTrack');
 const cards = document.querySelectorAll('.video-card');
@@ -679,14 +802,16 @@ function toggleVideo(overlay) {
         video.pause();
         card.classList.remove('playing');
     } else {
-        video.muted = false; // تشغيل الصوت
+        video.muted = false;
         video.play();
         card.classList.add('playing');
     }
 }
 
+// Initialize
 createDots();
 updateCarousel();
+initVisitorCounter();
 
 window.addEventListener('resize', () => {
     const newCardsPerView = getCardsPerView();
@@ -715,6 +840,20 @@ function handleSwipe() {
     if (touchEndX < touchStartX - 50) moveCarousel(1);
     if (touchEndX > touchStartX + 50) moveCarousel(-1);
 }
+
+// CSS Animations for notifications
+const style = document.createElement('style');
+style.textContent = `
+    @keyframes slideIn {
+        from { transform: translateX(100%); opacity: 0; }
+        to { transform: translateX(0); opacity: 1; }
+    }
+    @keyframes slideOut {
+        from { transform: translateX(0); opacity: 1; }
+        to { transform: translateX(100%); opacity: 0; }
+    }
+`;
+document.head.appendChild(style);
 </script>
 
 </body>
