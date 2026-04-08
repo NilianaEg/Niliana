@@ -1,4 +1,4 @@
-html_c '''<!DOCTYPE html>
+ '''<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
@@ -10,12 +10,16 @@ html_c '''<!DOCTYPE html>
 
 <style>
 :root {
-    --emerald: #043927;
-    --gold: #C5A059;
-    --ivory: #F9F5F0;
-    --black: #0a0a0a;
-    --dark-gray: #1a1a1a;
-    --red: #c62828;
+    --rose-gold: #D4A5A5;
+    --rose-dark: #B89090;
+    --blush: #E8D5D5;
+    --blush-light: #FDF6F6;
+    --text-dark: #4A2C2C;
+    --text-medium: #6B4A4A;
+    --text-light: #8B6A6A;
+    --white: #FFFFFF;
+    --accent-gold: #C5A059;
+    --urgent-red: #C45B5B;
 }
 
 * {
@@ -26,34 +30,35 @@ html_c '''<!DOCTYPE html>
 
 body {
     font-family: 'Cairo', sans-serif;
-    background: var(--black);
-    color: var(--ivory);
+    background: var(--blush-light);
+    color: var(--text-dark);
     overflow-x: hidden;
     line-height: 1.8;
 }
 
 /* ===== شريط التوصيل المجاني ===== */
 .delivery-bar {
-    background: var(--emerald);
-    color: var(--gold);
+    background: linear-gradient(90deg, var(--rose-dark), var(--rose-gold));
+    color: var(--white);
     text-align: center;
-    padding: 12px;
-    font-weight: 600;
-    font-size: 0.95rem;
+    padding: 14px;
+    font-weight: 700;
+    font-size: 1rem;
     animation: pulse 2s infinite;
+    box-shadow: 0 2px 10px rgba(196, 91, 91, 0.2);
 }
 
 @keyframes pulse {
     0%, 100% { opacity: 1; }
-    50% { opacity: 0.8; }
+    50% { opacity: 0.9; }
 }
 
 /* ===== سيكشن التشويق ===== */
 .teaser-section {
-    background: linear-gradient(135deg, #1a0000 0%, var(--red) 50%, #8b0000 100%);
-    padding: 40px 20px;
+    background: linear-gradient(135deg, var(--urgent-red) 0%, #D47575 50%, var(--rose-gold) 100%);
+    padding: 45px 20px;
     text-align: center;
-    border-bottom: 3px solid var(--gold);
+    border-bottom: 3px solid var(--rose-gold);
     position: relative;
     overflow: hidden;
 }
@@ -69,8 +74,8 @@ body {
         45deg,
         transparent,
         transparent 10px,
-        rgba(255,255,255,0.03) 10px,
-        rgba(255,255,255,0.03) 20px
+        rgba(255,255,255,0.05) 10px,
+        rgba(255,255,255,0.05) 20px
     );
     animation: shimmer 20s linear infinite;
 }
@@ -84,10 +89,10 @@ body {
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    background: rgba(255,255,255,0.15);
-    border: 2px solid var(--gold);
-    color: var(--gold);
-    padding: 10px 25px;
+    background: rgba(255,255,255,0.2);
+    border: 2px solid var(--white);
+    color: var(--white);
+    padding: 12px 28px;
     border-radius: 50px;
     font-weight: 700;
     font-size: 1rem;
@@ -95,26 +100,27 @@ body {
     position: relative;
     z-index: 1;
     animation: glowBadge 2s ease-in-out infinite alternate;
+    backdrop-filter: blur(5px);
 }
 
 @keyframes glowBadge {
-    from { box-shadow: 0 0 10px rgba(197, 160, 89, 0.3); }
-    to { box-shadow: 0 0 25px rgba(197, 160, 89, 0.6), 0 0 15px rgba(197, 160, 89, 0.4); }
+    from { box-shadow: 0 0 15px rgba(255,255,255,0.2); }
+    to { box-shadow: 0 0 30px rgba(255,255,255,0.4), 0 0 20px rgba(255,255,255,0.3); }
 }
 
 .teaser-title {
-    font-size: 2rem;
-    color: white;
+    font-size: 2.2rem;
+    color: var(--white);
     font-weight: 800;
     margin-bottom: 15px;
     position: relative;
     z-index: 1;
-    text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+    text-shadow: 0 2px 15px rgba(0,0,0,0.2);
 }
 
 .teaser-subtitle {
     font-size: 1.3rem;
-    color: rgba(255,255,255,0.9);
+    color: rgba(255,255,255,0.95);
     font-weight: 600;
     margin-bottom: 20px;
     position: relative;
@@ -125,30 +131,32 @@ body {
     display: inline-flex;
     align-items: center;
     gap: 10px;
-    background: rgba(0,0,0,0.3);
-    border: 1px solid rgba(255,255,255,0.3);
+    background: rgba(0,0,0,0.15);
+    border: 1px solid rgba(255,255,255,0.4);
     padding: 15px 30px;
     border-radius: 15px;
     font-size: 1.1rem;
-    color: white;
+    color: var(--white);
     font-weight: 700;
     position: relative;
     z-index: 1;
     animation: urgentPulse 1.5s ease-in-out infinite;
+    backdrop-filter: blur(5px);
 }
 
 @keyframes urgentPulse {
-    0%, 100% { transform: scale(1); box-shadow: 0 0 0 rgba(197, 160, 89, 0); }
-    50% { transform: scale(1.02); box-shadow: 0 0 20px rgba(197, 160, 89, 0.4); }
+    0%, 100% { transform: scale(1); box-shadow: 0 0 0 rgba(255,255,255,0); }
+    50% { transform: scale(1.02); box-shadow: 0 0 25px rgba(255,255,255,0.3); }
 }
 
 /* ===== الهيدر ===== */
 header {
-    background: linear-gradient(180deg, var(--dark-gray) 0%, var(--black) 70%);
+    background: linear-gradient(180deg, var(--blush) 0%, var(--blush-light) 70%);
     padding: 60px 20px 40px;
     text-align: center;
     position: relative;
     overflow: hidden;
+    border-bottom: 1px solid var(--blush);
 }
 
 header::before {
@@ -159,7 +167,7 @@ header::before {
     transform: translate(-50%, -50%);
     width: 600px;
     height: 400px;
-    background: radial-gradient(ellipse, rgba(197, 160, 89, 0.15) 0%, transparent 70%);
+    background: radial-gradient(ellipse, rgba(212, 165, 165, 0.3) 0%, transparent 70%);
     pointer-events: none;
     z-index: 0;
 }
@@ -178,9 +186,8 @@ header::before {
     height: auto;
     display: block;
     margin: 0 auto;
-    mask-image: linear-gradient(to bottom, transparent 0%, black 10%, black 85%, transparent 100%);
-    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 10%, black 85%, transparent 100%);
-    filter: drop-shadow(0 0 30px rgba(197, 160, 89, 0.4)) drop-shadow(0 0 60px rgba(197, 160, 89, 0.2));
+    filter: drop-shadow(0 10px 30px rgba(74, 44, 44, 0.15)) 
+            drop-shadow(0 0 60px rgba(212, 165, 165, 0.3));
     border-radius: 20px;
     animation: logoReveal 1.5s ease-out;
 }
@@ -194,56 +201,58 @@ header::before {
     to {
         opacity: 1;
         transform: translateY(0) scale(1);
-        filter: drop-shadow(0 0 30px rgba(197, 160, 89, 0.4));
+        filter: drop-shadow(0 10px 30px rgba(74, 44, 44, 0.15));
     }
 }
 
 .logo-underline {
     width: 200px;
     height: 2px;
-    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    background: linear-gradient(90deg, transparent, var(--rose-gold), transparent);
     margin: 20px auto 0;
     opacity: 0.6;
 }
 
 .logo-subtitle {
-    color: var(--gold);
+    color: var(--rose-dark);
     font-size: 0.9rem;
     letter-spacing: 6px;
     text-transform: uppercase;
     margin-top: 15px;
     opacity: 0.8;
-    font-weight: 300;
+    font-weight: 400;
 }
 
 /* ===== السكشن الرئيسي ===== */
 .hero-section {
-    background: var(--black);
+    background: var(--blush-light);
     padding: 60px 20px;
     text-align: center;
     position: relative;
 }
 
 .testimonial-box {
-    background: rgba(197, 160, 89, 0.1);
-    border: 1px solid rgba(197, 160, 89, 0.3);
+    background: rgba(255, 255, 255, 0.7);
+    border: 1px solid var(--blush);
     border-radius: 20px;
     padding: 30px;
     max-width: 600px;
     margin: 0 auto 40px;
+    box-shadow: 0 5px 20px rgba(212, 165, 165, 0.1);
+    backdrop-filter: blur(5px);
 }
 
 .testimonial-text {
     font-size: 1.1rem;
-    color: var(--ivory);
+    color: var(--text-medium);
     font-style: italic;
 }
 
 .product-title {
     font-size: 2.5rem;
-    color: var(--gold);
+    color: var(--text-dark);
     margin-bottom: 15px;
-    font-weight: 600;
+    font-weight: 700;
 }
 
 /* ===== صور المنتج ===== */
@@ -259,7 +268,8 @@ header::before {
     max-width: 500px;
     width: 90%;
     border-radius: 20px;
-    box-shadow: 0 10px 40px rgba(197, 160, 89, 0.15);
+    box-shadow: 0 15px 40px rgba(74, 44, 44, 0.1);
+    border: 1px solid var(--blush);
 }
 
 .blended-visual {
@@ -267,7 +277,7 @@ header::before {
     max-width: 700px;
     mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
     -webkit-mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
-    opacity: 0.8;
+    opacity: 0.9;
 }
 
 /* ===== المميزات ===== */
@@ -280,21 +290,34 @@ header::before {
 }
 
 .feature-item {
-    background: rgba(255,255,255,0.03);
-    border: 1px solid rgba(197, 160, 89, 0.2);
+    background: rgba(255,255,255,0.6);
+    border: 1px solid var(--blush);
     padding: 20px;
     border-radius: 15px;
+    box-shadow: 0 3px 15px rgba(212, 165, 165, 0.08);
+    transition: all 0.3s ease;
+}
+
+.feature-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(212, 165, 165, 0.15);
+    border-color: var(--rose-gold);
 }
 
 .feature-icon {
     font-size: 1.8rem;
-    color: var(--gold);
+    color: var(--rose-gold);
     margin-bottom: 10px;
+}
+
+.feature-text {
+    color: var(--text-medium);
+    font-weight: 600;
 }
 
 /* ===== قسم التفاصيل المنسدلة ===== */
 .details-section {
-    background: linear-gradient(180deg, var(--black) 0%, #0d0d0d 50%, var(--black) 100%);
+    background: linear-gradient(180deg, var(--blush-light) 0%, var(--blush) 50%, var(--blush-light) 100%);
     padding: 60px 20px;
     position: relative;
 }
@@ -306,13 +329,13 @@ header::before {
     left: 0;
     right: 0;
     height: 1px;
-    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    background: linear-gradient(90deg, transparent, var(--rose-gold), transparent);
 }
 
 .section-title {
     text-align: center;
     font-size: 2.2rem;
-    color: var(--gold);
+    color: var(--text-dark);
     margin-bottom: 40px;
     font-weight: 700;
 }
@@ -323,16 +346,18 @@ header::before {
 }
 
 .accordion-item {
-    background: rgba(255,255,255,0.02);
-    border: 1px solid rgba(197, 160, 89, 0.2);
+    background: rgba(255,255,255,0.7);
+    border: 1px solid var(--blush);
     border-radius: 15px;
     margin-bottom: 15px;
     overflow: hidden;
     transition: all 0.3s ease;
+    box-shadow: 0 3px 15px rgba(212, 165, 165, 0.08);
 }
 
 .accordion-item:hover {
-    border-color: rgba(197, 160, 89, 0.4);
+    border-color: var(--rose-gold);
+    box-shadow: 0 8px 25px rgba(212, 165, 165, 0.15);
 }
 
 .accordion-header {
@@ -340,7 +365,7 @@ header::before {
     background: transparent;
     border: none;
     padding: 25px 30px;
-    color: var(--gold);
+    color: var(--rose-dark);
     font-family: 'Cairo', sans-serif;
     font-size: 1.2rem;
     font-weight: 700;
@@ -358,7 +383,7 @@ header::before {
 }
 
 .accordion-header i:last-child {
-    color: var(--gold);
+    color: var(--rose-gold);
     transition: transform 0.4s ease;
     font-size: 1.1rem;
 }
@@ -385,11 +410,11 @@ header::before {
 
 .accordion-content ul li {
     padding: 12px 0;
-    border-bottom: 1px solid rgba(197, 160, 89, 0.1);
+    border-bottom: 1px solid var(--blush);
     display: flex;
     align-items: start;
     gap: 12px;
-    color: #ccc;
+    color: var(--text-medium);
     line-height: 1.6;
 }
 
@@ -398,14 +423,14 @@ header::before {
 }
 
 .accordion-content ul li i {
-    color: var(--gold);
+    color: var(--rose-gold);
     margin-top: 5px;
     font-size: 0.9rem;
 }
 
 /* ===== قسم العروض ===== */
 .offers-section {
-    background: linear-gradient(135deg, #0d0d0d 0%, var(--black) 50%, #0d0d0d 100%);
+    background: linear-gradient(135deg, var(--blush) 0%, var(--blush-light) 50%, var(--blush) 100%);
     padding: 60px 20px;
     position: relative;
 }
@@ -417,7 +442,7 @@ header::before {
     left: 0;
     right: 0;
     height: 2px;
-    background: linear-gradient(90deg, transparent, var(--gold), var(--emerald), var(--gold), transparent);
+    background: linear-gradient(90deg, transparent, var(--rose-gold), var(--rose-dark), var(--rose-gold), transparent);
 }
 
 .offers-header {
@@ -427,8 +452,8 @@ header::before {
 
 .offers-badge {
     display: inline-block;
-    background: var(--red);
-    color: white;
+    background: var(--urgent-red);
+    color: var(--white);
     padding: 5px 20px;
     border-radius: 50px;
     font-weight: 700;
@@ -438,13 +463,13 @@ header::before {
 }
 
 @keyframes glow {
-    from { box-shadow: 0 0 10px var(--red); }
-    to { box-shadow: 0 0 25px var(--red), 0 0 15px var(--gold); }
+    from { box-shadow: 0 0 10px var(--urgent-red); }
+    to { box-shadow: 0 0 25px var(--urgent-red), 0 0 15px var(--rose-gold); }
 }
 
 .offers-title {
     font-size: 2rem;
-    color: var(--gold);
+    color: var(--text-dark);
     font-weight: 700;
 }
 
@@ -457,24 +482,25 @@ header::before {
 }
 
 .offer-card {
-    background: rgba(255,255,255,0.02);
-    border: 2px solid rgba(197, 160, 89, 0.3);
+    background: rgba(255,255,255,0.8);
+    border: 2px solid var(--blush);
     border-radius: 20px;
     padding: 25px 20px;
     text-align: center;
     transition: all 0.3s ease;
     position: relative;
+    box-shadow: 0 5px 20px rgba(212, 165, 165, 0.1);
 }
 
 .offer-card:hover {
     transform: translateY(-5px);
-    border-color: var(--gold);
-    box-shadow: 0 15px 30px rgba(197, 160, 89, 0.15);
+    border-color: var(--rose-gold);
+    box-shadow: 0 15px 35px rgba(212, 165, 165, 0.2);
 }
 
 .offer-card.best {
-    background: linear-gradient(135deg, rgba(197, 160, 89, 0.15), rgba(4, 57, 39, 0.2));
-    border-color: var(--gold);
+    background: linear-gradient(135deg, rgba(255,255,255,0.9), rgba(232, 213, 213, 0.5));
+    border-color: var(--rose-gold);
     transform: scale(1.05);
 }
 
@@ -487,8 +513,8 @@ header::before {
     top: -10px;
     left: 50%;
     transform: translateX(-50%);
-    background: var(--gold);
-    color: var(--black);
+    background: var(--rose-gold);
+    color: var(--white);
     padding: 3px 15px;
     border-radius: 20px;
     font-size: 0.75rem;
@@ -498,22 +524,23 @@ header::before {
 .quantity {
     width: 60px;
     height: 60px;
-    background: var(--emerald);
+    background: var(--rose-dark);
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     margin: 0 auto 15px;
-    border: 2px solid var(--gold);
+    border: 2px solid var(--rose-gold);
     font-size: 1.5rem;
     font-weight: 800;
-    color: var(--gold);
+    color: var(--white);
 }
 
 .offer-name {
     font-size: 1.1rem;
     margin-bottom: 10px;
-    color: var(--ivory);
+    color: var(--text-dark);
+    font-weight: 600;
 }
 
 .price-row {
@@ -522,20 +549,20 @@ header::before {
 
 .original-price {
     text-decoration: line-through;
-    color: #666;
+    color: var(--text-light);
     font-size: 0.9rem;
     display: block;
 }
 
 .current-price {
     font-size: 1.8rem;
-    color: var(--gold);
+    color: var(--rose-dark);
     font-weight: 800;
 }
 
 .save-badge {
-    background: var(--red);
-    color: white;
+    background: var(--urgent-red);
+    color: var(--white);
     padding: 3px 10px;
     border-radius: 15px;
     font-size: 0.75rem;
@@ -545,8 +572,8 @@ header::before {
 
 .order-btn {
     width: 100%;
-    background: var(--emerald);
-    color: white;
+    background: var(--rose-dark);
+    color: var(--white);
     border: none;
     padding: 12px;
     border-radius: 50px;
@@ -554,18 +581,20 @@ header::before {
     font-weight: 700;
     cursor: pointer;
     transition: all 0.3s ease;
-    border: 1px solid var(--gold);
+    border: 1px solid var(--rose-gold);
     margin-top: 15px;
+    box-shadow: 0 4px 15px rgba(184, 144, 144, 0.3);
 }
 
 .order-btn:hover {
-    background: var(--gold);
-    color: var(--black);
+    background: var(--rose-gold);
+    color: var(--text-dark);
+    transform: scale(1.02);
 }
 
 /* ===== قسم فيديوهات التجارب ===== */
 .videos-section {
-    background: linear-gradient(180deg, var(--black) 0%, #0d0d0d 50%, var(--black) 100%);
+    background: linear-gradient(180deg, var(--blush-light) 0%, var(--blush) 50%, var(--blush-light) 100%);
     padding: 60px 20px;
     position: relative;
 }
@@ -577,7 +606,7 @@ header::before {
     left: 0;
     right: 0;
     height: 1px;
-    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    background: linear-gradient(90deg, transparent, var(--rose-gold), transparent);
 }
 
 .videos-carousel-container {
@@ -600,17 +629,18 @@ header::before {
 
 .video-card {
     min-width: calc(25% - 15px);
-    background: rgba(255,255,255,0.02);
+    background: rgba(255,255,255,0.7);
     border-radius: 15px;
     overflow: hidden;
-    border: 1px solid rgba(197, 160, 89, 0.2);
+    border: 1px solid var(--blush);
     transition: all 0.4s ease;
+    box-shadow: 0 5px 20px rgba(212, 165, 165, 0.1);
 }
 
 .video-card:hover {
     transform: translateY(-10px);
-    border-color: var(--gold);
-    box-shadow: 0 20px 40px rgba(197, 160, 89, 0.2);
+    border-color: var(--rose-gold);
+    box-shadow: 0 20px 40px rgba(212, 165, 165, 0.2);
 }
 
 .video-wrapper {
@@ -629,7 +659,7 @@ header::before {
 .play-overlay {
     position: absolute;
     inset: 0;
-    background: rgba(0,0,0,0.4);
+    background: rgba(74, 44, 44, 0.3);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -639,26 +669,26 @@ header::before {
 }
 
 .play-overlay:hover {
-    background: rgba(0,0,0,0.2);
+    background: rgba(74, 44, 44, 0.15);
 }
 
 .play-icon {
     width: 50px;
     height: 50px;
-    background: rgba(197, 160, 89, 0.9);
+    background: rgba(212, 165, 165, 0.95);
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: white;
+    color: var(--white);
     transition: all 0.3s ease;
-    border: 2px solid rgba(255,255,255,0.3);
+    border: 2px solid rgba(255,255,255,0.5);
 }
 
 .play-overlay:hover .play-icon {
     transform: scale(1.1);
-    background: var(--gold);
-    box-shadow: 0 0 30px rgba(197, 160, 89, 0.6);
+    background: var(--rose-gold);
+    box-shadow: 0 0 30px rgba(212, 165, 165, 0.6);
 }
 
 .video-card.playing .play-overlay {
@@ -672,21 +702,23 @@ header::before {
     transform: translateY(-50%);
     width: 40px;
     height: 40px;
-    background: rgba(197, 160, 89, 0.1);
-    border: 1px solid rgba(197, 160, 89, 0.3);
+    background: rgba(255,255,255,0.8);
+    border: 1px solid var(--blush);
     border-radius: 50%;
-    color: var(--gold);
+    color: var(--rose-dark);
     cursor: pointer;
     transition: all 0.3s;
     z-index: 10;
     display: flex;
     align-items: center;
     justify-content: center;
+    box-shadow: 0 3px 10px rgba(212, 165, 165, 0.2);
 }
 
 .carousel-btn:hover {
-    background: var(--gold);
-    color: var(--black);
+    background: var(--rose-gold);
+    color: var(--white);
+    border-color: var(--rose-gold);
 }
 
 .carousel-btn.prev { right: 0; }
@@ -694,7 +726,7 @@ header::before {
 
 /* ===== الأسئلة المتكررة ===== */
 .faq-section {
-    background: var(--dark-gray);
+    background: var(--blush);
     padding: 60px 20px;
 }
 
@@ -704,16 +736,18 @@ header::before {
 }
 
 .faq-item {
-    background: rgba(255,255,255,0.02);
-    border: 1px solid rgba(197, 160, 89, 0.2);
+    background: rgba(255,255,255,0.7);
+    border: 1px solid var(--blush);
     border-radius: 15px;
     margin-bottom: 15px;
     overflow: hidden;
     transition: all 0.3s ease;
+    box-shadow: 0 3px 15px rgba(212, 165, 165, 0.08);
 }
 
 .faq-item:hover {
-    border-color: rgba(197, 160, 89, 0.4);
+    border-color: var(--rose-gold);
+    box-shadow: 0 8px 25px rgba(212, 165, 165, 0.15);
 }
 
 .faq-question {
@@ -721,7 +755,7 @@ header::before {
     background: transparent;
     border: none;
     padding: 25px 30px;
-    color: var(--ivory);
+    color: var(--text-dark);
     font-family: 'Cairo', sans-serif;
     font-size: 1.1rem;
     font-weight: 600;
@@ -734,11 +768,11 @@ header::before {
 }
 
 .faq-question:hover {
-    color: var(--gold);
+    color: var(--rose-dark);
 }
 
 .faq-question i {
-    color: var(--gold);
+    color: var(--rose-gold);
     transition: transform 0.3s ease;
     font-size: 1.1rem;
 }
@@ -752,7 +786,7 @@ header::before {
     overflow: hidden;
     transition: max-height 0.4s ease, padding 0.4s ease;
     padding: 0 30px;
-    color: #aaa;
+    color: var(--text-medium);
     line-height: 1.8;
 }
 
@@ -770,15 +804,15 @@ header::before {
 }
 
 .social-links a {
-    color: var(--gold);
+    color: var(--rose-gold);
     font-size: 2rem;
     transition: 0.3s;
     position: relative;
 }
 
 .social-links a:hover {
-    transform: translateY(-5px);
-    color: #fff;
+    transform: translateY(-5px) scale(1.1);
+    color: var(--rose-dark);
 }
 
 /* ===== عداد الزوار ===== */
@@ -786,32 +820,32 @@ header::before {
     position: fixed;
     bottom: 20px;
     left: 20px;
-    background: rgba(4, 57, 39, 0.95);
-    border: 1px solid var(--gold);
+    background: rgba(255, 255, 255, 0.95);
+    border: 1px solid var(--rose-gold);
     border-radius: 50px;
     padding: 12px 20px;
     display: flex;
     align-items: center;
     gap: 10px;
     z-index: 1000;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.5);
+    box-shadow: 0 5px 20px rgba(212, 165, 165, 0.3);
     backdrop-filter: blur(10px);
 }
 
 .visitor-counter i {
-    color: var(--gold);
+    color: var(--rose-gold);
     font-size: 1.2rem;
     animation: pulse 2s infinite;
 }
 
 .visitor-counter span {
-    color: var(--ivory);
+    color: var(--text-medium);
     font-weight: 600;
     font-size: 0.95rem;
 }
 
 .visitor-count {
-    color: var(--gold);
+    color: var(--rose-dark);
     font-weight: 700;
     font-size: 1.1rem;
 }
@@ -820,8 +854,8 @@ header::before {
 .designer-signature {
     text-align: center;
     padding: 25px 20px;
-    background: linear-gradient(90deg, transparent, rgba(197, 160, 89, 0.1), transparent);
-    border-top: 1px solid rgba(197, 160, 89, 0.2);
+    background: linear-gradient(90deg, transparent, rgba(212, 165, 165, 0.15), transparent);
+    border-top: 1px solid var(--blush);
     margin-top: 20px;
 }
 
@@ -835,14 +869,14 @@ header::before {
 }
 
 .designer-signature a:hover {
-    background: rgba(197, 160, 89, 0.1);
+    background: rgba(212, 165, 165, 0.15);
     transform: translateY(-3px);
 }
 
 .designer-signature p {
-    color: var(--gold);
+    color: var(--rose-dark);
     font-size: 0.9rem;
-    font-weight: 300;
+    font-weight: 400;
     letter-spacing: 2px;
     margin-bottom: 5px;
 }
@@ -850,24 +884,24 @@ header::before {
 .designer-signature .name {
     font-weight: 800;
     font-size: 1.3rem;
-    color: var(--ivory);
+    color: var(--text-dark);
     display: block;
     margin-top: 8px;
     transition: color 0.3s ease;
 }
 
 .designer-signature a:hover .name {
-    color: var(--gold);
+    color: var(--rose-gold);
 }
 
 .designer-signature i {
-    color: var(--emerald);
+    color: var(--urgent-red);
     margin: 0 5px;
 }
 
 .designer-signature .link-hint {
     font-size: 0.75rem;
-    color: rgba(197, 160, 89, 0.6);
+    color: var(--rose-gold);
     margin-top: 8px;
     display: block;
 }
@@ -875,9 +909,9 @@ header::before {
 footer {
     padding: 30px;
     text-align: center;
-    background: #000;
-    color: #555;
-    border-top: 1px solid #222;
+    background: var(--blush);
+    color: var(--text-light);
+    border-top: 1px solid var(--rose-gold);
 }
 
 /* Responsive */
@@ -942,7 +976,7 @@ footer {
     </div>
 
     <h2 class="product-title">قناع الكولاجين الكوري</h2>
-    <p style="color: #aaa;">السرّ لترطيب عميق ونضارة فورية من أول ليلة</p>
+    <p style="color: var(--text-light);">السرّ لترطيب عميق ونضارة فورية من أول ليلة</p>
 
     <div class="product-showcase">
         <img src="images/product-main.jpg" alt="Niliana Mask" class="product-image">
@@ -956,13 +990,13 @@ footer {
     </div>
 </section>
 
-<section style="text-align:center; background: #000;">
+<section style="text-align:center; background: var(--blush-light);">
     <img src="images/aesthetic.jpg" class="blended-visual" alt="Niliana Beauty">
 </section>
 
 <section class="hero-section" style="padding-top:0;">
-    <h3 style="color: var(--gold); font-size: 1.8rem; margin-bottom: 20px;">لماذا تختارين نيليانا؟</h3>
-    <p style="max-width: 600px; margin: 0 auto; color: #aaa;">
+    <h3 style="color: var(--rose-dark); font-size: 1.8rem; margin-bottom: 20px;">لماذا تختارين نيليانا؟</h3>
+    <p style="max-width: 600px; margin: 0 auto; color: var(--text-light);">
         تصميم القناع يسمح لبشرتك بامتصاص السيروم تدريجياً، ليعطيكِ مظهر النضارة الطبيعي وكأنكِ في جلسة سبا محترفة في منزلك.
     </p>
     
@@ -1076,7 +1110,7 @@ footer {
 <!-- ===== قسم فيديوهات التجارب ===== -->
 <section class="videos-section">
     <h2 class="section-title">تجارب حقيقية من عملائنا ✨</h2>
-    <p style="text-align: center; color: #888; margin-bottom: 40px;">شوفي بنفسك النتائج المذهلة بعد استخدام قناع نيليانا</p>
+    <p style="text-align: center; color: var(--text-light); margin-bottom: 40px;">شوفي بنفسك النتائج المذهلة بعد استخدام قناع نيليانا</p>
     
     <div class="videos-carousel-container">
         <button class="carousel-btn prev" onclick="moveCarousel(-1)">
@@ -1183,8 +1217,8 @@ footer {
     </div>
 </section>
 
-<section style="padding: 50px 20px; text-align: center;">
-    <h3 style="color: var(--gold); margin-bottom: 20px;">تابعينا لمعرفة جديدنا 💎</h3>
+<section style="padding: 50px 20px; text-align: center; background: var(--blush-light);">
+    <h3 style="color: var(--rose-dark); margin-bottom: 20px;">تابعينا لمعرفة جديدنا 💎</h3>
     <div class="social-links">
         <a href="https://www.facebook.com/share/1DmqQysbE4/" target="_blank" onclick="handleFacebookClick(event)">
             <i class="fab fa-facebook"></i>
@@ -1261,11 +1295,11 @@ function showNotification(message) {
         position: fixed;
         top: 20px;
         right: 20px;
-        background: var(--emerald);
+        background: var(--rose-dark);
         color: white;
         padding: 15px 25px;
         border-radius: 10px;
-        border: 1px solid var(--gold);
+        border: 1px solid var(--rose-gold);
         z-index: 10000;
         font-family: 'Cairo', sans-serif;
         animation: slideIn 0.3s ease;
@@ -1346,4 +1380,3 @@ initVisitorCounter();
 
 </body>
 </html>'''
-
