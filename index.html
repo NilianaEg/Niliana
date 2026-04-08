@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Niliana | نليانا - سر البشرة الزجاجية</title>
-    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Lateef&display=swap" rel="stylesheet">
+    <title>Niliana | نليانا - فخامة العناية الكورية في مصر</title>
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Albert+Sans:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
         :root {
-            --ivory: #F9F5F0;
-            --gold: #C5A059;
-            --emerald: #043927;
+            --ivory: #F9F5F0;    /* العاجي */
+            --gold: #C5A059;     /* الذهبي */
+            --emerald: #043927;  /* الزمردي */
             --dark-text: #2C2C2C;
         }
         body {
@@ -21,114 +21,152 @@
             line-height: 1.6;
         }
         header {
-            background-color: white;
-            padding: 20px;
+            background-color: #ffffff;
+            padding: 15px 20px;
             text-align: center;
             border-bottom: 1px solid var(--gold);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
         }
-        .logo {
-            font-size: 32px;
-            letter-spacing: 4px;
-            color: var(--gold);
-            text-transform: uppercase;
-            margin: 0;
+        .logo-img {
+            max-height: 80px; /* حجم الشعار الذهبي */
+            width: auto;
         }
         .hero {
             text-align: center;
-            padding: 50px 20px;
+            padding: 40px 20px;
         }
         .product-image {
-            max-width: 100%;
+            width: 100%;
+            max-width: 500px;
             height: auto;
-            border-radius: 10px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            margin-bottom: 30px;
+            border-radius: 15px;
+            box-shadow: 0 15px 35px rgba(4, 57, 39, 0.15); /* ظل زمردي خفيف */
+            margin-bottom: 25px;
+            border: 1px solid var(--gold);
         }
         h1 {
-            font-size: 28px;
+            font-size: 32px;
             color: var(--emerald);
             margin-bottom: 10px;
+            font-weight: 700;
         }
-        .price {
-            font-size: 24px;
+        .tagline {
+            font-family: 'Albert Sans', sans-serif;
             color: var(--gold);
-            font-weight: bold;
+            letter-spacing: 1px;
+            font-size: 14px;
+            text-transform: uppercase;
             margin-bottom: 20px;
         }
+        .price {
+            font-size: 28px;
+            color: var(--emerald);
+            font-weight: bold;
+            margin-bottom: 25px;
+        }
         .features {
-            background: white;
-            padding: 30px 20px;
+            background: #ffffff;
+            padding: 35px 25px;
             margin: 20px;
-            border-radius: 15px;
-            border: 1px solid #eee;
+            border-radius: 20px;
+            border: 1px solid var(--gold);
         }
         .feature-item {
-            margin-bottom: 15px;
+            margin-bottom: 20px;
             display: flex;
             align-items: center;
-            font-size: 18px;
+            font-size: 19px;
+            text-align: right;
         }
         .feature-item::before {
             content: "✦";
             color: var(--gold);
-            margin-left: 10px;
+            margin-left: 15px;
+            font-size: 22px;
         }
         .cta-button {
-            display: block;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             background-color: var(--emerald);
-            color: white;
+            color: #ffffff;
             text-decoration: none;
-            padding: 18px;
-            margin: 30px 20px;
+            padding: 20px;
+            margin: 40px 20px;
             border-radius: 50px;
-            font-size: 20px;
+            font-size: 22px;
             font-weight: bold;
-            text-align: center;
-            transition: 0.3s;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 20px rgba(4, 57, 39, 0.3);
+        }
+        .cta-button:hover {
+            background-color: #032b1d;
+            transform: translateY(-3px);
         }
         .whatsapp-icon {
-            margin-left: 10px;
+            width: 25px;
+            margin-left: 12px;
+        }
+        .trust-badges {
+            padding: 30px 20px;
+            text-align: center;
+            background: #ffffff;
+            border-top: 1px solid var(--gold);
+        }
+        .trust-badges p {
+            margin: 10px 0;
+            font-size: 16px;
+            color: var(--emerald);
         }
         footer {
             text-align: center;
-            padding: 20px;
-            font-size: 14px;
-            color: #777;
+            padding: 30px;
+            font-size: 13px;
+            color: #888;
+            background-color: var(--ivory);
         }
     </style>
 </head>
 <body>
 
 <header>
-    <div class="logo">NILIANA</div>
+    <img src="images/logo.jpg" alt="Niliana Logo" class="logo-img">
 </header>
 
 <section class="hero">
-    <img src="https://via.placeholder.com/600x400/F9F5F0/C5A059?text=Niliana+Collagen+Mask" alt="قناع الكولاجين الكوري" class="product-image">
-    <h1>قناع الكولاجين الكوري الليلي</h1>
-    <p>استعيدي نضارة بشرتك أثناء النوم مع تقنية الكولاجين المتطورة.</p>
-    <div class="price">السعر: [275EGP] .</div>
+    <p class="tagline">Egyptian Premier Wellness</p>
+    <img src="https://via.placeholder.com/600x600/F9F5F0/043927?text=Niliana+Mask" alt="قناع الكولاجين الكوري نليانا" class="product-image">
+    <h1>قناع الكولاجين الليلي الفاخر</h1>
+    <p>بشرة زجاجية ونضارة كورية بلمسة مصرية ملكية.</p>
+    <div class="price">275 EGP</div>
 </section>
 
 <section class="features">
-    <div class="feature-item">ترطيب عميق يدوم لـ 24 ساعة.</div>
-    <div class="feature-item">يعزز مرونة الجلد ويقلل الخطوط الدقيقة.</div>
-    <div class="feature-item">منتج كوري أصلي 100%.</div>
-    <div class="feature-item">مناسب لجميع أنواع البشرة الحساسة.</div>
+    <div class="feature-item">تقنية الكولاجين لامتصاص عميق أثناء النوم.</div>
+    <div class="feature-item">ترطيب مكثف يمنحك مظهر "البشرة الزجاجية".</div>
+    <div class="feature-item">يعزز مرونة الجلد ويقلل من ظهور المسام.</div>
+    <div class="feature-item">منتج أصلي مختار بعناية من كوريا الجنوبية.</div>
 </section>
 
-<a href="https://wa.me/+201109048989" class="cta-button">
-    اطلبي الآن عبر واتساب
+<a href="https://wa.me/201109048989?text=أهلاً%20نليانا،%20أود%20طلب%20قناع%20الكولاجين" class="cta-button">
+    <span>اطلبي الآن عبر واتساب</span>
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" class="whatsapp-icon" alt="WhatsApp">
 </a>
 
-<section style="padding: 20px; text-align: center; background: #fff;">
-    <p>📦 توصيل سريع لجميع محافظات مصر</p>
-    <p>🤝 الدفع عند الاستلام  </p>
+<section class="trust-badges">
+    <p>✨ توصيل سريع لجميع المحافظات</p>
+    <p>🔒 الدفع نقداً عند الاستلام</p>
+    <p>🇪🇬 براند مصري بمواصفات عالمية</p>
 </section>
 
 <footer>
-    &copy; 2026 Niliana Brand. جميع الحقوق محفوظة.
+    &copy; 2026 NILIANA. جميع الحقوق محفوظة.<br>
+    Luxury Skincare Experience.
 </footer>
 
 </body>
 </html>
+
