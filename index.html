@@ -3,82 +3,71 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Niliana | نليانا - الفخامة الكورية</title>
-    
-    <link rel="stylesheet" href="css/style.css">
-    <script src="js/modernizr.js"></script>
-
+    <title>Niliana | نليانا - فخامة العناية الكورية</title>
     <style>
-        :root {
-            --emerald: #043927;
-            --gold: #C5A059;
-            --ivory: #F9F5F0;
+        :root { --emerald: #043927; --gold: #C5A059; --ivory: #F9F5F0; }
+        body { font-family: 'Times New Roman', serif; background-color: var(--ivory); margin: 0; color: #2C2C2C; }
+        
+        /* تأثير التلاشي لجعل الصور دايبة */
+        .blended-img {
+            mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 70%, rgba(0,0,0,0) 100%);
+            -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 70%, rgba(0,0,0,0) 100%);
+            width: 100%; max-width: 800px; display: block; margin: 0 auto;
         }
 
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: var(--ivory);
-            margin: 0;
-            overflow-x: hidden;
+        header { background: white; padding: 20px; text-align: center; border-bottom: 1px solid var(--gold); }
+        .hero { position: relative; padding: 100px 20px; text-align: center; background: white; }
+        
+        .btn-whatsapp { 
+            background: var(--emerald); color: white; padding: 15px 40px; 
+            border-radius: 50px; text-decoration: none; font-weight: bold;
+            box-shadow: 0 10px 20px rgba(4,57,39,0.2); display: inline-block;
         }
 
-        /* جعل الصورة دايبة في الخلفية */
-        .blended-image {
-            mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 70%, rgba(0,0,0,0));
-            -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 70%, rgba(0,0,0,0));
-            max-width: 100%;
-            height: auto;
-        }
+        .section { padding: 80px 20px; text-align: center; }
+        .product-card { background: white; border-radius: 20px; padding: 40px; box-shadow: 0 5px 30px rgba(0,0,0,0.05); }
+    </style>
+</head>
+<body>
 
-        .hero-section {
-            position: relative;
-            padding: 100px 5%;
-            background: linear-gradient(180deg, rgba(249,245,240,0) 0%, rgba(249,245,240,1) 100%), 
-                        url('images/hero-bg.jpg') center/cover no-repeat;
-            text-align: center;
-        }
+    <header>
+        <img src="images/logo.jpg" alt="Niliana Logo" style="max-height: 100px;">
+    </header>
 
-        .hero-content {
-            background: rgba(255, 255, 255, 0.4);
-            backdrop-filter: blur(10px);
-            padding: 40px;
-            border-radius: 30px;
-            display: inline-block;
-            border: 1px solid rgba(197, 160, 89, 0.3);
-        }
+    <section class="hero">
+        <h1 style="color: var(--emerald); font-size: 3rem;">Niliana Premium</h1>
+        <p>سر البشرة الزجاجية في قناع واحد</p>
+        <img src="images/water-drop-blended.jpg" class="blended-img" alt="Nature">
+        <br>
+        <a href="https://wa.me/201109048989" class="btn-whatsapp">اطلبي الآن عبر واتساب</a>
+    </section>
 
-        .product-showcase {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 80px 10%;
-            gap: 50px;
-            flex-wrap: wrap;
-        }
+    <section class="section">
+        <h2 style="color: var(--emerald); border-bottom: 2px solid var(--gold); display: inline-block;">منتجنا الرائد</h2>
+        <div class="product-card">
+            <img src="images/product-main.jpg" alt="Product" style="width: 100%; max-width: 500px; border-radius: 15px;">
+            <p style="font-size: 24px; color: var(--gold); font-weight: bold;">275 EGP</p>
+        </div>
+    </section>
 
-        /* تأثير الصورة المتداخلة */
-        .floating-img {
-            max-width: 450px;
-            filter: drop-shadow(0 20px 30px rgba(0,0,0,0.1));
-            transition: transform 0.3s ease;
-        }
+    <section class="section" style="background: var(--emerald); color: white;">
+        <h2>هوية الفخامة</h2>
+        <img src="images/branding.jpg" class="blended-img" style="opacity: 0.9;" alt="Branding">
+    </section>
 
-        .floating-img:hover { transform: translateY(-10px); }
+    <section class="section">
+        <h2>طريقة الاستخدام</h2>
+        <img src="images/usage.png" alt="Usage" style="width: 100%; max-width: 900px; border-radius: 20px;">
+    </section>
 
-        .btn-gold {
-            background: var(--emerald);
-            color: white;
-            padding: 18px 45px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: bold;
-            box-shadow: 0 10px 20px rgba(4, 57, 39, 0.2);
-            display: inline-block;
-        }
+    <section class="section">
+        <h2>إشراقة تدوم</h2>
+        <img src="images/aesthetic.jpg" class="blended-img" alt="Aesthetic">
+    </section>
 
-        /* سكشن الصور "الدايبة" */
-        .aesthetic-section {
-            background: var(--emerald);
-            padding: 100px 0;
-            color: white
+    <footer style="padding: 40px; text-align: center; background: white;">
+        <p>&copy; 2026 Niliana. جميع الحقوق محفوظة.</p>
+    </footer>
 
+</body>
+</html>
