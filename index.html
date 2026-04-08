@@ -19,14 +19,23 @@ body{
     color:#222;
 }
 
+/* تأثير لجعل الصور تذوب في الخلفية */
+.fade-img {
+    mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 80%, rgba(0,0,0,0) 100%);
+    -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 80%, rgba(0,0,0,0) 100%);
+}
+
 .section{
     padding:80px 20px;
     text-align:center;
 }
 
 .hero{
-    background:linear-gradient(to bottom,#fff,#f5f5f5);
-    padding:120px 20px;
+    /* إضافة صورة القطرة المائية كخلفية ناعمة للواجهة */
+    background: linear-gradient(to bottom, rgba(255,255,255,0.8), var(--ivory)), url('images/water-drop-blended.jpg');
+    background-size: cover;
+    background-position: center;
+    padding: 100px 20px;
 }
 
 h1{
@@ -55,6 +64,8 @@ h1{
     padding:30px;
     border-radius:20px;
     box-shadow:0 10px 30px rgba(0,0,0,0.08);
+    max-width: 600px;
+    margin: 0 auto;
 }
 
 .price{
@@ -73,12 +84,15 @@ h1{
     display:grid;
     grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
     gap:20px;
+    max-width: 1000px;
+    margin: 0 auto;
 }
 
 .box{
     background:#fff;
     padding:20px;
     border-radius:15px;
+    border: 1px solid rgba(197, 160, 89, 0.2);
 }
 
 .dark{
@@ -132,19 +146,21 @@ footer{
 
 <body>
 
-<!-- HERO -->
+<div style="text-align: center; background: white; padding: 15px;">
+    <img src="images/logo.jpg" alt="Niliana Logo" style="max-height: 80px; border-radius: 0;">
+</div>
+
 <section class="hero">
 <h1>سر البشرة الزجاجية ✨</h1>
 <p>ماسك الكولاجين من Niliana يمنحك إشراقة فورية من أول استخدام</p>
 
-<img src="images/product-main.jpg" style="max-width:300px;">
+<img src="images/product-main.jpg" style="max-width:400px;" class="fade-img">
 
-<p style="color:red; font-weight:bold;">🔥 العرض ينتهي اليوم</p>
+<p style="color:red; font-weight:bold; margin-top:20px;">🔥 العرض ينتهي اليوم</p>
 
 <a href="https://wa.me/201109048989" class="btn">اطلبي الآن</a>
 </section>
 
-<!-- FEATURES -->
 <section class="section">
 <h2>لماذا Niliana؟</h2>
 
@@ -154,64 +170,58 @@ footer{
 <div class="box">🔬 تقليل التجاعيد</div>
 <div class="box">💎 شد ونضارة</div>
 </div>
+
+<div style="margin-top: 50px;">
+    <img src="images/aesthetic.jpg" class="fade-img" style="max-width: 600px;">
+</div>
 </section>
 
-<!-- PRODUCT -->
 <section class="section">
 <h2>🔥 عرض خاص</h2>
 
 <div class="product">
-<p class="price">
-<span class="old">350 EGP</span>
-275 EGP
-</p>
+    <img src="images/branding.jpg" style="margin-bottom: 20px; border-radius: 10px;">
+    
+    <p class="price">
+    <span class="old">350 EGP</span>
+    275 EGP
+    </p>
 
-<p>✔️ شحن مجاني</p>
-<p>✔️ الدفع عند الاستلام</p>
-<p>✔️ ضمان الاستلام</p>
+    <p>✔️ شحن مجاني</p>
+    <p>✔️ الدفع عند الاستلام</p>
+    <p>✔️ ضمان الاستلام</p>
 
-<a href="https://wa.me/201109048989" class="btn">
-اطلب الآن
-</a>
+    <a href="https://wa.me/201109048989" class="btn">اطلب الآن</a>
 </div>
 </section>
 
-<!-- SOCIAL PROOF / SOCIAL MEDIA -->
+<section class="section" style="background: white;">
+    <h2 style="color:var(--emerald)">كيفية الاستخدام</h2>
+    <p>خطوات بسيطة لبشرة مشدودة وناعمة</p>
+    <img src="images/usage.png" style="max-width: 800px; margin-top: 20px; border: 1px solid var(--ivory);">
+</section>
+
 <section class="social-section">
 <h2 style="color:var(--emerald)">تابعينا واكتشفي النتائج الحقيقية 💎</h2>
 <p>شاهدي تجارب البنات على منتجات Niliana</p>
 
 <div class="social-icons">
-
-<a href="https://www.instagram.com/niliana.eg?igsh=NGd2Z2syZHJ2b2hr" target="_blank">
-📸
-</a>
-
-<a href="https://www.facebook.com/share/1DmqQysbE4/" target="_blank">
-📘
-</a>
-
+<a href="https://www.instagram.com/niliana.eg?igsh=NGd2Z2syZHJ2b2hr" target="_blank">📸</a>
+<a href="https://www.facebook.com/share/1DmqQysbE4/" target="_blank">📘</a>
 </div>
 </section>
 
-<!-- FINAL CTA -->
 <section class="section dark">
 <h2>جاهزة لبشرة مثالية؟</h2>
-<a href="https://wa.me/201109048989" class="btn">اطلبي الآن</a>
+<a href="https://wa.me/201109048989" class="btn" style="background: var(--gold);">اطلبي الآن</a>
 </section>
 
-<!-- FOOTER -->
 <footer>
 <p>تابعينا على السوشيال ميديا ✨</p>
-
 <div class="social-icons">
-
 <a href="https://www.instagram.com/niliana.eg?igsh=NGd2Z2syZHJ2b2hr" target="_blank">📸</a>
-
 <a href="https://www.facebook.com/share/1DmqQysbE4/" target="_blank">📘</a>
-
 </div>
-
 <p style="margin-top:20px;">© 2026 Niliana - All Rights Reserved</p>
 </footer>
 
