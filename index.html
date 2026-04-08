@@ -32,7 +32,7 @@ body {
     line-height: 1.8;
 }
 
-/* ===== شريط التوصيل ===== */
+/* ===== شريط التوصيل المجاني ===== */
 .delivery-bar {
     background: var(--emerald);
     color: var(--gold);
@@ -73,6 +73,22 @@ header {
     background: var(--black);
     padding: 60px 20px;
     text-align: center;
+    position: relative;
+}
+
+.testimonial-box {
+    background: rgba(197, 160, 89, 0.1);
+    border: 1px solid rgba(197, 160, 89, 0.3);
+    border-radius: 20px;
+    padding: 30px;
+    max-width: 600px;
+    margin: 0 auto 40px;
+}
+
+.testimonial-text {
+    font-size: 1.1rem;
+    color: var(--ivory);
+    font-style: italic;
 }
 
 .product-title {
@@ -82,112 +98,165 @@ header {
     font-weight: 600;
 }
 
-/* ===== تبويبات المنتج (زي جلوريا) ===== */
-.product-tabs-section {
-    background: var(--black);
-    padding: 40px 20px;
+/* ===== صور المنتج ===== */
+.product-showcase {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    align-items: center;
+    margin: 40px 0;
+}
+
+.product-image {
+    max-width: 500px;
+    width: 90%;
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(197, 160, 89, 0.15);
+}
+
+/* صور انسيابية دايبة في الخلفية */
+.blended-visual {
+    width: 100%;
+    max-width: 700px;
+    mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
+    opacity: 0.8;
+}
+
+/* ===== المميزات ===== */
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    max-width: 600px;
+    margin: 40px auto;
+}
+
+.feature-item {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(197, 160, 89, 0.2);
+    padding: 20px;
+    border-radius: 15px;
+}
+
+.feature-icon {
+    font-size: 1.8rem;
+    color: var(--gold);
+    margin-bottom: 10px;
+}
+
+/* ===== قسم التفاصيل المنسدلة (أكورديون) ===== */
+.details-section {
+    background: linear-gradient(180deg, var(--black) 0%, #0d0d0d 50%, var(--black) 100%);
+    padding: 60px 20px;
+    position: relative;
+}
+
+.details-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+}
+
+.section-title {
+    text-align: center;
+    font-size: 2.2rem;
+    color: var(--gold);
+    margin-bottom: 40px;
+    font-weight: 700;
+}
+
+.accordion-container {
     max-width: 800px;
     margin: 0 auto;
 }
 
-.tabs-header {
-    display: flex;
-    border-bottom: 2px solid rgba(197, 160, 89, 0.2);
-    margin-bottom: 30px;
-    overflow-x: auto;
-    gap: 10px;
+.accordion-item {
+    background: rgba(255,255,255,0.02);
+    border: 1px solid rgba(197, 160, 89, 0.2);
+    border-radius: 15px;
+    margin-bottom: 15px;
+    overflow: hidden;
+    transition: all 0.3s ease;
 }
 
-.tab-btn {
+.accordion-item:hover {
+    border-color: rgba(197, 160, 89, 0.4);
+}
+
+.accordion-header {
+    width: 100%;
     background: transparent;
     border: none;
-    color: #888;
-    padding: 15px 25px;
+    padding: 25px 30px;
+    color: var(--gold);
     font-family: 'Cairo', sans-serif;
-    font-size: 1rem;
-    font-weight: 600;
+    font-size: 1.2rem;
+    font-weight: 700;
+    text-align: right;
     cursor: pointer;
-    position: relative;
-    transition: all 0.3s ease;
-    white-space: nowrap;
     display: flex;
+    justify-content: space-between;
     align-items: center;
-    gap: 8px;
+    transition: all 0.3s;
 }
 
-.tab-btn i {
-    font-size: 0.9rem;
-}
-
-.tab-btn.active {
-    color: var(--gold);
-}
-
-.tab-btn.active::after {
-    content: '';
-    position: absolute;
-    bottom: -2px;
-    left: 0;
-    right: 0;
-    height: 3px;
-    background: var(--gold);
-    border-radius: 3px 3px 0 0;
-}
-
-.tab-btn:hover {
-    color: var(--ivory);
-}
-
-.tab-content {
-    display: none;
-    animation: fadeIn 0.4s ease;
-    background: rgba(255,255,255,0.02);
-    border: 1px solid rgba(197, 160, 89, 0.1);
-    border-radius: 15px;
-    padding: 30px;
-}
-
-.tab-content.active {
-    display: block;
-}
-
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-.tab-content h3 {
-    color: var(--gold);
-    margin-bottom: 20px;
+.accordion-header i:first-child {
+    margin-left: 12px;
     font-size: 1.3rem;
-    display: flex;
-    align-items: center;
-    gap: 10px;
 }
 
-.tab-content ul {
+.accordion-header i:last-child {
+    color: var(--gold);
+    transition: transform 0.4s ease;
+    font-size: 1.1rem;
+}
+
+.accordion-item.active .accordion-header i:last-child {
+    transform: rotate(180deg);
+}
+
+.accordion-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease, padding 0.4s ease;
+    padding: 0 30px;
+}
+
+.accordion-item.active .accordion-content {
+    max-height: 1000px;
+    padding: 0 30px 25px;
+}
+
+.accordion-content ul {
     list-style: none;
 }
 
-.tab-content ul li {
+.accordion-content ul li {
     padding: 12px 0;
     border-bottom: 1px solid rgba(197, 160, 89, 0.1);
     display: flex;
     align-items: start;
     gap: 12px;
     color: #ccc;
+    line-height: 1.6;
 }
 
-.tab-content ul li:last-child {
+.accordion-content ul li:last-child {
     border-bottom: none;
 }
 
-.tab-content ul li i {
+.accordion-content ul li i {
     color: var(--gold);
     margin-top: 5px;
+    font-size: 0.9rem;
 }
 
-/* ===== قسم العروض المضغوط ===== */
+/* ===== قسم العروض ===== */
 .offers-section {
     background: linear-gradient(135deg, #0d0d0d 0%, var(--black) 50%, #0d0d0d 100%);
     padding: 60px 20px;
@@ -218,6 +287,12 @@ header {
     font-weight: 700;
     font-size: 0.85rem;
     margin-bottom: 15px;
+    animation: glow 2s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+    from { box-shadow: 0 0 10px var(--red); }
+    to { box-shadow: 0 0 25px var(--red), 0 0 15px var(--gold); }
 }
 
 .offers-title {
@@ -341,10 +416,11 @@ header {
     color: var(--black);
 }
 
-/* ===== الفيديوهات ===== */
+/* ===== قسم فيديوهات التجارب ===== */
 .videos-section {
     background: linear-gradient(180deg, var(--black) 0%, #0d0d0d 50%, var(--black) 100%);
     padding: 60px 20px;
+    position: relative;
 }
 
 .videos-section::before {
@@ -355,13 +431,6 @@ header {
     right: 0;
     height: 1px;
     background: linear-gradient(90deg, transparent, var(--gold), transparent);
-}
-
-.section-title {
-    text-align: center;
-    font-size: 2rem;
-    color: var(--gold);
-    margin-bottom: 40px;
 }
 
 .videos-carousel-container {
@@ -388,18 +457,27 @@ header {
     border-radius: 15px;
     overflow: hidden;
     border: 1px solid rgba(197, 160, 89, 0.2);
+    transition: all 0.4s ease;
+}
+
+.video-card:hover {
+    transform: translateY(-10px);
+    border-color: var(--gold);
+    box-shadow: 0 20px 40px rgba(197, 160, 89, 0.2);
 }
 
 .video-wrapper {
     position: relative;
     aspect-ratio: 9/16;
     background: #000;
+    overflow: hidden;
 }
 
 .video-wrapper video {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    display: block;
 }
 
 .play-overlay {
@@ -411,6 +489,11 @@ header {
     justify-content: center;
     cursor: pointer;
     transition: all 0.3s;
+    z-index: 2;
+}
+
+.play-overlay:hover {
+    background: rgba(0,0,0,0.2);
 }
 
 .play-icon {
@@ -422,6 +505,19 @@ header {
     align-items: center;
     justify-content: center;
     color: white;
+    transition: all 0.3s ease;
+    border: 2px solid rgba(255,255,255,0.3);
+}
+
+.play-overlay:hover .play-icon {
+    transform: scale(1.1);
+    background: var(--gold);
+    box-shadow: 0 0 30px rgba(197, 160, 89, 0.6);
+}
+
+.video-card.playing .play-overlay {
+    opacity: 0;
+    pointer-events: none;
 }
 
 .carousel-btn {
@@ -436,13 +532,21 @@ header {
     color: var(--gold);
     cursor: pointer;
     transition: all 0.3s;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.carousel-btn:hover { background: var(--gold); color: var(--black); }
+.carousel-btn:hover {
+    background: var(--gold);
+    color: var(--black);
+}
+
 .carousel-btn.prev { right: 0; }
 .carousel-btn.next { left: 0; }
 
-/* ===== تبويبات الأسئلة المتكررة ===== */
+/* ===== الأسئلة المتكررة ===== */
 .faq-section {
     background: var(--dark-gray);
     padding: 60px 20px;
@@ -454,7 +558,7 @@ header {
 }
 
 .faq-item {
-    background: rgba(255,255,255,0.03);
+    background: rgba(255,255,255,0.02);
     border: 1px solid rgba(197, 160, 89, 0.2);
     border-radius: 15px;
     margin-bottom: 15px;
@@ -470,7 +574,7 @@ header {
     width: 100%;
     background: transparent;
     border: none;
-    padding: 20px 25px;
+    padding: 25px 30px;
     color: var(--ivory);
     font-family: 'Cairo', sans-serif;
     font-size: 1.1rem;
@@ -490,6 +594,7 @@ header {
 .faq-question i {
     color: var(--gold);
     transition: transform 0.3s ease;
+    font-size: 1.1rem;
 }
 
 .faq-item.active .faq-question i {
@@ -500,17 +605,17 @@ header {
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.4s ease, padding 0.4s ease;
-    padding: 0 25px;
+    padding: 0 30px;
     color: #aaa;
     line-height: 1.8;
 }
 
 .faq-item.active .faq-answer {
     max-height: 500px;
-    padding: 0 25px 20px;
+    padding: 0 30px 25px;
 }
 
-/* ===== السوشيال ===== */
+/* ===== السوشيال ميديا ===== */
 .social-links {
     display: flex;
     justify-content: center;
@@ -522,6 +627,7 @@ header {
     color: var(--gold);
     font-size: 2rem;
     transition: 0.3s;
+    position: relative;
 }
 
 .social-links a:hover {
@@ -542,11 +648,27 @@ header {
     align-items: center;
     gap: 10px;
     z-index: 1000;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.5);
     backdrop-filter: blur(10px);
 }
 
-.visitor-counter i { color: var(--gold); }
-.visitor-count { color: var(--gold); font-weight: 700; }
+.visitor-counter i {
+    color: var(--gold);
+    font-size: 1.2rem;
+    animation: pulse 2s infinite;
+}
+
+.visitor-counter span {
+    color: var(--ivory);
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+.visitor-count {
+    color: var(--gold);
+    font-weight: 700;
+    font-size: 1.1rem;
+}
 
 /* ===== التوقيع ===== */
 .designer-signature {
@@ -554,10 +676,27 @@ header {
     padding: 20px;
     background: linear-gradient(90deg, transparent, rgba(197, 160, 89, 0.1), transparent);
     border-top: 1px solid rgba(197, 160, 89, 0.2);
+    margin-top: 20px;
 }
 
-.designer-signature p { color: var(--gold); font-size: 0.9rem; }
-.designer-signature .name { font-weight: 700; color: var(--ivory); }
+.designer-signature p {
+    color: var(--gold);
+    font-size: 0.9rem;
+    font-weight: 300;
+    letter-spacing: 2px;
+}
+
+.designer-signature .name {
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: var(--ivory);
+    margin-top: 5px;
+}
+
+.designer-signature i {
+    color: var(--emerald);
+    margin: 0 5px;
+}
 
 footer {
     padding: 30px;
@@ -569,18 +708,18 @@ footer {
 
 /* Responsive */
 @media (max-width: 768px) {
-    .tabs-header { gap: 5px; }
-    .tab-btn { padding: 12px 15px; font-size: 0.9rem; }
-    
     .offers-grid { grid-template-columns: 1fr; }
     .offer-card.best { transform: scale(1); order: -1; }
-    
+    .offer-card.best:hover { transform: scale(1) translateY(-5px); }
     .video-card { min-width: calc(50% - 10px); }
+    .accordion-header { font-size: 1.1rem; padding: 20px; }
+    .faq-question { font-size: 1rem; padding: 20px; }
 }
 
 @media (max-width: 480px) {
     .video-card { min-width: 100%; }
-    .faq-question { font-size: 1rem; padding: 15px 20px; }
+    .product-title { font-size: 2rem; }
+    .section-title { font-size: 1.8rem; }
 }
 </style>
 </head>
@@ -595,67 +734,106 @@ footer {
 </header>
 
 <section class="hero-section">
+    <div class="testimonial-box">
+        <p class="testimonial-text">"فعلاً قناع رهيب! صحّيت ووجهي أطرى وأنعم وفيه لمعة Glass Skin حلوة كتير."</p>
+    </div>
+
     <h2 class="product-title">قناع الكولاجين الكوري</h2>
-    <p style="color: #aaa; margin-bottom: 30px;">السرّ لترطيب عميق ونضارة فورية من أول ليلة</p>
-    <img src="images/product-main.jpg" alt="Niliana Mask" style="max-width: 400px; width: 90%; border-radius: 20px;">
-</section>
+    <p style="color: #aaa;">السرّ لترطيب عميق ونضارة فورية من أول ليلة</p>
 
-<!-- ===== تبويبات الفوائد والمكونات (زي جلوريا) ===== -->
-<section class="product-tabs-section">
-    <div class="tabs-header">
-        <button class="tab-btn active" onclick="openTab(event, 'benefits')">
-            <i class="fas fa-star"></i> الفوائد
-        </button>
-        <button class="tab-btn" onclick="openTab(event, 'ingredients')">
-            <i class="fas fa-flask"></i> المكونات
-        </button>
-        <button class="tab-btn" onclick="openTab(event, 'usage')">
-            <i class="fas fa-hand-sparkles"></i> طريقة الاستخدام
-        </button>
+    <div class="product-showcase">
+        <img src="images/product-main.jpg" alt="Niliana Mask" class="product-image">
     </div>
 
-    <div id="benefits" class="tab-content active">
-        <h3><i class="fas fa-sparkles"></i> فوائد قناع نيليانا</h3>
-        <ul>
-            <li><i class="fas fa-check-circle"></i> <strong>نضارة زجاجية فورية:</strong> يمنح بشرتك إشراقة طبيعية من أول استخدام</li>
-            <li><i class="fas fa-check-circle"></i> <strong>ترطيب عميق 48 ساعة:</strong> يحافظ على رطوبة البشرة لمدة يومين كاملين</li>
-            <li><i class="fas fa-check-circle"></i> <strong>تقليل الخطوط الدقيقة:</strong> الكولاجين النقي يعيد مرونة البشرة وشبابها</li>
-            <li><i class="fas fa-check-circle"></i> <strong>تفتيح البشرة:</strong> ي统一 اللون ويقلل البقع الداكنة</li>
-            <li><i class="fas fa-check-circle"></i> <strong>تقشير لطيف:</strong> يزيل الخلايا الميتة بدون تهيج</li>
-            <li><i class="fas fa-check-circle"></i> <strong>مناسب لجميع أنواع البشرة:</strong> حتى الحساسة منها</li>
-        </ul>
-    </div>
-
-    <div id="ingredients" class="tab-content">
-        <h3><i class="fas fa-leaf"></i> المكونات النشطة</h3>
-        <ul>
-            <li><i class="fas fa-check-circle"></i> <strong>كولاجين بحري نقي 95%:</strong> يعيد مرونة البشرة ويملأ الخطوط</li>
-            <li><i class="fas fa-check-circle"></i> <strong>حمض الهيالورونيك:</strong> يرطب البشرة بعمق ويحبس الرطوبة</li>
-            <li><i class="fas fa-check-circle"></i> <strong>نياسيناميد (فيتامين B3):</strong> يفتح البشرة ويقلل التصبغات</li>
-            <li><i class="fas fa-check-circle"></i> <strong>الببتيدات:</strong> تحفز إنتاج الكولاجين الطبيعي</li>
-            <li><i class="fas fa-check-circle"></i> <strong>الألوفيرا:</strong> تهدئة وترطيب طبيعي</li>
-            <li><i class="fas fa-check-circle"></i> <strong>خالي من:</strong> بارابين، sulfates، كحول، عطور صناعية</li>
-        </ul>
-    </div>
-
-    <div id="usage" class="tab-content">
-        <h3><i class="fas fa-moon"></i> طريقة الاستخدام</h3>
-        <ul>
-            <li><i class="fas fa-1"></i> <strong>نظفي بشرتك:</strong> اغسلي وجهك جيداً ونشفيه بلطف</li>
-            <li><i class="fas fa-2"></i> <strong>افتحي القناع:</strong> أخرجي القناع من الكيس بحذر</li>
-            <li><i class="fas fa-3"></i> <strong>طبقي القناع:</strong> ضعيه على وجهك واضبطيه حتى العينين والأنف</li>
-            <li><i class="fas fa-4"></i> <strong>اتركيه 6-8 ساعات:</strong> نامي وأنتي لابساه (ثابت ومريح)</li>
-            <li><i class="fas fa-5"></i> <strong>في الصباح:</strong> أزيليه بلطف واغسلي وجهك بماء فاتر</li>
-            <li><i class="fas fa-lightbulb"></i> <strong>نصيحة:</strong> استخدميه 2-3 مرات أسبوعياً لأفضل نتيجة</li>
-        </ul>
+    <div class="features-grid">
+        <div class="feature-item"><div class="feature-icon">✨</div><div class="feature-text">نضارة زجاجية فورية</div></div>
+        <div class="feature-item"><div class="feature-icon">🌙</div><div class="feature-text">ثبات كامل أثناء النوم</div></div>
+        <div class="feature-item"><div class="feature-icon">💎</div><div class="feature-text">شدّ وتقليل الخطوط</div></div>
+        <div class="feature-item"><div class="feature-icon">💧</div><div class="feature-text">ترطيب هيدروجيل مكثف</div></div>
     </div>
 </section>
 
-<!-- ===== قسم العروض المضغوط ===== -->
+<section style="text-align:center; background: #000;">
+    <img src="images/aesthetic.jpg" class="blended-visual" alt="Niliana Beauty">
+</section>
+
+<section class="hero-section" style="padding-top:0;">
+    <h3 style="color: var(--gold); font-size: 1.8rem; margin-bottom: 20px;">لماذا تختارين نيليانا؟</h3>
+    <p style="max-width: 600px; margin: 0 auto; color: #aaa;">
+        تصميم القناع يسمح لبشرتك بامتصاص السيروم تدريجياً، ليعطيكِ مظهر النضارة الطبيعي وكأنكِ في جلسة سبا محترفة في منزلك.
+    </p>
+    
+    <div style="margin-top: 40px;">
+        <img src="images/usage.png" style="max-width: 800px; width: 100%; border-radius: 15px;" alt="Usage">
+    </div>
+</section>
+
+<!-- ===== قسم التفاصيل المنسدلة (أكورديون) ===== -->
+<section class="details-section">
+    <h2 class="section-title">تفاصيل المنتج 📋</h2>
+    
+    <div class="accordion-container">
+        <!-- الفوائد -->
+        <div class="accordion-item">
+            <button class="accordion-header" onclick="toggleAccordion(this)">
+                <span><i class="fas fa-star"></i> الفوائد</span>
+                <i class="fas fa-chevron-down"></i>
+            </button>
+            <div class="accordion-content">
+                <ul>
+                    <li><i class="fas fa-check-circle"></i> <strong>نضارة زجاجية فورية:</strong> يمنح بشرتك إشراقة طبيعية من أول استخدام</li>
+                    <li><i class="fas fa-check-circle"></i> <strong>ترطيب عميق 48 ساعة:</strong> يحافظ على رطوبة البشرة لمدة يومين كاملين</li>
+                    <li><i class="fas fa-check-circle"></i> <strong>تقليل الخطوط الدقيقة:</strong> الكولاجين النقي يعيد مرونة البشرة وشبابها</li>
+                    <li><i class="fas fa-check-circle"></i> <strong>تفتيح البشرة:</strong> يوحد اللون ويقلل البقع الداكنة</li>
+                    <li><i class="fas fa-check-circle"></i> <strong>تقشير لطيف:</strong> يزيل الخلايا الميتة بدون تهيج</li>
+                    <li><i class="fas fa-check-circle"></i> <strong>مناسب لجميع أنواع البشرة:</strong> حتى الحساسة منها</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- المكونات -->
+        <div class="accordion-item">
+            <button class="accordion-header" onclick="toggleAccordion(this)">
+                <span><i class="fas fa-flask"></i> المكونات</span>
+                <i class="fas fa-chevron-down"></i>
+            </button>
+            <div class="accordion-content">
+                <ul>
+                    <li><i class="fas fa-check-circle"></i> <strong>كولاجين بحري نقي 95%:</strong> يعيد مرونة البشرة ويملأ الخطوط</li>
+                    <li><i class="fas fa-check-circle"></i> <strong>حمض الهيالورونيك:</strong> يرطب البشرة بعمق ويحبس الرطوبة</li>
+                    <li><i class="fas fa-check-circle"></i> <strong>نياسيناميد (فيتامين B3):</strong> يفتح البشرة ويقلل التصبغات</li>
+                    <li><i class="fas fa-check-circle"></i> <strong>الببتيدات:</strong> تحفز إنتاج الكولاجين الطبيعي</li>
+                    <li><i class="fas fa-check-circle"></i> <strong>الألوفيرا:</strong> تهدئة وترطيب طبيعي</li>
+                    <li><i class="fas fa-check-circle"></i> <strong>خالي من:</strong> بارابين، sulfates، كحول، عطور صناعية</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- طريقة الاستخدام -->
+        <div class="accordion-item">
+            <button class="accordion-header" onclick="toggleAccordion(this)">
+                <span><i class="fas fa-hand-sparkles"></i> طريقة الاستخدام</span>
+                <i class="fas fa-chevron-down"></i>
+            </button>
+            <div class="accordion-content">
+                <ul>
+                    <li><i class="fas fa-1"></i> <strong>نظفي بشرتك:</strong> اغسلي وجهك جيداً ونشفيه بلطف</li>
+                    <li><i class="fas fa-2"></i> <strong>افتحي القناع:</strong> أخرجي القناع من الكيس بحذر</li>
+                    <li><i class="fas fa-3"></i> <strong>طبقي القناع:</strong> ضعيه على وجهك واضبطيه حتى العينين والأنف</li>
+                    <li><i class="fas fa-4"></i> <strong>اتركيه 6-8 ساعات:</strong> نامي وأنتي لابساه (ثابت ومريح)</li>
+                    <li><i class="fas fa-5"></i> <strong>في الصباح:</strong> أزيليه بلطف واغسلي وجهك بماء فاتر</li>
+                    <li><i class="fas fa-lightbulb"></i> <strong>نصيحة:</strong> استخدميه 2-3 مرات أسبوعياً لأفضل نتيجة</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== قسم العروض ===== -->
 <section class="offers-section">
     <div class="offers-header">
         <div class="offers-badge">🔥 عروض محدودة</div>
-        <h2 class="offers-title">اختاري العرض المناسب</h2>
+        <h2 class="offers-title">اختاري العرض المناسب لكِ</h2>
     </div>
     
     <div class="offers-grid">
@@ -695,9 +873,10 @@ footer {
     </div>
 </section>
 
-<!-- ===== الفيديوهات ===== -->
+<!-- ===== قسم فيديوهات التجارب ===== -->
 <section class="videos-section">
     <h2 class="section-title">تجارب حقيقية من عملائنا ✨</h2>
+    <p style="text-align: center; color: #888; margin-bottom: 40px;">شوفي بنفسك النتائج المذهلة بعد استخدام قناع نيليانا</p>
     
     <div class="videos-carousel-container">
         <button class="carousel-btn prev" onclick="moveCarousel(-1)">
@@ -804,8 +983,8 @@ footer {
     </div>
 </section>
 
-<section style="padding: 40px 20px; text-align: center;">
-    <h3 style="color: var(--gold); margin-bottom: 20px;">تابعينا 💎</h3>
+<section style="padding: 50px 20px; text-align: center;">
+    <h3 style="color: var(--gold); margin-bottom: 20px;">تابعينا لمعرفة جديدنا 💎</h3>
     <div class="social-links">
         <a href="https://www.facebook.com/share/1DmqQysbE4/" target="_blank" onclick="handleFacebookClick(event)">
             <i class="fab fa-facebook"></i>
@@ -816,8 +995,9 @@ footer {
     </div>
 </section>
 
+<!-- ===== التوقيع ===== -->
 <div class="designer-signature">
-    <p>Designed with <i class="fas fa-heart"></i> by</p>
+    <p>Designed & Developed with <i class="fas fa-heart"></i> by</p>
     <div class="name">Amro Abd Elaziz</div>
 </div>
 
@@ -825,54 +1005,79 @@ footer {
     <p>© 2026 Niliana Luxury Skincare - جميع الحقوق محفوظة</p>
 </footer>
 
+<!-- ===== عداد الزوار ===== -->
 <div class="visitor-counter">
     <i class="fas fa-eye"></i>
-    <span>الزوار: <span class="visitor-count" id="visitorCount">24</span></span>
+    <span>الزوار الآن: <span class="visitor-count" id="visitorCount">0</span></span>
 </div>
 
 <script>
-// ===== تبويبات المنتج =====
-function openTab(evt, tabName) {
-    // إخفاء كل المحتويات
-    document.querySelectorAll('.tab-content').forEach(content => {
-        content.classList.remove('active');
+// ===== أكورديون الفوائد والمكونات =====
+function toggleAccordion(element) {
+    const item = element.parentElement;
+    const isActive = item.classList.contains('active');
+    
+    // إغلاق كل الأكورديونات
+    document.querySelectorAll('.accordion-item').forEach(acc => {
+        acc.classList.remove('active');
     });
     
-    // إزالة active من كل الأزرار
-    document.querySelectorAll('.tab-btn').forEach(btn => {
-        btn.classList.remove('active');
-    });
-    
-    // إظهار المحتوى المطلوب
-    document.getElementById(tabName).classList.add('active');
-    evt.currentTarget.classList.add('active');
+    // فتح المضغوط لو كان مغلق
+    if (!isActive) {
+        item.classList.add('active');
+    }
 }
 
 // ===== الأسئلة المتكررة =====
 function toggleFaq(element) {
-    const faqItem = element.parentElement;
-    const isActive = faqItem.classList.contains('active');
+    const item = element.parentElement;
+    const isActive = item.classList.contains('active');
     
-    // إغلاق كل الأسئلة
-    document.querySelectorAll('.faq-item').forEach(item => {
-        item.classList.remove('active');
+    document.querySelectorAll('.faq-item').forEach(faq => {
+        faq.classList.remove('active');
     });
     
-    // فتح السؤال المضغوط لو كان مغلق
     if (!isActive) {
-        faqItem.classList.add('active');
+        item.classList.add('active');
     }
 }
 
 // ===== باقي الفنكشنز =====
 function orderNow(qty, price) {
-    const msg = `أهلاً نيليانا! 👋\n\nعايزة أطلب ${qty} ماسك\nالسعر: ${price} جنيه`;
+    const msg = `أهلاً نيليانا! 👋\n\nعايزة أطلب ${qty} ماسك كولاجين\nالسعر: ${price} جنيه\n\nمن فضلك أكدي لي الطلب`;
     window.open(`https://wa.me/201109048989?text=${encodeURIComponent(msg)}`, '_blank');
 }
 
 function handleFacebookClick(e) {
     e.preventDefault();
     window.open("https://www.facebook.com/share/1DmqQysbE4/", '_blank');
+    showNotification("جاري فتح صفحة الفيسبوك... تابعنا للحصول على عروض حصرية! 🎁");
+}
+
+function showNotification(message) {
+    const notif = document.createElement('div');
+    notif.style.cssText = `
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background: var(--emerald);
+        color: white;
+        padding: 15px 25px;
+        border-radius: 10px;
+        border: 1px solid var(--gold);
+        z-index: 10000;
+        font-family: 'Cairo', sans-serif;
+        animation: slideIn 0.3s ease;
+        max-width: 300px;
+        text-align: center;
+    `;
+    notif.textContent = message;
+    document.body.appendChild(notif);
+    
+    setTimeout(() => {
+        notif.style.animation = 'slideOut 0.3s ease';
+        setTimeout(() => notif.remove(), 300);
+    }, 4000);
 }
 
 // ===== Carousel =====
@@ -908,12 +1113,34 @@ function toggleVideo(overlay) {
 }
 
 // ===== عداد الزوار =====
-setInterval(() => {
-    const el = document.getElementById('visitorCount');
-    let count = parseInt(el.textContent);
-    count += Math.random() > 0.5 ? 1 : -1;
-    el.textContent = Math.max(15, Math.min(45, count));
-}, 8000);
+function initVisitorCounter() {
+    const baseCount = Math.floor(Math.random() * 30) + 15;
+    document.getElementById('visitorCount').textContent = baseCount;
+    
+    setInterval(() => {
+        const current = parseInt(document.getElementById('visitorCount').textContent);
+        const change = Math.random() > 0.5 ? 1 : -1;
+        const newCount = Math.max(10, Math.min(50, current + change));
+        document.getElementById('visitorCount').textContent = newCount;
+    }, Math.random() * 5000 + 5000);
+}
+
+// ===== CSS Animations =====
+const style = document.createElement('style');
+style.textContent = `
+    @keyframes slideIn {
+        from { transform: translateX(100%); opacity: 0; }
+        to { transform: translateX(0); opacity: 1; }
+    }
+    @keyframes slideOut {
+        from { transform: translateX(0); opacity: 1; }
+        to { transform: translateX(100%); opacity: 0; }
+    }
+`;
+document.head.appendChild(style);
+
+// Initialize
+initVisitorCounter();
 </script>
 
 </body>
