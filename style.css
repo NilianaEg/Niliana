@@ -1,0 +1,54 @@
+/*
+Theme Name: Niliana - Luxury Skincare Brand
+Description: Custom style for Niliana Collagen Brand.
+*/
+
+body {
+  /* الخطوط الفخمة */
+  --heading-font: "Amiri", serif;
+  --bs-body-font-family: "Albert Sans", sans-serif;
+
+  /* الألوان الجديدة لبراند نليانا */
+  --ivory: #F9F5F0;    /* اللون العاجي للخلفيات */
+  --gold: #C5A059;     /* اللون الذهبي للتفاصيل */
+  --emerald: #043927;  /* اللون الزمردي للأزرار والنصوص المهمة */
+  --dark-text: #2C2C2C;
+
+  /* تحديث متغيرات Bootstrap الأصلية لتناسب الهوية */
+  --bs-body-bg: var(--ivory);
+  --bs-primary: var(--emerald);
+  --bs-secondary: var(--gold);
+  --bs-blue: var(--emerald);
+  --bs-white: #ffffff;
+  
+  --bs-body-color: var(--dark-text);
+  --bs-link-color: var(--emerald);
+  --bs-border-color: var(--gold) !important;
+}
+
+/* تعديلات إضافية للفخامة */
+h1, h2, h3, h4, .logo {
+  color: var(--emerald) !important;
+  font-family: var(--heading-font);
+  letter-spacing: 1px;
+}
+
+.btn-primary {
+  --bs-btn-bg: var(--emerald) !important;
+  --bs-btn-border-color: var(--emerald) !important;
+  --bs-btn-hover-bg: #032b1d !important; /* درجة أغمق قليلاً للزمردي */
+  color: white !important;
+  border-radius: 50px !important; /* أزرار دائرية أكثر فخامة */
+  padding: 1rem 2.5rem !important;
+}
+
+/* تلوين الروابط عند التمرير بالذهبي */
+a:hover {
+  color: var(--gold) !important;
+}
+
+/* خلفية الصفحة كاملة باللون العاجي */
+body {
+  background-color: var(--ivory);
+  letter-spacing: 0.03rem;
+}
