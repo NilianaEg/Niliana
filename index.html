@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ '''<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
@@ -48,24 +48,99 @@ body {
     50% { opacity: 0.8; }
 }
 
-/* ===== الهيدر ===== */
+/* ===== الهيدر المحسن ===== */
 header {
-    background: linear-gradient(to bottom, var(--dark-gray), var(--black));
-    padding: 30px 20px;
+    background: linear-gradient(180deg, var(--dark-gray) 0%, var(--black) 70%);
+    padding: 60px 20px 40px;
     text-align: center;
-    border-bottom: 1px solid rgba(197, 160, 89, 0.3);
+    position: relative;
+    overflow: hidden;
 }
 
+/* تأثير الضوء الخلفي */
+header::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 600px;
+    height: 400px;
+    background: radial-gradient(ellipse, rgba(197, 160, 89, 0.15) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* حاوية الشعار */
+.logo-container {
+    position: relative;
+    z-index: 1;
+    display: inline-block;
+    max-width: 500px;
+    width: 90%;
+}
+
+/* الشعار الكبير الانسيابي */
 .main-logo-img {
-    max-height: 80px;
-    margin-bottom: 10px;
+    width: 100%;
+    max-width: 450px;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    
+    /* تأثير الانسيابية مع الخلفية */
+    mask-image: linear-gradient(to bottom, 
+        transparent 0%, 
+        black 10%, 
+        black 85%, 
+        transparent 100%);
+    -webkit-mask-image: linear-gradient(to bottom, 
+        transparent 0%, 
+        black 10%, 
+        black 85%, 
+        transparent 100%);
+    
+    /* تأثير الظل الذهبي */
+    filter: drop-shadow(0 0 30px rgba(197, 160, 89, 0.4)) 
+            drop-shadow(0 0 60px rgba(197, 160, 89, 0.2));
+    
+    /* حواف ناعمة */
+    border-radius: 20px;
+    
+    /* تأثير fade in */
+    animation: logoReveal 1.5s ease-out;
+}
+
+@keyframes logoReveal {
+    from {
+        opacity: 0;
+        transform: translateY(20px) scale(0.95);
+        filter: drop-shadow(0 0 0 transparent);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        filter: drop-shadow(0 0 30px rgba(197, 160, 89, 0.4));
+    }
+}
+
+/* خط ذهبي تحت الشعار */
+.logo-underline {
+    width: 200px;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    margin: 20px auto 0;
+    opacity: 0.6;
 }
 
 .logo-subtitle {
     color: var(--gold);
-    font-size: 0.8rem;
-    letter-spacing: 4px;
+    font-size: 0.9rem;
+    letter-spacing: 6px;
     text-transform: uppercase;
+    margin-top: 15px;
+    opacity: 0.8;
+    font-weight: 300;
 }
 
 /* ===== السكشن الرئيسي ===== */
@@ -714,12 +789,21 @@ footer {
     .video-card { min-width: calc(50% - 10px); }
     .accordion-header { font-size: 1.1rem; padding: 20px; }
     .faq-question { font-size: 1rem; padding: 20px; }
+    
+    /* تعديلات الشعار للموبايل */
+    header { padding: 40px 20px 30px; }
+    .main-logo-img { max-width: 320px; }
+    .logo-underline { width: 150px; }
 }
 
 @media (max-width: 480px) {
     .video-card { min-width: 100%; }
     .product-title { font-size: 2rem; }
     .section-title { font-size: 1.8rem; }
+    
+    /* تعديلات الشعار للشاشات الصغيرة */
+    .main-logo-img { max-width: 280px; }
+    header { padding: 30px 15px 25px; }
 }
 </style>
 </head>
@@ -729,8 +813,11 @@ footer {
 <div class="delivery-bar">🚚 توصيل مجاني لكل المحافظات اليوم فقط 🚨</div>
 
 <header>
-    <img src="images/logo.jpg" alt="Niliana" class="main-logo-img">
-    <p class="logo-subtitle">Luxury Skincare Experience</p>
+    <div class="logo-container">
+        <img src="images/logo.jpg" alt="Niliana" class="main-logo-img">
+        <div class="logo-underline"></div>
+        <p class="logo-subtitle">Luxury Skincare Experience</p>
+    </div>
 </header>
 
 <section class="hero-section">
@@ -1044,7 +1131,7 @@ function toggleFaq(element) {
 
 // ===== باقي الفنكشنز =====
 function orderNow(qty, price) {
-    const msg = `أهلاً نيليانا! 👋\n\nعايزة أطلب ${qty} ماسك كولاجين\nالسعر: ${price} جنيه\n\nمن فضلك أكدي لي الطلب`;
+    const msg = `أهلاً نيليانا! 👋\\n\\nعايزة أطلب ${qty} ماسك كولاجين\\nالسعر: ${price} جنيه\\n\\nمن فضلك أكدي لي الطلب`;
     window.open(`https://wa.me/201109048989?text=${encodeURIComponent(msg)}`, '_blank');
 }
 
@@ -1144,4 +1231,6 @@ initVisitorCounter();
 </script>
 
 </body>
-</html>
+</html>'''
+
+print(html_code)
