@@ -144,6 +144,204 @@ header {
     margin-bottom: 10px;
 }
 
+/* ===== قسم فيديوهات التجارب ===== */
+.videos-section {
+    background: linear-gradient(180deg, var(--black) 0%, #0d0d0d 50%, var(--black) 100%);
+    padding: 80px 20px;
+    position: relative;
+    overflow: hidden;
+}
+
+.videos-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+}
+
+.section-title {
+    text-align: center;
+    font-size: 2.2rem;
+    color: var(--gold);
+    margin-bottom: 15px;
+    position: relative;
+    display: inline-block;
+    width: 100%;
+}
+
+.section-subtitle {
+    text-align: center;
+    color: #888;
+    margin-bottom: 50px;
+    font-size: 1.1rem;
+}
+
+/* Carousel Container */
+.videos-carousel-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    padding: 0 60px;
+}
+
+.videos-wrapper {
+    overflow: hidden;
+    border-radius: 20px;
+}
+
+.videos-track {
+    display: flex;
+    gap: 25px;
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.video-card {
+    min-width: calc(33.333% - 17px);
+    background: rgba(255,255,255,0.02);
+    border: 1px solid rgba(197, 160, 89, 0.2);
+    border-radius: 20px;
+    overflow: hidden;
+    transition: all 0.4s ease;
+    position: relative;
+}
+
+.video-card:hover {
+    transform: translateY(-10px);
+    border-color: var(--gold);
+    box-shadow: 0 20px 40px rgba(197, 160, 89, 0.2);
+}
+
+.video-wrapper {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 9/16;
+    background: #000;
+    overflow: hidden;
+}
+
+.video-wrapper video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Play Button Overlay */
+.play-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,0,0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 2;
+}
+
+.play-overlay:hover {
+    background: rgba(0,0,0,0.2);
+}
+
+.play-icon {
+    width: 70px;
+    height: 70px;
+    background: rgba(197, 160, 89, 0.9);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255,255,255,0.3);
+}
+
+.play-icon i {
+    color: white;
+    font-size: 24px;
+    margin-right: -4px;
+}
+
+.play-overlay:hover .play-icon {
+    transform: scale(1.1);
+    background: var(--gold);
+    box-shadow: 0 0 30px rgba(197, 160, 89, 0.6);
+}
+
+.video-card.playing .play-overlay {
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* Navigation Buttons */
+.carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 50px;
+    height: 50px;
+    background: rgba(197, 160, 89, 0.1);
+    border: 1px solid rgba(197, 160, 89, 0.3);
+    border-radius: 50%;
+    color: var(--gold);
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.carousel-btn:hover {
+    background: var(--gold);
+    color: var(--black);
+    transform: translateY(-50%) scale(1.1);
+}
+
+.carousel-btn.prev {
+    right: 0;
+}
+
+.carousel-btn.next {
+    left: 0;
+}
+
+.carousel-btn:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+}
+
+/* Dots Indicator */
+.carousel-dots {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 30px;
+}
+
+.dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: rgba(197, 160, 89, 0.3);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: none;
+}
+
+.dot.active {
+    background: var(--gold);
+    width: 30px;
+    border-radius: 5px;
+}
+
 /* ===== قسم الطلب ===== */
 .order-section {
     background: var(--dark-gray);
@@ -178,6 +376,12 @@ header {
     margin-top: 20px;
     border: 1px solid var(--gold);
     box-shadow: 0 10px 30px rgba(4, 57, 39, 0.4);
+    transition: all 0.3s ease;
+}
+
+.cta-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 40px rgba(4, 57, 39, 0.6);
 }
 
 /* ===== السوشيال ميديا ===== */
@@ -194,12 +398,39 @@ header {
     transition: 0.3s;
 }
 
+.social-links a:hover {
+    transform: translateY(-5px);
+    color: #fff;
+}
+
 footer {
     padding: 30px;
     text-align: center;
     background: #000;
     color: #555;
     border-top: 1px solid #222;
+}
+
+/* Responsive */
+@media (max-width: 968px) {
+    .video-card {
+        min-width: calc(50% - 13px);
+    }
+}
+
+@media (max-width: 600px) {
+    .videos-carousel-container {
+        padding: 0 40px;
+    }
+    
+    .video-card {
+        min-width: 100%;
+    }
+    
+    .carousel-btn {
+        width: 40px;
+        height: 40px;
+    }
 }
 </style>
 </head>
@@ -248,6 +479,76 @@ footer {
     </div>
 </section>
 
+<!-- ===== قسم فيديوهات التجارب ===== -->
+<section class="videos-section">
+    <h2 class="section-title">تجارب حقيقية من عملائنا ✨</h2>
+    <p class="section-subtitle">شوفي بنفسك النتائج المذهلة بعد استخدام قناع نيليانا</p>
+    
+    <div class="videos-carousel-container">
+        <button class="carousel-btn prev" onclick="moveCarousel(-1)">
+            <i class="fas fa-chevron-right"></i>
+        </button>
+        
+        <div class="videos-wrapper">
+            <div class="videos-track" id="videosTrack">
+                <!-- Video 1 -->
+                <div class="video-card">
+                    <div class="video-wrapper">
+                        <video src="images/review1.mp4" muted loop playsinline></video>
+                        <div class="play-overlay" onclick="toggleVideo(this)">
+                            <div class="play-icon">
+                                <i class="fas fa-play"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Video 2 -->
+                <div class="video-card">
+                    <div class="video-wrapper">
+                        <video src="images/review2.mp4" muted loop playsinline></video>
+                        <div class="play-overlay" onclick="toggleVideo(this)">
+                            <div class="play-icon">
+                                <i class="fas fa-play"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Video 3 -->
+                <div class="video-card">
+                    <div class="video-wrapper">
+                        <video src="images/review3.mp4" muted loop playsinline></video>
+                        <div class="play-overlay" onclick="toggleVideo(this)">
+                            <div class="play-icon">
+                                <i class="fas fa-play"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Video 4 -->
+                <div class="video-card">
+                    <div class="video-wrapper">
+                        <video src="images/review4.mp4" muted loop playsinline></video>
+                        <div class="play-overlay" onclick="toggleVideo(this)">
+                            <div class="play-icon">
+                                <i class="fas fa-play"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <button class="carousel-btn next" onclick="moveCarousel(1)">
+            <i class="fas fa-chevron-left"></i>
+        </button>
+    </div>
+    
+    <div class="carousel-dots" id="carouselDots"></div>
+</section>
+
 <section class="order-section">
     <div class="order-card">
         <span style="background:#c62828; color:white; padding:5px 15px; border-radius:20px; font-size:0.8rem;">🔥 عرض محدود</span>
@@ -278,5 +579,109 @@ footer {
     <p>© 2026 Niliana Luxury Skincare - جميع الحقوق محفوظة</p>
 </footer>
 
+<script>
+let currentIndex = 0;
+const track = document.getElementById('videosTrack');
+const cards = document.querySelectorAll('.video-card');
+const totalCards = cards.length;
+let cardsPerView = getCardsPerView();
+
+function getCardsPerView() {
+    if (window.innerWidth <= 600) return 1;
+    if (window.innerWidth <= 968) return 2;
+    return 3;
+}
+
+function updateCarousel() {
+    const cardWidth = cards[0].offsetWidth + 25;
+    track.style.transform = `translateX(${currentIndex * cardWidth}px)`;
+    
+    document.querySelectorAll('.dot').forEach((dot, idx) => {
+        dot.classList.toggle('active', idx === currentIndex);
+    });
+    
+    document.querySelector('.carousel-btn.prev').disabled = currentIndex === 0;
+    document.querySelector('.carousel-btn.next').disabled = 
+        currentIndex >= totalCards - cardsPerView;
+}
+
+function moveCarousel(direction) {
+    const maxIndex = totalCards - cardsPerView;
+    currentIndex += direction;
+    
+    if (currentIndex < 0) currentIndex = 0;
+    if (currentIndex > maxIndex) currentIndex = maxIndex;
+    
+    updateCarousel();
+}
+
+function createDots() {
+    const dotsContainer = document.getElementById('carouselDots');
+    const maxIndex = totalCards - cardsPerView;
+    
+    for (let i = 0; i <= maxIndex; i++) {
+        const dot = document.createElement('button');
+        dot.className = 'dot' + (i === 0 ? ' active' : '');
+        dot.onclick = () => {
+            currentIndex = i;
+            updateCarousel();
+        };
+        dotsContainer.appendChild(dot);
+    }
+}
+
+function toggleVideo(overlay) {
+    const card = overlay.closest('.video-card');
+    const video = card.querySelector('video');
+    
+    document.querySelectorAll('.video-card').forEach(c => {
+        if (c !== card) {
+            c.classList.remove('playing');
+            c.querySelector('video').pause();
+        }
+    });
+    
+    if (card.classList.contains('playing')) {
+        video.pause();
+        card.classList.remove('playing');
+    } else {
+        video.play();
+        card.classList.add('playing');
+    }
+}
+
+createDots();
+updateCarousel();
+
+window.addEventListener('resize', () => {
+    const newCardsPerView = getCardsPerView();
+    if (newCardsPerView !== cardsPerView) {
+        cardsPerView = newCardsPerView;
+        currentIndex = 0;
+        document.getElementById('carouselDots').innerHTML = '';
+        createDots();
+        updateCarousel();
+    }
+});
+
+let touchStartX = 0;
+let touchEndX = 0;
+
+track.addEventListener('touchstart', e => {
+    touchStartX = e.changedTouches[0].screenX;
+});
+
+track.addEventListener('touchend', e => {
+    touchEndX = e.changedTouches[0].screenX;
+    handleSwipe();
+});
+
+function handleSwipe() {
+    if (touchEndX < touchStartX - 50) moveCarousel(1);
+    if (touchEndX > touchStartX + 50) moveCarousel(-1);
+} 
+</script>
+
 </body>
 </html>
+Enter
