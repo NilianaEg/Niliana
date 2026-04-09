@@ -82,6 +82,24 @@ body {
     background: linear-gradient(135deg, var(--royal-green) 0%, var(--emerald-deep) 50%, var(--forest) 100%);
     padding: 40px 20px;
     text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.teaser-section::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(212, 175, 55, 0.1) 0%, transparent 70%);
+    animation: shimmer 6s infinite linear;
+}
+
+@keyframes shimmer {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
 }
 
 .teaser-badge {
@@ -95,20 +113,30 @@ body {
     border-radius: 50px;
     font-weight: 700;
     font-size: 0.95rem;
-    margin-bottom: 20px;
+    margin-bottom: 25px;
+    position: relative;
+    z-index: 1;
 }
 
 .teaser-title {
     font-family: 'Libre Baskerville', serif;
-    font-size: 2rem;
+    font-size: 2.2rem;
     color: var(--champagne);
-    margin-bottom: 15px;
+    margin-bottom: 10px;
+    position: relative;
+    z-index: 1;
+    text-shadow: 0 2px 20px rgba(0,0,0,0.3);
 }
 
-.teaser-subtitle {
-    font-size: 1.1rem;
-    color: var(--sage);
-    margin-bottom: 20px;
+.luxury-subtitle {
+    font-size: 1.4rem;
+    color: var(--gold);
+    margin-bottom: 25px;
+    position: relative;
+    z-index: 1;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
 }
 
 .teaser-warning {
@@ -123,6 +151,8 @@ body {
     color: #fff;
     font-weight: 700;
     animation: urgentGlow 2s infinite;
+    position: relative;
+    z-index: 1;
 }
 
 @keyframes urgentGlow {
@@ -275,6 +305,29 @@ header {
     text-align: center;
 }
 
+/* ===== Product Main Image ===== */
+.product-main-image {
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto 30px;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.4), 0 0 40px rgba(212, 175, 55, 0.1);
+    border: 2px solid rgba(212, 175, 55, 0.3);
+    animation: productGlow 3s ease-in-out infinite;
+}
+
+@keyframes productGlow {
+    0%, 100% { box-shadow: 0 20px 60px rgba(0,0,0,0.4), 0 0 40px rgba(212, 175, 55, 0.1); }
+    50% { box-shadow: 0 25px 70px rgba(0,0,0,0.5), 0 0 60px rgba(212, 175, 55, 0.2); }
+}
+
+.product-main-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
 .testimonial-box {
     background: rgba(255,255,255,0.03);
     border: 1px solid rgba(212, 175, 55, 0.2);
@@ -354,12 +407,25 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    transition: all 0.3s;
+}
+
+.accordion-header:hover {
+    background: rgba(212, 175, 55, 0.05);
+}
+
+.accordion-header i {
+    transition: transform 0.3s;
+}
+
+.accordion-item.active .accordion-header i {
+    transform: rotate(180deg);
 }
 
 .accordion-content {
     max-height: 0;
     overflow: hidden;
-    transition: all 0.4s;
+    transition: all 0.4s ease;
     padding: 0 20px;
 }
 
@@ -578,6 +644,76 @@ header {
 
 .faq-item {
     background: rgba(255,255,255,0.02);
+    border: 1px solid rgba(212, 175 font-size: 1rem; margin-bottom: 30px; }
+
+.videos-carousel-container {
+    position: relative;
+    padding: 0 50px;
+}
+
+.videos-wrapper { overflow: hidden; border-radius: 20px; }
+.videos-track { display: flex; gap: 15px; transition: transform 0.5s ease; }
+
+.video-card {
+    min-width: calc(50% - 8px);
+    background: rgba(255,255,255,0.02);
+    border-radius: 15px;
+    overflow: hidden;
+    border: 1px solid rgba(212, 175, 55, 0.15);
+}
+
+@media (min-width: 768px) {
+    .video-card { min-width: calc(25% - 12px); }
+}
+
+.video-wrapper { position: relative; aspect-ratio: 9/16; }
+
+.video-wrapper video { width: 100%; height: 100%; object-fit: cover; }
+
+.play-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(10, 31, 21, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.play-icon {
+    width: 45px;
+    height: 45px;
+    background: var(--gold);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--royal-green);
+}
+
+.video-carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 40px;
+    height: 40px;
+    background: rgba(212, 175, 55, 0.2);
+    border: 1px solid var(--gold);
+    border-radius: 50%;
+    color: var(--gold);
+    cursor: pointer;
+}
+
+.video-carousel-btn.prev { right: 0; }
+.video-carousel-btn.next { left: 0; }
+
+/* ===== الأسئلة ===== */
+.faq-section { padding: 60px 20px; background: var(--forest); }
+
+.faq-title { font-family: 'Libre Baskerville', serif; font-size: 1.8rem; color: var(--gold); text-align: center; margin-bottom: 30px; }
+
+.faq-item {
+    background: rgba(255,255,255,0.02);
     border: 1px solid rgba(212, 175, 55, 0.15);
     border-radius: 15px;
     margin-bottom: 15px;
@@ -671,7 +807,8 @@ footer { padding: 30px; text-align: center; color: #666; font-size: 0.9rem; }
 @media (max-width: 480px) {
     .alert-bar { font-size: 0.85rem; padding: 12px 10px; }
     .countdown-timer { font-size: 0.9rem; padding: 3px 10px; }
-    .teaser-title { font-size: 1.5rem; }
+    .teaser-title { font-size: 1.6rem; }
+    .luxury-subtitle { font-size: 1.2rem; }
     .product-title { font-size: 1.8rem; }
     .section-title, .offers-title, .videos-title, .faq-title { font-size: 1.5rem; }
     .images-wrapper { height: 60vh; min-height: 350px; }
@@ -680,6 +817,7 @@ footer { padding: 30px; text-align: center; color: #666; font-size: 0.9rem; }
     .carousel-btn.next { left: 10px; }
     .offer-card.best { transform: scale(1); }
     .current-price { font-size: 1.6rem; }
+    .product-main-image { max-width: 320px; }
 }
 </style>
 </head>
@@ -703,7 +841,9 @@ footer { padding: 30px; text-align: center; color: #666; font-size: 0.9rem; }
         <i class="fas fa-fire"></i>
     </div>
     <h2 class="teaser-title">✨ في الطريق إلى مصر! ✨</h2>
-    <p لأن بشرتك تستحق الأفضل</p>
+    <div class="luxury-subtitle">
+        نيليانا: رفاهية العناية الكورية بين يديكِ
+    </div>
     <div class="teaser-warning">
         <i class="fas fa-exclamation-triangle"></i>
         <span>تبقى 23 قطعة فقط!</span>
@@ -758,6 +898,11 @@ footer { padding: 30px; text-align: center; color: #666; font-size: 0.9rem; }
         <p class="testimonial-text">"جربت أول مرة صحيت لقيت وشي نوران زي البيبي! ده مش قناع ده سحر"</p>
     </div>
 
+    <!-- Product Main Image -->
+    <div class="product-main-image">
+        <img src="images/product-main.jpg" alt="Niliana Collagen Mask">
+    </div>
+
     <h2 class="product-title">قناع الكولاجين الكوري</h2>
     <p class="product-subtitle">Glass Skin من أول ليلة 💎</p>
 
@@ -786,7 +931,7 @@ footer { padding: 30px; text-align: center; color: #666; font-size: 0.9rem; }
     <h2 class="section-title">ليه هتحبيه؟</h2>
     
     <div class="accordion-container">
-        <div class="accordion-item active">
+        <div class="accordion-item">
             <button class="accordion-header" onclick="toggleAccordion(this)">
                 <span><i class="fas fa-magic"></i> هيعمل إيه في بشرتك؟</span>
                 <i class="fas fa-chevron-down"></i>
@@ -1019,7 +1164,7 @@ function startCountdown() {
         const seconds = Math.floor((diff % (1000 * 60)) / 1000);
         
         document.getElementById('countdown').textContent = 
-            `${String(days).padStart(2, '0')}:${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+            `${String(days).padStart(2, '0')}:${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '00')}:${String(seconds).padStart(2, '0')}`;
     }
     
     updateTimer();
@@ -1154,4 +1299,3 @@ updateVisitorCount();
 
 </body>
 </html>
-
