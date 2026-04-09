@@ -128,15 +128,25 @@ body {
     text-shadow: 0 2px 20px rgba(0,0,0,0.3);
 }
 
-.luxury-subtitle {
-    font-size: 1.4rem;
+.luxury-brand {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 2.5rem;
     color: var(--gold);
+    margin-bottom: 5px;
+    position: relative;
+    z-index: 1;
+    text-shadow: 0 0 30px rgba(212, 175, 55, 0.4);
+    letter-spacing: 3px;
+}
+
+.luxury-subtitle {
+    font-size: 1.3rem;
+    color: var(--sage);
     margin-bottom: 25px;
     position: relative;
     z-index: 1;
-    font-weight: 600;
+    font-weight: 400;
     letter-spacing: 1px;
-    text-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
 }
 
 .teaser-warning {
@@ -233,7 +243,6 @@ header {
     transition: transform 0.6s ease;
 }
 
-/* Mobile: cover عشان تملأ الشاشة | Desktop: contain عشان تبان كاملة */
 .carousel-image {
     min-width: 100%;
     width: 100%;
@@ -305,7 +314,6 @@ header {
     text-align: center;
 }
 
-/* ===== Product Main Image ===== */
 .product-main-image {
     width: 100%;
     max-width: 400px;
@@ -372,10 +380,69 @@ header {
 
 .feature-icon { font-size: 1.8rem; margin-bottom: 10px; }
 
+/* ===== Aesthetic Images Section ===== */
+.aesthetic-section {
+    padding: 60px 20px;
+    background: linear-gradient(180deg, var(--royal-green) 0%, var(--forest) 100%);
+}
+
+.aesthetic-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+@media (min-width: 768px) {
+    .aesthetic-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+.aesthetic-card {
+    background: rgba(255,255,255,0.02);
+    border: 1px solid rgba(212, 175, 55, 0.2);
+    border-radius: 20px;
+    overflow: hidden;
+    transition: all 0.4s;
+}
+
+.aesthetic-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.3), 0 0 30px rgba(212, 175, 55, 0.1);
+    border-color: var(--gold);
+}
+
+.aesthetic-image {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    display: block;
+}
+
+.aesthetic-content {
+    padding: 25px;
+    text-align: center;
+}
+
+.aesthetic-title {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 1.3rem;
+    color: var(--gold);
+    margin-bottom: 10px;
+}
+
+.aesthetic-desc {
+    color: var(--sage);
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
 /* ===== التفاصيل ===== */
 .details-section {
     padding: 60px 20px;
-    background: linear-gradient(180deg, var(--royal-green) 0%, var(--forest) 50%, var(--royal-green) 100%);
+    background: linear-gradient(180deg, var(--forest) 0%, var(--royal-green) 50%, var(--forest) 100%);
 }
 
 .section-title {
@@ -387,18 +454,21 @@ header {
 }
 
 .accordion-item {
-    background: rgba(255,255,255,0.02);
-    border: 1px solid rgba(212, 175, 55, 0.15);
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(212, 175, 55, 0.2);
     border-radius: 15px;
     margin-bottom: 15px;
     overflow: hidden;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .accordion-header {
     width: 100%;
     background: transparent;
     border: none;
-    padding: 20px;
+    padding: 25px 20px;
     color: var(--gold);
     font-size: 1.1rem;
     font-weight: 700;
@@ -416,6 +486,7 @@ header {
 
 .accordion-header i {
     transition: transform 0.3s;
+    color: var(--gold);
 }
 
 .accordion-item.active .accordion-header i {
@@ -431,16 +502,30 @@ header {
 
 .accordion-item.active .accordion-content {
     max-height: 1000px;
-    padding: 0 20px 20px;
+    padding: 0 20px 25px;
+}
+
+.accordion-content ul {
+    list-style: none;
 }
 
 .accordion-content ul li {
-    padding: 12px 0;
+    padding: 15px 0;
     border-bottom: 1px solid rgba(212, 175, 55, 0.1);
     display: flex;
     align-items: start;
-    gap: 10px;
-    font-size: 0.95rem;
+    gap: 12px;
+    font-size: 1rem;
+    color: var(--cream);
+}
+
+.accordion-content ul li:last-child {
+    border-bottom: none;
+}
+
+.accordion-content ul li i {
+    color: var(--gold);
+    margin-top: 5px;
 }
 
 /* ===== العروض ===== */
@@ -481,18 +566,24 @@ header {
 }
 
 .offer-card {
-    background: rgba(255,255,255,0.02);
+    background: rgba(255,255,255,0.03);
     border: 1px solid rgba(212, 175, 55, 0.2);
     border-radius: 20px;
     padding: 30px 20px;
     text-align: center;
     position: relative;
+    transition: all 0.3s;
+}
+
+.offer-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.2);
 }
 
 .offer-card.best {
     border-color: var(--gold);
     transform: scale(1.02);
-    box-shadow: 0 10px 40px rgba(212, 175, 55, 0.1);
+    box-shadow: 0 10px 40px rgba(212, 175, 55, 0.15);
 }
 
 .best-tag {
@@ -553,7 +644,7 @@ header {
 
 .order-btn {
     width: 100%;
-    background: var(--gold);
+    background: linear-gradient(135deg, var(--gold), #b8941f);
     color: var(--royal-green);
     border: none;
     padding: 15px;
@@ -563,30 +654,56 @@ header {
     cursor: pointer;
     margin-top: 15px;
     transition: all 0.3s;
+    box-shadow: 0 5px 15px rgba(212, 175, 55, 0.2);
 }
 
 .order-btn:hover {
     transform: translateY(-3px);
-    box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3);
+    box-shadow: 0 10px 30px rgba(212, 175, 55, 0.4);
 }
 
 /* ===== الفيديوهات ===== */
-.videos-section { padding: 60px 20px; }
+.videos-section { 
+    padding: 60px 20px; 
+    background: var(--royal-green);
+}
 
-.videos-title { font-family: 'Libre Baskerville', serif; font-size: 1.8rem; color: var(--gold); margin-bottom: 10px; text-align: center; }
-.videos-subtitle { text-align: center; color: #888; font-size: 1rem; margin-bottom: 30px; }
+.videos-title { 
+    font-family: 'Libre Baskerville', serif; 
+    font-size: 1.8rem; 
+    color: var(--gold); 
+    margin-bottom: 10px; 
+    text-align: center; 
+}
+
+.videos-subtitle { 
+    text-align: center; 
+    color: var(--sage); 
+    font-size: 1rem; 
+    margin-bottom: 30px; 
+}
 
 .videos-carousel-container {
     position: relative;
     padding: 0 50px;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
-.videos-wrapper { overflow: hidden; border-radius: 20px; }
-.videos-track { display: flex; gap: 15px; transition: transform 0.5s ease; }
+.videos-wrapper { 
+    overflow: hidden; 
+    border-radius: 20px; 
+}
+
+.videos-track { 
+    display: flex; 
+    gap: 15px; 
+    transition: transform 0.5s ease; 
+}
 
 .video-card {
     min-width: calc(50% - 8px);
-    background: rgba(255,255,255,0.02);
+    background: rgba(255,255,255,0.03);
     border-radius: 15px;
     overflow: hidden;
     border: 1px solid rgba(212, 175, 55, 0.15);
@@ -596,9 +713,16 @@ header {
     .video-card { min-width: calc(25% - 12px); }
 }
 
-.video-wrapper { position: relative; aspect-ratio: 9/16; }
+.video-wrapper { 
+    position: relative; 
+    aspect-ratio: 9/16; 
+}
 
-.video-wrapper video { width: 100%; height: 100%; object-fit: cover; }
+.video-wrapper video { 
+    width: 100%; 
+    height: 100%; 
+    object-fit: cover; 
+}
 
 .play-overlay {
     position: absolute;
@@ -608,131 +732,111 @@ header {
     align-items: center;
     justify-content: center;
     cursor: pointer;
+    transition: all 0.3s;
+}
+
+.play-overlay:hover {
+    background: rgba(10, 31, 21, 0.3);
 }
 
 .play-icon {
-    width: 45px;
-    height: 45px;
+    width: 50px;
+    height: 50px;
     background: var(--gold);
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     color: var(--royal-green);
+    font-size: 1.2rem;
+    transition: all 0.3s;
+}
+
+.play-overlay:hover .play-icon {
+    transform: scale(1.1);
+    box-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
 }
 
 .video-carousel-btn {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    width: 40px;
-    height: 40px;
+    width: 45px;
+    height: 45px;
     background: rgba(212, 175, 55, 0.2);
-    border: 1px solid var(--gold);
+    border: 2px solid var(--gold);
     border-radius: 50%;
     color: var(--gold);
     cursor: pointer;
-}
-
-.video-carousel-btn.prev { right: 0; }
-.video-carousel-btn.next { left: 0; }
-
-/* ===== الأسئلة ===== */
-.faq-section { padding: 60px 20px; background: var(--forest); }
-
-.faq-title { font-family: 'Libre Baskerville', serif; font-size: 1.8rem; color: var(--gold); text-align: center; margin-bottom: 30px; }
-
-.faq-item {
-    background: rgba(255,255,255,0.02);
-    border: 1px solid rgba(212, 175 font-size: 1rem; margin-bottom: 30px; }
-
-.videos-carousel-container {
-    position: relative;
-    padding: 0 50px;
-}
-
-.videos-wrapper { overflow: hidden; border-radius: 20px; }
-.videos-track { display: flex; gap: 15px; transition: transform 0.5s ease; }
-
-.video-card {
-    min-width: calc(50% - 8px);
-    background: rgba(255,255,255,0.02);
-    border-radius: 15px;
-    overflow: hidden;
-    border: 1px solid rgba(212, 175, 55, 0.15);
-}
-
-@media (min-width: 768px) {
-    .video-card { min-width: calc(25% - 12px); }
-}
-
-.video-wrapper { position: relative; aspect-ratio: 9/16; }
-
-.video-wrapper video { width: 100%; height: 100%; object-fit: cover; }
-
-.play-overlay {
-    position: absolute;
-    inset: 0;
-    background: rgba(10, 31, 21, 0.5);
+    transition: all 0.3s;
     display: flex;
     align-items: center;
     justify-content: center;
-    cursor: pointer;
 }
 
-.play-icon {
-    width: 45px;
-    height: 45px;
+.video-carousel-btn:hover {
     background: var(--gold);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     color: var(--royal-green);
 }
 
-.video-carousel-btn {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 40px;
-    height: 40px;
-    background: rgba(212, 175, 55, 0.2);
-    border: 1px solid var(--gold);
-    border-radius: 50%;
-    color: var(--gold);
-    cursor: pointer;
-}
-
 .video-carousel-btn.prev { right: 0; }
 .video-carousel-btn.next { left: 0; }
 
 /* ===== الأسئلة ===== */
-.faq-section { padding: 60px 20px; background: var(--forest); }
+.faq-section { 
+    padding: 60px 20px; 
+    background: linear-gradient(180deg, var(--forest) 0%, var(--royal-green) 100%);
+}
 
-.faq-title { font-family: 'Libre Baskerville', serif; font-size: 1.8rem; color: var(--gold); text-align: center; margin-bottom: 30px; }
+.faq-title { 
+    font-family: 'Libre Baskerville', serif; 
+    font-size: 1.8rem; 
+    color: var(--gold); 
+    text-align: center; 
+    margin-bottom: 30px; 
+}
+
+.faq-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
 
 .faq-item {
-    background: rgba(255,255,255,0.02);
-    border: 1px solid rgba(212, 175, 55, 0.15);
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(212, 175, 55, 0.2);
     border-radius: 15px;
     margin-bottom: 15px;
     overflow: hidden;
+    transition: all 0.3s;
+}
+
+.faq-item:hover {
+    border-color: rgba(212, 175, 55, 0.4);
 }
 
 .faq-question {
     width: 100%;
     background: transparent;
     border: none;
-    padding: 20px;
+    padding: 25px 20px;
     color: var(--cream);
-    font-size: 1rem;
+    font-size: 1.1rem;
     font-weight: 600;
     text-align: right;
     cursor: pointer;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    transition: all 0.3s;
+}
+
+.faq-question i {
+    color: var(--gold);
+    transition: transform 0.3s;
+}
+
+.faq-item.active .faq-question i {
+    transform: rotate(180deg);
 }
 
 .faq-answer {
@@ -740,42 +844,91 @@ header {
     overflow: hidden;
     transition: all 0.4s;
     padding: 0 20px;
-    color: #aaa;
-    font-size: 0.95rem;
+    color: var(--sage);
+    font-size: 1rem;
     line-height: 1.8;
 }
 
-.faq-item.active .faq-answer { max-height: 500px; padding: 0 20px 20px; }
+.faq-item.active .faq-answer { 
+    max-height: 500px; 
+    padding: 0 20px 25px; 
+}
 
-/* ===== Footer ===== */
-.social-section { padding: 40px 20px; text-align: center; }
-.social-title { color: var(--gold); font-size: 1.3rem; margin-bottom: 20px; }
-.social-links { display: flex; justify-content: center; gap: 20px; }
+/* ===== Social Section ===== */
+.social-section { 
+    padding: 50px 20px; 
+    text-align: center; 
+    background: linear-gradient(180deg, var(--royal-green) 0%, var(--forest) 100%);
+    border-top: 1px solid rgba(212, 175, 55, 0.1);
+}
+
+.social-title { 
+    color: var(--gold); 
+    font-size: 1.4rem; 
+    margin-bottom: 25px;
+    font-family: 'Libre Baskerville', serif;
+}
+
+.social-links { 
+    display: flex; 
+    justify-content: center; 
+    gap: 20px; 
+}
+
 .social-links a {
     color: var(--gold);
-    font-size: 1.8rem;
-    width: 50px;
-    height: 50px;
+    font-size: 1.5rem;
+    width: 55px;
+    height: 55px;
     display: flex;
     align-items: center;
     justify-content: center;
     border-radius: 50%;
-    border: 1px solid rgba(212, 175, 55, 0.3);
+    border: 2px solid rgba(212, 175, 55, 0.3);
+    transition: all 0.3s;
+    background: rgba(212, 175, 55, 0.05);
 }
 
+.social-links a:hover {
+    background: var(--gold);
+    color: var(--royal-green);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(212, 175, 55, 0.3);
+}
+
+/* ===== Designer Signature ===== */
 .designer-signature {
     text-align: center;
-    padding: 30px 20px;
-    border-top: 1px solid rgba(212, 175, 55, 0.2);
+    padding: 40px 20px;
+    background: var(--royal-green);
+    border-top: 1px solid rgba(212, 175, 55, 0.15);
+}
+
+.designer-signature p {
+    color: var(--sage);
+    margin-bottom: 10px;
+    font-size: 0.95rem;
 }
 
 .designer-signature a {
     color: var(--gold);
     font-family: 'Libre Baskerville', serif;
-    font-size: 1.2rem;
+    font-size: 1.3rem;
     text-decoration: none;
     transition: all 0.3s;
     display: inline-block;
+    position: relative;
+}
+
+.designer-signature a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--gold);
+    transition: width 0.3s;
 }
 
 .designer-signature a:hover {
@@ -783,7 +936,19 @@ header {
     transform: scale(1.05);
 }
 
-footer { padding: 30px; text-align: center; color: #666; font-size: 0.9rem; }
+.designer-signature a:hover::after {
+    width: 100%;
+}
+
+/* ===== Footer ===== */
+footer { 
+    padding: 30px; 
+    text-align: center; 
+    background: var(--forest);
+    color: var(--sage); 
+    font-size: 0.9rem; 
+    border-top: 1px solid rgba(212, 175, 55, 0.1);
+}
 
 /* ===== Visitor Counter ===== */
 .visitor-counter {
@@ -791,24 +956,36 @@ footer { padding: 30px; text-align: center; color: #666; font-size: 0.9rem; }
     bottom: 20px;
     left: 20px;
     background: rgba(26, 51, 40, 0.95);
-    border: 1px solid var(--gold);
-    border-radius: 25px;
+    border: 2px solid var(--gold);
+    border-radius: 30px;
     padding: 12px 20px;
     display: flex;
     align-items: center;
     gap: 10px;
     z-index: 1000;
     font-size: 0.9rem;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+    backdrop-filter: blur(10px);
 }
 
-.visitor-count { color: var(--gold); font-weight: 700; }
+.visitor-counter i {
+    color: var(--gold);
+    font-size: 1.1rem;
+}
+
+.visitor-count { 
+    color: var(--gold); 
+    font-weight: 700; 
+    font-size: 1.1rem;
+}
 
 /* ===== Mobile Optimizations ===== */
 @media (max-width: 480px) {
     .alert-bar { font-size: 0.85rem; padding: 12px 10px; }
     .countdown-timer { font-size: 0.9rem; padding: 3px 10px; }
-    .teaser-title { font-size: 1.6rem; }
-    .luxury-subtitle { font-size: 1.2rem; }
+    .teaser-title { font-size: 1.4rem; }
+    .luxury-brand { font-size: 2rem; }
+    .luxury-subtitle { font-size: 1.1rem; }
     .product-title { font-size: 1.8rem; }
     .section-title, .offers-title, .videos-title, .faq-title { font-size: 1.5rem; }
     .images-wrapper { height: 60vh; min-height: 350px; }
@@ -818,6 +995,8 @@ footer { padding: 30px; text-align: center; color: #666; font-size: 0.9rem; }
     .offer-card.best { transform: scale(1); }
     .current-price { font-size: 1.6rem; }
     .product-main-image { max-width: 320px; }
+    .aesthetic-image { height: 200px; }
+    .social-links a { width: 50px; height: 50px; font-size: 1.3rem; }
 }
 </style>
 </head>
@@ -841,9 +1020,8 @@ footer { padding: 30px; text-align: center; color: #666; font-size: 0.9rem; }
         <i class="fas fa-fire"></i>
     </div>
     <h2 class="teaser-title">✨ في الطريق إلى مصر! ✨</h2>
-    <div class="luxury-subtitle">
-        نيليانا: رفاهية العناية الكورية بين يديكِ
-    </div>
+    <div class="luxury-brand">Niliana</div>
+    <div class="luxury-subtitle">رفاهية العناية الكورية بين يديكِ</div>
     <div class="teaser-warning">
         <i class="fas fa-exclamation-triangle"></i>
         <span>تبقى 23 قطعة فقط!</span>
@@ -922,6 +1100,45 @@ footer { padding: 30px; text-align: center; color: #666; font-size: 0.9rem; }
         <div class="feature-item">
             <div class="feature-icon">💧</div>
             <div class="feature-text">ترطيب 48 ساعة</div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== Aesthetic Images Section ===== -->
+<section class="aesthetic-section">
+    <h2 class="section-title">تجربة فاخرة في كل تفصيلة</h2>
+    
+    <div class="aesthetic-grid">
+        <div class="aesthetic-card">
+            <img src="images/aesthetic.jpg" alt="Aesthetic" class="aesthetic-image">
+            <div class="aesthetic-content">
+                <h3 class="aesthetic-title">فن الجمال الكوري</h3>
+                <p class="aesthetic-desc">تصميم أنيق يليق بملكات الجمال، يجمع بين البساطة والفخامة في كل قطرة</p>
+            </div>
+        </div>
+
+        <div class="aesthetic-card">
+            <img src="images/branding.jpg" alt="Branding" class="aesthetic-image">
+            <div class="aesthetic-content">
+                <h3 class="aesthetic-title">هوية فاخرة</h3>
+                <p class="aesthetic-desc">توقيعكِ الخاص بالعناية الملكية، يعكس ذوقكِ الرفيع في اختيار الأفضل</p>
+            </div>
+        </div>
+
+        <div class="aesthetic-card">
+            <img src="images/usage.png" alt="Usage" class="aesthetic-image">
+            <div class="aesthetic-content">
+                <h3 class="aesthetic-title">لحظات سحرية</h3>
+                <p class="aesthetic-desc">رحلة استخدام فريدة تبدأ بلمسة ناعمة وتنتهي ببشرة كالحرير</p>
+            </div>
+        </div>
+
+        <div class="aesthetic-card">
+            <img src="images/water-drop-blended.jpg" alt="Water Drop" class="aesthetic-image">
+            <div class="aesthetic-content">
+                <h3 class="aesthetic-title">نقاء عميق</h3>
+                <p class="aesthetic-desc">ترطيب يصل لأعماق البشرة، كأنكِ غطستي في نبع من الشباب والنضارة</p>
+            </div>
         </div>
     </div>
 </section>
@@ -1116,25 +1333,34 @@ footer { padding: 30px; text-align: center; color: #666; font-size: 0.9rem; }
     </div>
 </section>
 
-<!-- ===== Footer ===== -->
+<!-- ===== Social Section ===== -->
 <section class="social-section">
     <h3 class="social-title">تابعينا على</h3>
     <div class="social-links">
-        <a href="https://www.facebook.com/share/1DmqQysbE4/" target="_blank"><i class="fab fa-facebook-f"></i></a>
-        <a href="https://www.instagram.com/niliana.eg" target="_blank"><i class="fab fa-instagram"></i></a>
-        <a href="https://wa.me/201109048989" target="_blank"><i class="fab fa-whatsapp"></i></a>
+        <a href="https://www.facebook.com/share/1DmqQysbE4/" target="_blank" aria-label="Facebook">
+            <i class="fab fa-facebook-f"></i>
+        </a>
+        <a href="https://www.instagram.com/niliana.eg" target="_blank" aria-label="Instagram">
+            <i class="fab fa-instagram"></i>
+        </a>
+        <a href="https://wa.me/201109048989" target="_blank" aria-label="WhatsApp">
+            <i class="fab fa-whatsapp"></i>
+        </a>
     </div>
 </section>
 
+<!-- ===== Designer Signature ===== -->
 <div class="designer-signature">
     <p>Made with <i class="fas fa-heart" style="color: var(--alert-red);"></i> by</p>
     <a href="https://www.facebook.com/share/1B6jgVRvAK/" target="_blank">Amro Abd Elaziz</a>
 </div>
 
+<!-- ===== Footer ===== -->
 <footer>
     <p>© 2026 Niliana Egypt - كل الحقوق محفوظة</p>
 </footer>
 
+<!-- ===== Visitor Counter ===== -->
 <div class="visitor-counter">
     <i class="fas fa-eye"></i>
     <span>شايفينه دلوقتي: <span class="visitor-count" id="visitorCount">17</span></span>
@@ -1143,7 +1369,6 @@ footer { padding: 30px; text-align: center; color: #666; font-size: 0.9rem; }
 <script>
 // ===== Countdown Timer - 15 Days =====
 function startCountdown() {
-    // Set deadline to 15 days from now
     let deadline = new Date();
     deadline.setDate(deadline.getDate() + 15);
     
@@ -1152,7 +1377,6 @@ function startCountdown() {
         const diff = deadline - now;
         
         if (diff <= 0) {
-            // Reset to new 15 days when finished
             deadline = new Date();
             deadline.setDate(deadline.getDate() + 15);
             return;
@@ -1164,7 +1388,7 @@ function startCountdown() {
         const seconds = Math.floor((diff % (1000 * 60)) / 1000);
         
         document.getElementById('countdown').textContent = 
-            `${String(days).padStart(2, '0')}:${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '00')}:${String(seconds).padStart(2, '0')}`;
+            `${String(days).padStart(2, '0')}:${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
     }
     
     updateTimer();
