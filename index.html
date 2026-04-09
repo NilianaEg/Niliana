@@ -125,6 +125,11 @@ body {
     animation: urgentGlow 2s infinite;
 }
 
+@keyframes urgentGlow {
+    0%, 100% { box-shadow: 0 0 10px rgba(220, 38, 38, 0.3); }
+    50% { box-shadow: 0 0 25px rgba(220, 38, 38, 0.6); }
+}
+
 /* ===== الهيدر ===== */
 header {
     background: linear-gradient(180deg, var(--forest) 0%, var(--royal-green) 100%);
@@ -628,7 +633,19 @@ header {
     border-top: 1px solid rgba(212, 175, 55, 0.2);
 }
 
-.designer-signature .name { color: var(--gold); font-family: 'Libre Baskerville', serif; font-size: 1.2rem; }
+.designer-signature a {
+    color: var(--gold);
+    font-family: 'Libre Baskerville', serif;
+    font-size: 1.2rem;
+    text-decoration: none;
+    transition: all 0.3s;
+    display: inline-block;
+}
+
+.designer-signature a:hover {
+    color: var(--champagne);
+    transform: scale(1.05);
+}
 
 footer { padding: 30px; text-align: center; color: #666; font-size: 0.9rem; }
 
@@ -672,7 +689,7 @@ footer { padding: 30px; text-align: center; color: #666; font-size: 0.9rem; }
 <!-- ===== شريط التحذير مع العد التنازلي ===== -->
 <div class="alert-bar">
     <span>⏰ العرض ينتهي خلال:</span>
-    <span class="countdown-timer" id="countdown">04:59:59</span>
+    <span class="countdown-timer" id="countdown">15:00:00:00</span>
     <span>⚠️ الكمية محدودة!</span>
 </div>
 
@@ -685,7 +702,7 @@ footer { padding: 30px; text-align: center; color: #666; font-size: 0.9rem; }
         الأكثر مبيعاً في كوريا
         <i class="fas fa-fire"></i>
     </div>
-    <h2 class="teaser-title">✨ وصل مصر بجدارة! ✨</h2>
+    <h2 class="teaser-title">✨ في الطريق إلى مصر! ✨</h2>
     <p class="teaser-subtitle">الآن بشرتك تستحق الأفضل</p>
     <div class="teaser-warning">
         <i class="fas fa-exclamation-triangle"></i>
@@ -966,7 +983,7 @@ footer { padding: 30px; text-align: center; color: #666; font-size: 0.9rem; }
 
 <div class="designer-signature">
     <p>Made with <i class="fas fa-heart" style="color: var(--alert-red);"></i> by</p>
-    <span class="name">Amro Abd Elaziz</span>
+    <a href="https://www.facebook.com/share/1B6jgVRvAK/" target="_blank">Amro Abd Elaziz</a>
 </div>
 
 <footer>
@@ -979,29 +996,30 @@ footer { padding: 30px; text-align: center; color: #666; font-size: 0.9rem; }
 </div>
 
 <script>
-// ===== Countdown Timer =====
+// ===== Countdown Timer - 15 Days =====
 function startCountdown() {
-    // Set deadline to 5 hours from now
+    // Set deadline to 15 days from now
     let deadline = new Date();
-    deadline.setHours(deadline.getHours() + 5);
+    deadline.setDate(deadline.getDate() + 15);
     
     function updateTimer() {
         const now = new Date();
         const diff = deadline - now;
         
         if (diff <= 0) {
-            // Reset to new 5 hours
+            // Reset to new 15 days when finished
             deadline = new Date();
-            deadline.setHours(deadline.getHours() + 5);
+            deadline.setDate(deadline.getDate() + 15);
             return;
         }
         
-        const hours = Math.floor(diff / (1000 * 60 * 60));
+        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
         const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
         const seconds = Math.floor((diff % (1000 * 60)) / 1000);
         
         document.getElementById('countdown').textContent = 
-            `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+            `${String(days).padStart(2, '0')}:${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
     }
     
     updateTimer();
@@ -1136,3 +1154,4 @@ updateVisitorCount();
 
 </body>
 </html>
+
