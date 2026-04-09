@@ -51,15 +51,10 @@ body {
 }
 
 @keyframes alertPulse {
-    0%, 100% { 
-        background: linear-gradient(90deg, var(--alert-dark), var(--alert-red), var(--alert-dark));
-    }
-    50% { 
-        background: linear-gradient(90deg, #b91c1c, #ef4444, #b91c1c);
-    }
+    0%, 100% { background: linear-gradient(90deg, var(--alert-dark), var(--alert-red), var(--alert-dark)); }
+    50% { background: linear-gradient(90deg, #b91c1c, #ef4444, #b91c1c); }
 }
 
-/* ===== شريط التوصيل ===== */
 .delivery-bar {
     background: linear-gradient(90deg, var(--forest), var(--emerald-deep), var(--forest));
     color: var(--gold);
@@ -68,7 +63,6 @@ body {
     font-weight: 600;
     font-size: 1rem;
     border-bottom: 1px solid rgba(212, 175, 55, 0.3);
-    letter-spacing: 1px;
 }
 
 /* ===== سيكشن التشويق ===== */
@@ -78,19 +72,6 @@ body {
     text-align: center;
     position: relative;
     overflow: hidden;
-}
-
-.teaser-section::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: 
-        radial-gradient(circle at 25% 50%, rgba(212, 175, 55, 0.1) 0%, transparent 50%),
-        radial-gradient(circle at 75% 50%, rgba(156, 175, 136, 0.08) 0%, transparent 50%);
-    pointer-events: none;
 }
 
 .teaser-badge {
@@ -105,10 +86,7 @@ body {
     font-weight: 700;
     font-size: 1rem;
     margin-bottom: 25px;
-    position: relative;
-    z-index: 1;
     backdrop-filter: blur(10px);
-    box-shadow: 0 4px 20px rgba(212, 175, 55, 0.2);
 }
 
 .teaser-title {
@@ -117,20 +95,14 @@ body {
     color: var(--champagne);
     font-weight: 700;
     margin-bottom: 20px;
-    position: relative;
-    z-index: 1;
     text-shadow: 0 2px 20px rgba(212, 175, 55, 0.3);
-    letter-spacing: 2px;
 }
 
 .teaser-subtitle {
     font-size: 1.2rem;
     color: var(--sage);
-    font-weight: 400;
-    margin-bottom: 25px;
-    position: relative;
-    z-index: 1;
     font-style: italic;
+    margin-bottom: 25px;
 }
 
 .teaser-warning {
@@ -142,11 +114,8 @@ body {
     padding: 15px 35px;
     border-radius: 30px;
     font-size: 1.1rem;
-    color: #ffffff;
+    color: #fff;
     font-weight: 700;
-    position: relative;
-    z-index: 1;
-    backdrop-filter: blur(5px);
     animation: urgentGlow 2s infinite;
 }
 
@@ -161,7 +130,6 @@ header {
     padding: 70px 20px 50px;
     text-align: center;
     position: relative;
-    overflow: hidden;
 }
 
 header::after {
@@ -172,19 +140,6 @@ header::after {
     right: 0;
     height: 1px;
     background: linear-gradient(90deg, transparent, var(--gold), transparent);
-}
-
-header::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 800px;
-    height: 500px;
-    background: radial-gradient(ellipse, rgba(212, 175, 55, 0.08) 0%, transparent 70%);
-    pointer-events: none;
-    z-index: 0;
 }
 
 .logo-container {
@@ -205,30 +160,17 @@ header::before {
     border-radius: 20px;
     filter: drop-shadow(0 0 40px rgba(212, 175, 55, 0.3));
     animation: logoEntrance 1.5s ease-out forwards, logoFloat 4s ease-in-out infinite 1.5s;
-    transform-style: preserve-3d;
 }
 
 @keyframes logoEntrance {
-    0% {
-        opacity: 0;
-        transform: translateY(-50px) rotateX(-15deg) scale(0.8);
-        filter: drop-shadow(0 0 0 transparent);
-    }
-    50% {
-        opacity: 0.8;
-        transform: translateY(10px) rotateX(5deg) scale(1.02);
-    }
-    100% {
-        opacity: 1;
-        transform: translateY(0) rotateX(0) scale(1);
-        filter: drop-shadow(0 0 40px rgba(212, 175, 55, 0.3));
-    }
+    0% { opacity: 0; transform: translateY(-50px) rotateX(-15deg) scale(0.8); }
+    50% { opacity: 0.8; transform: translateY(10px) rotateX(5deg) scale(1.02); }
+    100% { opacity: 1; transform: translateY(0) rotateX(0) scale(1); }
 }
 
 @keyframes logoFloat {
     0%, 100% { transform: translateY(0) rotateY(0deg); }
     25% { transform: translateY(-8px) rotateY(2deg); }
-    50% { transform: translateY(-5px) rotateY(0deg); }
     75% { transform: translateY(-8px) rotateY(-2deg); }
 }
 
@@ -241,9 +183,7 @@ header::before {
     transform: scaleX(0);
 }
 
-@keyframes underlineExpand {
-    to { transform: scaleX(1); }
-}
+@keyframes underlineExpand { to { transform: scaleX(1); } }
 
 .logo-subtitle {
     color: var(--sage);
@@ -252,61 +192,60 @@ header::before {
     text-transform: uppercase;
     margin-top: 20px;
     opacity: 0;
-    font-weight: 300;
     animation: fadeInUp 0.8s ease-out 1s forwards;
 }
 
-@keyframes fadeInUp {
-    to { opacity: 0.7; transform: translateY(0); }
-    from { opacity: 0; transform: translateY(20px); }
-}
+@keyframes fadeInUp { to { opacity: 0.7; transform: translateY(0); } from { opacity: 0; transform: translateY(20px); } }
 
-/* ===== Carousel للصور - تصليح العرض ===== */
+/* ===== Carousel للصور - كبير وملئ الشاشة ===== */
 .images-carousel-section {
     background: var(--royal-green);
-    padding: 60px 20px;
+    padding: 40px 0;
     position: relative;
+    width: 100%;
 }
 
 .images-carousel-container {
-    max-width: 1000px;
+    width: 100%;
+    max-width: 100%;
     margin: 0 auto;
     position: relative;
-    padding: 0 70px;
 }
 
 .images-wrapper {
     overflow: hidden;
-    border-radius: 20px;
-    border: 2px solid rgba(212, 175, 55, 0.2);
-    box-shadow: 0 20px 60px rgba(0,0,0,0.4);
-    background: var(--forest);
-    aspect-ratio: 16/10;
+    width: 100%;
+    height: 85vh;
+    min-height: 500px;
+    max-height: 900px;
     position: relative;
+    background: var(--forest);
 }
 
 .images-track {
     display: flex;
     height: 100%;
-    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .carousel-image {
     min-width: 100%;
+    width: 100%;
     height: 100%;
     object-fit: contain;
+    object-position: center;
     display: block;
-    padding: 10px;
-    background: var(--forest);
+    padding: 20px;
+    background: linear-gradient(135deg, var(--royal-green) 0%, var(--forest) 50%, var(--royal-green) 100%);
 }
 
 .carousel-btn {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    width: 50px;
-    height: 50px;
-    background: rgba(212, 175, 55, 0.2);
+    width: 60px;
+    height: 60px;
+    background: rgba(10, 31, 21, 0.8);
     border: 2px solid var(--gold);
     border-radius: 50%;
     color: var(--gold);
@@ -316,7 +255,8 @@ header::before {
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.2rem;
+    font-size: 1.5rem;
+    backdrop-filter: blur(10px);
 }
 
 .carousel-btn:hover {
@@ -325,20 +265,20 @@ header::before {
     transform: translateY(-50%) scale(1.1);
 }
 
-.carousel-btn.prev { right: 10px; }
-.carousel-btn.next { left: 10px; }
+.carousel-btn.prev { right: 30px; }
+.carousel-btn.next { left: 30px; }
 
 .carousel-dots {
     display: flex;
     justify-content: center;
-    gap: 12px;
-    margin-top: 25px;
-    flex-wrap: wrap;
+    gap: 15px;
+    margin-top: 30px;
+    padding: 0 20px;
 }
 
 .dot {
-    width: 14px;
-    height: 14px;
+    width: 16px;
+    height: 16px;
     border-radius: 50%;
     background: rgba(212, 175, 55, 0.3);
     cursor: pointer;
@@ -348,21 +288,18 @@ header::before {
 
 .dot.active {
     background: var(--gold);
-    transform: scale(1.2);
-    box-shadow: 0 0 15px rgba(212, 175, 55, 0.5);
+    transform: scale(1.3);
+    box-shadow: 0 0 20px rgba(212, 175, 55, 0.6);
     border-color: var(--champagne);
 }
 
-.dot:hover {
-    background: rgba(212, 175, 55, 0.6);
-}
+.dot:hover { background: rgba(212, 175, 55, 0.6); }
 
 /* ===== السكشن الرئيسي ===== */
 .hero-section {
     background: var(--royal-green);
     padding: 70px 20px;
     text-align: center;
-    position: relative;
 }
 
 .testimonial-box {
@@ -401,24 +338,15 @@ header::before {
     color: var(--gold);
     margin-bottom: 20px;
     font-weight: 700;
-    letter-spacing: 1px;
 }
 
 .product-subtitle {
     color: #aaa;
     font-size: 1.2rem;
     margin-bottom: 30px;
-    font-weight: 400;
 }
 
-/* ===== صور المنتج ===== */
-.product-showcase {
-    display: flex;
-    flex-direction: column;
-    gap: 40px;
-    align-items: center;
-    margin: 50px 0;
-}
+.product-showcase { display: flex; flex-direction: column; gap: 40px; align-items: center; margin: 50px 0; }
 
 .product-image {
     max-width: 450px;
@@ -442,7 +370,6 @@ header::before {
     opacity: 0.9;
 }
 
-/* ===== المميزات ===== */
 .features-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -465,23 +392,13 @@ header::before {
     background: rgba(212, 175, 55, 0.05);
 }
 
-.feature-icon {
-    font-size: 2rem;
-    margin-bottom: 15px;
-    filter: drop-shadow(0 0 10px rgba(212, 175, 55, 0.3));
-}
+.feature-icon { font-size: 2rem; margin-bottom: 15px; filter: drop-shadow(0 0 10px rgba(212, 175, 55, 0.3)); }
+.feature-text { color: var(--cream); font-size: 1rem; font-weight: 500; }
 
-.feature-text {
-    color: var(--cream);
-    font-size: 1rem;
-    font-weight: 500;
-}
-
-/* ===== قسم التفاصيل المنسدلة - تصليح الكلام ===== */
+/* ===== قسم التفاصيل ===== */
 .details-section {
     background: linear-gradient(180deg, var(--royal-green) 0%, var(--forest) 50%, var(--royal-green) 100%);
     padding: 80px 20px;
-    position: relative;
 }
 
 .section-title {
@@ -510,10 +427,7 @@ header::before {
     border-radius: 2px;
 }
 
-.accordion-container {
-    max-width: 900px;
-    margin: 0 auto;
-}
+.accordion-container { max-width: 900px; margin: 0 auto; }
 
 .accordion-item {
     background: rgba(255,255,255,0.02);
@@ -524,10 +438,7 @@ header::before {
     transition: all 0.3s ease;
 }
 
-.accordion-item:hover {
-    border-color: rgba(212, 175, 55, 0.3);
-    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-}
+.accordion-item:hover { border-color: rgba(212, 175, 55, 0.3); box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
 
 .accordion-header {
     width: 100%;
@@ -543,24 +454,12 @@ header::before {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    transition: all 0.3s;
     white-space: nowrap;
 }
 
-.accordion-header i:first-child {
-    margin-left: 15px;
-    font-size: 1.3rem;
-}
-
-.accordion-header i:last-child {
-    color: var(--gold);
-    transition: transform 0.4s ease;
-    font-size: 1.1rem;
-}
-
-.accordion-item.active .accordion-header i:last-child {
-    transform: rotate(180deg);
-}
+.accordion-header i:first-child { margin-left: 15px; font-size: 1.3rem; }
+.accordion-header i:last-child { color: var(--gold); transition: transform 0.4s ease; font-size: 1.1rem; }
+.accordion-item.active .accordion-header i:last-child { transform: rotate(180deg); }
 
 .accordion-content {
     max-height: 0;
@@ -569,15 +468,9 @@ header::before {
     padding: 0 30px;
 }
 
-.accordion-item.active .accordion-content {
-    max-height: 1200px;
-    padding: 0 30px 30px;
-}
+.accordion-item.active .accordion-content { max-height: 1200px; padding: 0 30px 30px; }
 
-.accordion-content ul {
-    list-style: none;
-}
-
+.accordion-content ul { list-style: none; }
 .accordion-content ul li {
     padding: 18px 0;
     border-bottom: 1px solid rgba(212, 175, 55, 0.1);
@@ -588,24 +481,11 @@ header::before {
     line-height: 1.9;
     font-size: 1.05rem;
 }
+.accordion-content ul li:last-child { border-bottom: none; }
+.accordion-content ul li i { color: var(--gold); margin-top: 5px; font-size: 1rem; min-width: 20px; }
+.accordion-content ul li strong { color: var(--champagne); font-weight: 600; }
 
-.accordion-content ul li:last-child {
-    border-bottom: none;
-}
-
-.accordion-content ul li i {
-    color: var(--gold);
-    margin-top: 5px;
-    font-size: 1rem;
-    min-width: 20px;
-}
-
-.accordion-content ul li strong {
-    color: var(--champagne);
-    font-weight: 600;
-}
-
-/* ===== قسم العروض - تصليح الأسعار ===== */
+/* ===== قسم العروض ===== */
 .offers-section {
     background: linear-gradient(135deg, var(--forest) 0%, var(--royal-green) 50%, var(--forest) 100%);
     padding: 80px 20px;
@@ -622,10 +502,7 @@ header::before {
     background: linear-gradient(90deg, transparent, var(--gold), transparent);
 }
 
-.offers-header {
-    text-align: center;
-    margin-bottom: 40px;
-}
+.offers-header { text-align: center; margin-bottom: 40px; }
 
 .offers-badge {
     display: inline-block;
@@ -637,7 +514,6 @@ header::before {
     font-size: 1rem;
     margin-bottom: 20px;
     border: 2px solid var(--alert-red);
-    letter-spacing: 1px;
     animation: badgePulse 2s infinite;
 }
 
@@ -686,9 +562,7 @@ header::before {
     box-shadow: 0 20px 60px rgba(0,0,0,0.4), 0 0 40px rgba(212, 175, 55, 0.15);
 }
 
-.offer-card.best:hover {
-    transform: scale(1.05) translateY(-10px);
-}
+.offer-card.best:hover { transform: scale(1.05) translateY(-10px); }
 
 .best-tag {
     position: absolute;
@@ -701,7 +575,6 @@ header::before {
     border-radius: 20px;
     font-size: 0.85rem;
     font-weight: 800;
-    letter-spacing: 1px;
     white-space: nowrap;
 }
 
@@ -721,13 +594,7 @@ header::before {
     box-shadow: 0 0 25px rgba(212, 175, 55, 0.2);
 }
 
-.offer-name {
-    font-size: 1.3rem;
-    margin-bottom: 15px;
-    color: var(--cream);
-    font-weight: 600;
-    white-space: nowrap;
-}
+.offer-name { font-size: 1.3rem; margin-bottom: 15px; color: var(--cream); font-weight: 600; white-space: nowrap; }
 
 .price-row {
     margin: 25px 0;
@@ -757,10 +624,7 @@ header::before {
     flex-wrap: wrap;
 }
 
-.currency {
-    font-size: 1.4rem;
-    font-weight: 600;
-}
+.currency { font-size: 1.4rem; font-weight: 600; }
 
 .save-badge {
     background: rgba(220, 38, 38, 0.15);
@@ -788,7 +652,6 @@ header::before {
     transition: all 0.3s ease;
     margin-top: 25px;
     font-size: 1.15rem;
-    letter-spacing: 1px;
     white-space: nowrap;
 }
 
@@ -799,11 +662,10 @@ header::before {
     transform: translateY(-2px);
 }
 
-/* ===== قسم فيديوهات التجارب - تصليح العنوان ===== */
+/* ===== قسم الفيديوهات ===== */
 .videos-section {
     background: linear-gradient(180deg, var(--royal-green) 0%, var(--forest) 50%, var(--royal-green) 100%);
     padding: 80px 20px;
-    position: relative;
 }
 
 .videos-title {
@@ -831,16 +693,9 @@ header::before {
     padding: 0 60px;
 }
 
-.videos-wrapper {
-    overflow: hidden;
-    border-radius: 25px;
-}
+.videos-wrapper { overflow: hidden; border-radius: 25px; }
 
-.videos-track {
-    display: flex;
-    gap: 25px;
-    transition: transform 0.5s ease;
-}
+.videos-track { display: flex; gap: 25px; transition: transform 0.5s ease; }
 
 .video-card {
     min-width: calc(25% - 19px);
@@ -851,24 +706,11 @@ header::before {
     transition: all 0.4s ease;
 }
 
-.video-card:hover {
-    transform: translateY(-10px);
-    border-color: var(--gold);
-    box-shadow: 0 20px 40px rgba(0,0,0,0.3);
-}
+.video-card:hover { transform: translateY(-10px); border-color: var(--gold); box-shadow: 0 20px 40px rgba(0,0,0,0.3); }
 
-.video-wrapper {
-    position: relative;
-    aspect-ratio: 9/16;
-    overflow: hidden;
-}
+.video-wrapper { position: relative; aspect-ratio: 9/16; overflow: hidden; }
 
-.video-wrapper video {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-}
+.video-wrapper video { width: 100%; height: 100%; object-fit: cover; display: block; }
 
 .play-overlay {
     position: absolute;
@@ -882,9 +724,7 @@ header::before {
     z-index: 2;
 }
 
-.play-overlay:hover {
-    background: rgba(10, 31, 21, 0.3);
-}
+.play-overlay:hover { background: rgba(10, 31, 21, 0.3); }
 
 .play-icon {
     width: 55px;
@@ -899,16 +739,9 @@ header::before {
     border: 2px solid rgba(255,255,255,0.3);
 }
 
-.play-overlay:hover .play-icon {
-    transform: scale(1.1);
-    background: var(--gold);
-    box-shadow: 0 0 30px rgba(212, 175, 55, 0.6);
-}
+.play-overlay:hover .play-icon { transform: scale(1.1); background: var(--gold); box-shadow: 0 0 30px rgba(212, 175, 55, 0.6); }
 
-.video-card.playing .play-overlay {
-    opacity: 0;
-    pointer-events: none;
-}
+.video-card.playing .play-overlay { opacity: 0; pointer-events: none; }
 
 .video-carousel-btn {
     position: absolute;
@@ -928,19 +761,12 @@ header::before {
     justify-content: center;
 }
 
-.video-carousel-btn:hover {
-    background: var(--gold);
-    color: var(--royal-green);
-}
-
+.video-carousel-btn:hover { background: var(--gold); color: var(--royal-green); }
 .video-carousel-btn.prev { right: 0; }
 .video-carousel-btn.next { left: 0; }
 
-/* ===== الأسئلة المتكررة - تصليح العنوان ===== */
-.faq-section {
-    background: var(--forest);
-    padding: 80px 20px;
-}
+/* ===== الأسئلة المتكررة ===== */
+.faq-section { background: var(--forest); padding: 80px 20px; }
 
 .faq-title {
     text-align: center;
@@ -952,10 +778,7 @@ header::before {
     white-space: nowrap;
 }
 
-.faq-container {
-    max-width: 900px;
-    margin: 0 auto;
-}
+.faq-container { max-width: 900px; margin: 0 auto; }
 
 .faq-item {
     background: rgba(255,255,255,0.02);
@@ -966,9 +789,7 @@ header::before {
     transition: all 0.3s ease;
 }
 
-.faq-item:hover {
-    border-color: rgba(212, 175, 55, 0.3);
-}
+.faq-item:hover { border-color: rgba(212, 175, 55, 0.3); }
 
 .faq-question {
     width: 100%;
@@ -984,25 +805,13 @@ header::before {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    transition: all 0.3s;
     line-height: 1.6;
 }
 
-.faq-question:hover {
-    color: var(--gold);
-}
+.faq-question:hover { color: var(--gold); }
 
-.faq-question i {
-    color: var(--gold);
-    transition: transform 0.3s ease;
-    font-size: 1.1rem;
-    margin-right: 15px;
-    min-width: 20px;
-}
-
-.faq-item.active .faq-question i {
-    transform: rotate(180deg);
-}
+.faq-question i { color: var(--gold); transition: transform 0.3s ease; font-size: 1.1rem; margin-right: 15px; min-width: 20px; }
+.faq-item.active .faq-question i { transform: rotate(180deg); }
 
 .faq-answer {
     max-height: 0;
@@ -1014,16 +823,10 @@ header::before {
     font-size: 1.05rem;
 }
 
-.faq-item.active .faq-answer {
-    max-height: 500px;
-    padding: 0 30px 30px;
-}
+.faq-item.active .faq-answer { max-height: 500px; padding: 0 30px 30px; }
 
-/* ===== السوشيال ميديا ===== */
-.social-section {
-    padding: 60px 20px;
-    text-align: center;
-}
+/* ===== السوشيال ===== */
+.social-section { padding: 60px 20px; text-align: center; }
 
 .social-title {
     color: var(--gold);
@@ -1034,12 +837,7 @@ header::before {
     white-space: nowrap;
 }
 
-.social-links {
-    display: flex;
-    justify-content: center;
-    gap: 30px;
-    margin: 40px 0;
-}
+.social-links { display: flex; justify-content: center; gap: 30px; margin: 40px 0; }
 
 .social-links a {
     color: var(--gold);
@@ -1055,11 +853,7 @@ header::before {
     border: 1px solid rgba(212, 175, 55, 0.3);
 }
 
-.social-links a:hover {
-    transform: translateY(-5px);
-    background: rgba(212, 175, 55, 0.1);
-    box-shadow: 0 10px 30px rgba(212, 175, 55, 0.2);
-}
+.social-links a:hover { transform: translateY(-5px); background: rgba(212, 175, 55, 0.1); box-shadow: 0 10px 30px rgba(212, 175, 55, 0.2); }
 
 /* ===== عداد الزوار ===== */
 .visitor-counter {
@@ -1078,23 +872,9 @@ header::before {
     backdrop-filter: blur(10px);
 }
 
-.visitor-counter i {
-    color: var(--gold);
-    font-size: 1.3rem;
-}
-
-.visitor-counter span {
-    color: var(--cream);
-    font-weight: 500;
-    font-size: 0.95rem;
-    white-space: nowrap;
-}
-
-.visitor-count {
-    color: var(--gold);
-    font-weight: 700;
-    font-size: 1.2rem;
-}
+.visitor-counter i { color: var(--gold); font-size: 1.3rem; }
+.visitor-counter span { color: var(--cream); font-weight: 500; font-size: 0.95rem; white-space: nowrap; }
+.visitor-count { color: var(--gold); font-weight: 700; font-size: 1.2rem; }
 
 /* ===== التوقيع ===== */
 .designer-signature {
@@ -1114,56 +894,23 @@ header::before {
     border-radius: 15px;
 }
 
-.designer-signature a:hover {
-    background: rgba(212, 175, 55, 0.1);
-    transform: translateY(-3px);
-}
+.designer-signature a:hover { background: rgba(212, 175, 55, 0.1); transform: translateY(-3px); }
 
-.designer-signature p {
-    color: var(--gold);
-    font-size: 0.9rem;
-    font-weight: 300;
-    letter-spacing: 3px;
-    margin-bottom: 8px;
-    text-transform: uppercase;
-    white-space: nowrap;
-}
+.designer-signature p { color: var(--gold); font-size: 0.9rem; font-weight: 300; letter-spacing: 3px; margin-bottom: 8px; text-transform: uppercase; white-space: nowrap; }
+.designer-signature .name { font-weight: 700; font-size: 1.4rem; color: var(--cream); display: block; margin-top: 10px; font-family: 'Libre Baskerville', serif; white-space: nowrap; }
+.designer-signature i { color: var(--gold); margin: 0 8px; }
+.designer-signature .link-hint { font-size: 0.85rem; color: rgba(212, 175, 55, 0.6); margin-top: 10px; display: block; white-space: nowrap; }
 
-.designer-signature .name {
-    font-weight: 700;
-    font-size: 1.4rem;
-    color: var(--cream);
-    display: block;
-    margin-top: 10px;
-    font-family: 'Libre Baskerville', serif;
-    white-space: nowrap;
-}
-
-.designer-signature i {
-    color: var(--gold);
-    margin: 0 8px;
-}
-
-.designer-signature .link-hint {
-    font-size: 0.85rem;
-    color: rgba(212, 175, 55, 0.6);
-    margin-top: 10px;
-    display: block;
-    white-space: nowrap;
-}
-
-footer {
-    padding: 40px;
-    text-align: center;
-    background: var(--royal-green);
-    color: #888;
-    border-top: 1px solid rgba(212, 175, 55, 0.1);
-    font-size: 0.95rem;
-}
+footer { padding: 40px; text-align: center; background: var(--royal-green); color: #888; border-top: 1px solid rgba(212, 175, 55, 0.1); font-size: 0.95rem; }
 
 /* ===== Responsive ===== */
 @media (max-width: 768px) {
-    .alert-bar { font-size: 0.95rem; padding: 15px 10px; }
+    .alert-bar { font-size: 0.9rem; padding: 15px 10px; }
+    .images-wrapper { height: 70vh; min-height: 400px; }
+    .carousel-btn { width: 50px; height: 50px; font-size: 1.2rem; right: 15px; left: 15px; }
+    .carousel-btn.prev { right: 15px; }
+    .carousel-btn.next { left: 15px; }
+    .carousel-image { padding: 10px; }
     .offers-grid { grid-template-columns: 1fr; }
     .offer-card.best { transform: scale(1); order: -1; }
     .offer-card.best:hover { transform: scale(1) translateY(-10px); }
@@ -1175,39 +922,34 @@ footer {
     .teaser-title { font-size: 1.7rem; }
     .product-title { font-size: 2.2rem; }
     .section-title, .videos-title, .faq-title, .offers-title { font-size: 1.9rem; }
-    .images-carousel-container { padding: 0 50px; }
-    .carousel-btn { width: 40px; height: 40px; }
-    .carousel-image { padding: 5px; }
     .current-price { font-size: 2rem; }
     .quantity { width: 65px; height: 65px; font-size: 1.7rem; }
 }
 
 @media (max-width: 480px) {
+    .images-wrapper { height: 60vh; min-height: 350px; }
+    .carousel-btn { width: 45px; height: 45px; font-size: 1rem; }
     .video-card { min-width: 100%; }
     .product-title { font-size: 1.9rem; }
     .section-title, .videos-title, .faq-title, .offers-title { font-size: 1.6rem; }
     .main-logo-img { max-width: 280px; }
-    .images-wrapper { aspect-ratio: 4/3; }
     .accordion-content ul li { font-size: 0.95rem; }
     .faq-answer { font-size: 0.95rem; }
     .current-price { font-size: 1.8rem; }
     .currency { font-size: 1.2rem; }
     .offer-name { font-size: 1.1rem; }
-    .alert-bar { font-size: 0.85rem; }
+    .alert-bar { font-size: 0.8rem; }
 }
 </style>
 </head>
 
 <body>
 
-<!-- ===== شريط التحذير الأحمر ===== -->
-<div class="alert-bar">
-    ⚠️ تنبيه هام: الكمية محدودة جداً - احجزي الآن قبل نفاد المخزون ⚠️
-</div>
+<div class="alert-bar">⚠️ تنبيه هام: الكمية محدودة جداً - احجزي الآن قبل نفاد المخزون ⚠️</div>
 
 <div class="delivery-bar">🚚 توصيل مجاني لكل المحافظات اليوم فقط 🌿</div>
 
-<!-- ===== سيكشن التشويق ===== -->
+<!-- ===== التشويق ===== -->
 <section class="teaser-section">
     <div class="teaser-badge">
         <i class="fas fa-plane"></i>
@@ -1232,10 +974,8 @@ footer {
     </div>
 </header>
 
-<!-- ===== Carousel للصور ===== -->
+<!-- ===== Carousel للصور - كبير ===== -->
 <section class="images-carousel-section">
-    <h2 class="section-title">صور المنتج</h2>
-    
     <div class="images-carousel-container">
         <button class="carousel-btn prev" onclick="moveImagesCarousel(-1)">
             <i class="fas fa-chevron-right"></i>
@@ -1267,7 +1007,7 @@ footer {
     </div>
 </section>
 
-<!-- ===== السكشن الرئيسي ===== -->
+<!-- ===== المحتوى ===== -->
 <section class="hero-section">
     <div class="testimonial-box">
         <p class="testimonial-text">"فعلاً قناع رهيب! صحّيت ووجهي أطرى وأنعم وفيه لمعة Glass Skin حلوة كتير."</p>
@@ -1281,22 +1021,10 @@ footer {
     </div>
 
     <div class="features-grid">
-        <div class="feature-item">
-            <div class="feature-icon">✨</div>
-            <div class="feature-text">نضارة زجاجية فورية</div>
-        </div>
-        <div class="feature-item">
-            <div class="feature-icon">🌙</div>
-            <div class="feature-text">ثبات كامل أثناء النوم</div>
-        </div>
-        <div class="feature-item">
-            <div class="feature-icon">💎</div>
-            <div class="feature-text">شدّ وتقليل الخطوط</div>
-        </div>
-        <div class="feature-item">
-            <div class="feature-icon">💧</div>
-            <div class="feature-text">ترطيب هيدروجيل مكثف</div>
-        </div>
+        <div class="feature-item"><div class="feature-icon">✨</div><div class="feature-text">نضارة زجاجية فورية</div></div>
+        <div class="feature-item"><div class="feature-icon">🌙</div><div class="feature-text">ثبات كامل أثناء النوم</div></div>
+        <div class="feature-item"><div class="feature-icon">💎</div><div class="feature-text">شدّ وتقليل الخطوط</div></div>
+        <div class="feature-item"><div class="feature-icon">💧</div><div class="feature-text">ترطيب هيدروجيل مكثف</div></div>
     </div>
 </section>
 
@@ -1315,7 +1043,7 @@ footer {
     </div>
 </section>
 
-<!-- ===== قسم التفاصيل المنسدلة ===== -->
+<!-- ===== التفاصيل ===== -->
 <section class="details-section">
     <h2 class="section-title">تفاصيل المنتج</h2>
     
@@ -1373,7 +1101,7 @@ footer {
     </div>
 </section>
 
-<!-- ===== قسم العروض ===== -->
+<!-- ===== العروض ===== -->
 <section class="offers-section">
     <div class="offers-header">
         <div class="offers-badge">🔥 عروض محدودة</div>
@@ -1417,7 +1145,7 @@ footer {
     </div>
 </section>
 
-<!-- ===== قسم فيديوهات التجارب ===== -->
+<!-- ===== الفيديوهات ===== -->
 <section class="videos-section">
     <h2 class="videos-title">آراء عملائنا</h2>
     <p class="videos-subtitle">شوفي بنفسك النتائج المذهلة بعد استخدام قناع نيليانا</p>
@@ -1470,7 +1198,7 @@ footer {
     </div>
 </section>
 
-<!-- ===== الأسئلة المتكررة ===== -->
+<!-- ===== الأسئلة ===== -->
 <section class="faq-section">
     <h2 class="faq-title">الأسئلة المتكررة</h2>
     
@@ -1527,16 +1255,12 @@ footer {
     </div>
 </section>
 
-<!-- ===== السوشيال ميديا ===== -->
+<!-- ===== السوشيال ===== -->
 <section class="social-section">
     <h3 class="social-title">تابعينا لمعرفة جديدنا</h3>
     <div class="social-links">
-        <a href="https://www.facebook.com/share/1DmqQysbE4/" target="_blank">
-            <i class="fab fa-facebook-f"></i>
-        </a>
-        <a href="https://www.instagram.com/niliana.eg" target="_blank">
-            <i class="fab fa-instagram"></i>
-        </a>
+        <a href="https://www.facebook.com/share/1DmqQysbE4/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://www.instagram.com/niliana.eg" target="_blank"><i class="fab fa-instagram"></i></a>
     </div>
 </section>
 
@@ -1568,7 +1292,6 @@ let imagesAutoPlayInterval;
 
 function updateImagesCarousel() {
     imagesTrack.style.transform = `translateX(${currentImageIndex * 100}%)`;
-    
     document.querySelectorAll('.dot').forEach((dot, index) => {
         dot.classList.toggle('active', index === currentImageIndex);
     });
@@ -1611,28 +1334,16 @@ document.querySelector('.images-wrapper').addEventListener('mouseleave', () => {
 function toggleAccordion(element) {
     const item = element.parentElement;
     const isActive = item.classList.contains('active');
-    
-    document.querySelectorAll('.accordion-item').forEach(acc => {
-        acc.classList.remove('active');
-    });
-    
-    if (!isActive) {
-        item.classList.add('active');
-    }
+    document.querySelectorAll('.accordion-item').forEach(acc => acc.classList.remove('active'));
+    if (!isActive) item.classList.add('active');
 }
 
 // ===== FAQ =====
 function toggleFaq(element) {
     const item = element.parentElement;
     const isActive = item.classList.contains('active');
-    
-    document.querySelectorAll('.faq-item').forEach(faq => {
-        faq.classList.remove('active');
-    });
-    
-    if (!isActive) {
-        item.classList.add('active');
-    }
+    document.querySelectorAll('.faq-item').forEach(faq => faq.classList.remove('active'));
+    if (!isActive) item.classList.add('active');
 }
 
 // ===== Video Carousel =====
