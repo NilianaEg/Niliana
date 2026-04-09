@@ -380,7 +380,7 @@ header {
 
 .feature-icon { font-size: 1.8rem; margin-bottom: 10px; }
 
-/* ===== Aesthetic Images Section ===== */
+/* ===== Aesthetic Images Section - FIXED ===== */
 .aesthetic-section {
     padding: 60px 20px;
     background: linear-gradient(180deg, var(--royal-green) 0%, var(--forest) 100%);
@@ -390,7 +390,7 @@ header {
     display: grid;
     grid-template-columns: 1fr;
     gap: 30px;
-    max-width: 1200px;
+    max-width: 1000px;
     margin: 0 auto;
 }
 
@@ -401,7 +401,7 @@ header {
 }
 
 .aesthetic-card {
-    background: rgba(255,255,255,0.02);
+    background: rgba(255,255,255,0.03);
     border: 1px solid rgba(212, 175, 55, 0.2);
     border-radius: 20px;
     overflow: hidden;
@@ -414,11 +414,26 @@ header {
     border-color: var(--gold);
 }
 
-.aesthetic-image {
+/* ===== الصور كاملة بدون قص ===== */
+.aesthetic-image-wrapper {
     width: 100%;
-    height: 250px;
-    object-fit: cover;
+    background: linear-gradient(135deg, var(--forest) 0%, var(--emerald-deep) 50%, var(--forest) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    min-height: 300px;
+}
+
+.aesthetic-image {
+    max-width: 100%;
+    max-height: 400px;
+    width: auto;
+    height: auto;
+    object-fit: contain;
     display: block;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
 }
 
 .aesthetic-content {
@@ -428,7 +443,7 @@ header {
 
 .aesthetic-title {
     font-family: 'Libre Baskerville', serif;
-    font-size: 1.3rem;
+    font-size: 1.4rem;
     color: var(--gold);
     margin-bottom: 10px;
 }
@@ -436,7 +451,7 @@ header {
 .aesthetic-desc {
     color: var(--sage);
     font-size: 1rem;
-    line-height: 1.6;
+    line-height: 1.7;
 }
 
 /* ===== التفاصيل ===== */
@@ -995,7 +1010,8 @@ footer {
     .offer-card.best { transform: scale(1); }
     .current-price { font-size: 1.6rem; }
     .product-main-image { max-width: 320px; }
-    .aesthetic-image { height: 200px; }
+    .aesthetic-image-wrapper { min-height: 250px; padding: 15px; }
+    .aesthetic-image { max-height: 300px; }
     .social-links a { width: 50px; height: 50px; font-size: 1.3rem; }
 }
 </style>
@@ -1104,13 +1120,15 @@ footer {
     </div>
 </section>
 
-<!-- ===== Aesthetic Images Section ===== -->
+<!-- ===== Aesthetic Images Section - FIXED ===== -->
 <section class="aesthetic-section">
     <h2 class="section-title">تجربة فاخرة في كل تفصيلة</h2>
     
     <div class="aesthetic-grid">
         <div class="aesthetic-card">
-            <img src="images/aesthetic.jpg" alt="Aesthetic" class="aesthetic-image">
+            <div class="aesthetic-image-wrapper">
+                <img src="images/aesthetic.jpg" alt="Aesthetic" class="aesthetic-image">
+            </div>
             <div class="aesthetic-content">
                 <h3 class="aesthetic-title">فن الجمال الكوري</h3>
                 <p class="aesthetic-desc">تصميم أنيق يليق بملكات الجمال، يجمع بين البساطة والفخامة في كل قطرة</p>
@@ -1118,7 +1136,9 @@ footer {
         </div>
 
         <div class="aesthetic-card">
-            <img src="images/branding.jpg" alt="Branding" class="aesthetic-image">
+            <div class="aesthetic-image-wrapper">
+                <img src="images/branding.jpg" alt="Branding" class="aesthetic-image">
+            </div>
             <div class="aesthetic-content">
                 <h3 class="aesthetic-title">هوية فاخرة</h3>
                 <p class="aesthetic-desc">توقيعكِ الخاص بالعناية الملكية، يعكس ذوقكِ الرفيع في اختيار الأفضل</p>
@@ -1126,7 +1146,9 @@ footer {
         </div>
 
         <div class="aesthetic-card">
-            <img src="images/usage.png" alt="Usage" class="aesthetic-image">
+            <div class="aesthetic-image-wrapper">
+                <img src="images/usage.png" alt="Usage" class="aesthetic-image">
+            </div>
             <div class="aesthetic-content">
                 <h3 class="aesthetic-title">لحظات سحرية</h3>
                 <p class="aesthetic-desc">رحلة استخدام فريدة تبدأ بلمسة ناعمة وتنتهي ببشرة كالحرير</p>
@@ -1134,7 +1156,9 @@ footer {
         </div>
 
         <div class="aesthetic-card">
-            <img src="images/water-drop-blended.jpg" alt="Water Drop" class="aesthetic-image">
+            <div class="aesthetic-image-wrapper">
+                <img src="images/water-drop-blended.jpg" alt="Water Drop" class="aesthetic-image">
+            </div>
             <div class="aesthetic-content">
                 <h3 class="aesthetic-title">نقاء عميق</h3>
                 <p class="aesthetic-desc">ترطيب يصل لأعماق البشرة، كأنكِ غطستي في نبع من الشباب والنضارة</p>
