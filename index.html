@@ -124,7 +124,7 @@ body {
     backdrop-filter: blur(5px);
 }
 
-/* ===== الهيدر ===== */
+/* ===== الهيدر مع Animation للشعار ===== */
 header {
     background: linear-gradient(180deg, var(--forest) 0%, var(--royal-green) 100%);
     padding: 70px 20px 50px;
@@ -162,6 +162,7 @@ header::before {
     display: inline-block;
     max-width: 500px;
     width: 90%;
+    perspective: 1000px;
 }
 
 .main-logo-img {
@@ -172,11 +173,40 @@ header::before {
     margin: 0 auto;
     border-radius: 20px;
     filter: drop-shadow(0 0 40px rgba(212, 175, 55, 0.3));
-    transition: transform 0.5s ease;
+    animation: logoEntrance 1.5s ease-out forwards, logoFloat 4s ease-in-out infinite 1.5s;
+    transform-style: preserve-3d;
 }
 
-.main-logo-img:hover {
-    transform: scale(1.02);
+@keyframes logoEntrance {
+    0% {
+        opacity: 0;
+        transform: translateY(-50px) rotateX(-15deg) scale(0.8);
+        filter: drop-shadow(0 0 0 transparent);
+    }
+    50% {
+        opacity: 0.8;
+        transform: translateY(10px) rotateX(5deg) scale(1.02);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) rotateX(0) scale(1);
+        filter: drop-shadow(0 0 40px rgba(212, 175, 55, 0.3));
+    }
+}
+
+@keyframes logoFloat {
+    0%, 100% {
+        transform: translateY(0) rotateY(0deg);
+    }
+    25% {
+        transform: translateY(-8px) rotateY(2deg);
+    }
+    50% {
+        transform: translateY(-5px) rotateY(0deg);
+    }
+    75% {
+        transform: translateY(-8px) rotateY(-2deg);
+    }
 }
 
 .logo-underline {
@@ -184,6 +214,14 @@ header::before {
     height: 2px;
     background: linear-gradient(90deg, transparent, var(--gold), transparent);
     margin: 25px auto 0;
+    animation: underlineExpand 1s ease-out 0.5s forwards;
+    transform: scaleX(0);
+}
+
+@keyframes underlineExpand {
+    to {
+        transform: scaleX(1);
+    }
 }
 
 .logo-subtitle {
@@ -192,8 +230,108 @@ header::before {
     letter-spacing: 8px;
     text-transform: uppercase;
     margin-top: 20px;
-    opacity: 0.7;
+    opacity: 0;
     font-weight: 300;
+    animation: fadeInUp 0.8s ease-out 1s forwards;
+}
+
+@keyframes fadeInUp {
+    to {
+        opacity: 0.7;
+        transform: translateY(0);
+    }
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+}
+
+/* ===== Carousel للصور ===== */
+.images-carousel-section {
+    background: var(--royal-green);
+    padding: 60px 20px;
+    position: relative;
+}
+
+.images-carousel-container {
+    max-width: 900px;
+    margin: 0 auto;
+    position: relative;
+    padding: 0 60px;
+}
+
+.images-wrapper {
+    overflow: hidden;
+    border-radius: 25px;
+    border: 2px solid rgba(212, 175, 55, 0.2);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+}
+
+.images-track {
+    display: flex;
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.carousel-image {
+    min-width: 100%;
+    height: 500px;
+    object-fit: cover;
+    display: block;
+}
+
+.carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 50px;
+    height: 50px;
+    background: rgba(212, 175, 55, 0.2);
+    border: 2px solid var(--gold);
+    border-radius: 50%;
+    color: var(--gold);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+}
+
+.carousel-btn:hover {
+    background: var(--gold);
+    color: var(--royal-green);
+    transform: translateY(-50%) scale(1.1);
+}
+
+.carousel-btn.prev { right: 0; }
+.carousel-btn.next { left: 0; }
+
+.carousel-dots {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 25px;
+}
+
+.dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: rgba(212, 175, 55, 0.3);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 1px solid transparent;
+}
+
+.dot.active {
+    background: var(--gold);
+    transform: scale(1.2);
+    box-shadow: 0 0 15px rgba(212, 175, 55, 0.5);
+}
+
+.dot:hover {
+    background: rgba(212, 175, 55, 0.6);
 }
 
 /* ===== السكشن الرئيسي ===== */
@@ -685,7 +823,7 @@ header::before {
     pointer-events: none;
 }
 
-.carousel-btn {
+.video-carousel-btn {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
@@ -703,13 +841,13 @@ header::before {
     justify-content: center;
 }
 
-.carousel-btn:hover {
+.video-carousel-btn:hover {
     background: var(--gold);
     color: var(--royal-green);
 }
 
-.carousel-btn.prev { right: 0; }
-.carousel-btn.next { left: 0; }
+.video-carousel-btn.prev { right: 0; }
+.video-carousel-btn.next { left: 0; }
 
 /* ===== الأسئلة المتكررة ===== */
 .faq-section {
@@ -917,6 +1055,8 @@ footer {
     .teaser-title { font-size: 1.7rem; }
     .product-title { font-size: 2.2rem; }
     .section-title { font-size: 2rem; }
+    .carousel-image { height: 350px; }
+    .images-carousel-container { padding: 0 40px; }
 }
 
 @media (max-width: 480px) {
@@ -924,6 +1064,7 @@ footer {
     .product-title { font-size: 1.9rem; }
     .section-title { font-size: 1.7rem; }
     .main-logo-img { max-width: 280px; }
+    .carousel-image { height: 250px; }
 }
 </style>
 </head>
@@ -948,6 +1089,7 @@ footer {
     </div>
 </section>
 
+<!-- ===== الهيدر مع Animation للشعار ===== -->
 <header>
     <div class="logo-container">
         <img src="images/logo.jpg" alt="Niliana" class="main-logo-img">
@@ -956,13 +1098,49 @@ footer {
     </div>
 </header>
 
+<!-- ===== Carousel للصور ===== -->
+<section class="images-carousel-section">
+    <h2 class="section-title">صور المنتج</h2>
+    
+    <div class="images-carousel-container">
+        <button class="carousel-btn prev" onclick="moveImagesCarousel(-1)">
+            <i class="fas fa-chevron-right"></i>
+        </button>
+        
+        <div class="images-wrapper">
+            <div class="images-track" id="imagesTrack">
+                <img src="images/new1.jpg" alt="Niliana 1" class="carousel-image">
+                <img src="images/new2.jpg" alt="Niliana 2" class="carousel-image">
+                <img src="images/new3.jpeg" alt="Niliana 3" class="carousel-image">
+                <img src="images/new4.jpeg" alt="Niliana 4" class="carousel-image">
+                <img src="images/new5.png" alt="Niliana 5" class="carousel-image">
+                <img src="images/new6.png" alt="Niliana 6" class="carousel-image">
+            </div>
+        </div>
+        
+        <button class="carousel-btn next" onclick="moveImagesCarousel(1)">
+            <i class="fas fa-chevron-left"></i>
+        </button>
+    </div>
+    
+    <div class="carousel-dots" id="carouselDots">
+        <span class="dot active" onclick="goToImage(0)"></span>
+        <span class="dot" onclick="goToImage(1)"></span>
+        <span class="dot" onclick="goToImage(2)"></span>
+        <span class="dot" onclick="goToImage(3)"></span>
+        <span class="dot" onclick="goToImage(4)"></span>
+        <span class="dot" onclick="goToImage(5)"></span>
+    </div>
+</section>
+
+<!-- ===== السكشن الرئيسي ===== -->
 <section class="hero-section">
     <div class="testimonial-box">
         <p class="testimonial-text">"فعلاً قناع رهيب! صحّيت ووجهي أطرى وأنعم وفيه لمعة Glass Skin حلوة كتير."</p>
     </div>
 
     <h2 class="product-title">قناع الكولاجين الكوري</h2>
-    <p style="color: #aaa;">السرّ لترطيب عميق ونضارة فورية من أول ليلة</p>
+    <p style="color: #aaa; font-size: 1.1rem; margin-bottom: 30px;">السرّ لترطيب عميق ونضارة فورية من أول ليلة</p>
 
     <div class="product-showcase">
         <img src="images/product-main.jpg" alt="Niliana Mask" class="product-image">
@@ -982,7 +1160,7 @@ footer {
 
 <section class="hero-section" style="padding-top:0;">
     <h3 style="color: var(--gold); font-size: 2rem; margin-bottom: 25px; font-family: 'Libre Baskerville', serif;">لماذا تختارين نيليانا؟</h3>
-    <p style="max-width: 600px; margin: 0 auto; color: #aaa;">
+    <p style="max-width: 600px; margin: 0 auto; color: #aaa; font-size: 1.1rem; line-height: 2;">
         تصميم القناع يسمح لبشرتك بامتصاص السيروم تدريجياً، ليعطيكِ مظهر النضارة الطبيعي وكأنكِ في جلسة سبا محترفة في منزلك.
     </p>
     
@@ -1099,7 +1277,7 @@ footer {
     <p style="text-align: center; color: #888; margin-bottom: 50px; font-style: italic;">شوفي بنفسك النتائج المذهلة بعد استخدام قناع نيليانا</p>
     
     <div class="videos-carousel-container">
-        <button class="carousel-btn prev" onclick="moveCarousel(-1)">
+        <button class="video-carousel-btn prev" onclick="moveVideoCarousel(-1)">
             <i class="fas fa-chevron-right"></i>
         </button>
         
@@ -1140,7 +1318,7 @@ footer {
             </div>
         </div>
         
-        <button class="carousel-btn next" onclick="moveCarousel(1)">
+        <button class="video-carousel-btn next" onclick="moveVideoCarousel(1)">
             <i class="fas fa-chevron-left"></i>
         </button>
     </div>
@@ -1235,6 +1413,59 @@ footer {
 </div>
 
 <script>
+// ===== Animation للشعار =====
+// Already handled by CSS animations on page load
+
+// ===== Carousel للصور =====
+let currentImageIndex = 0;
+const imagesTrack = document.getElementById('imagesTrack');
+const totalImages = 6;
+let imagesAutoPlayInterval;
+
+function updateImagesCarousel() {
+    imagesTrack.style.transform = `translateX(${currentImageIndex * 100}%)`;
+    
+    // Update dots
+    document.querySelectorAll('.dot').forEach((dot, index) => {
+        dot.classList.toggle('active', index === currentImageIndex);
+    });
+}
+
+function moveImagesCarousel(direction) {
+    currentImageIndex = (currentImageIndex + direction + totalImages) % totalImages;
+    updateImagesCarousel();
+    resetImagesAutoPlay();
+}
+
+function goToImage(index) {
+    currentImageIndex = index;
+    updateImagesCarousel();
+    resetImagesAutoPlay();
+}
+
+function startImagesAutoPlay() {
+    imagesAutoPlayInterval = setInterval(() => {
+        moveImagesCarousel(1);
+    }, 4000); // Change every 4 seconds
+}
+
+function resetImagesAutoPlay() {
+    clearInterval(imagesAutoPlayInterval);
+    startImagesAutoPlay();
+}
+
+// Start autoplay on page load
+startImagesAutoPlay();
+
+// Pause on hover
+document.querySelector('.images-wrapper').addEventListener('mouseenter', () => {
+    clearInterval(imagesAutoPlayInterval);
+});
+
+document.querySelector('.images-wrapper').addEventListener('mouseleave', () => {
+    startImagesAutoPlay();
+});
+
 // ===== أكورديون الفوائد والمكونات =====
 function toggleAccordion(element) {
     const item = element.parentElement;
@@ -1303,15 +1534,15 @@ function showNotification(message) {
     }, 4000);
 }
 
-// ===== Carousel =====
-let currentIndex = 0;
-const track = document.getElementById('videosTrack');
-const cards = document.querySelectorAll('.video-card');
+// ===== Video Carousel =====
+let currentVideoIndex = 0;
+const videosTrack = document.getElementById('videosTrack');
+const videoCards = document.querySelectorAll('.video-card');
 
-function moveCarousel(dir) {
-    const maxIndex = cards.length - (window.innerWidth <= 768 ? 2 : 4);
-    currentIndex = Math.max(0, Math.min(maxIndex, currentIndex + dir));
-    track.style.transform = `translateX(${currentIndex * (cards[0].offsetWidth + 25)}px)`;
+function moveVideoCarousel(direction) {
+    const maxIndex = videoCards.length - (window.innerWidth <= 768 ? 2 : 4);
+    currentVideoIndex = Math.max(0, Math.min(maxIndex, currentVideoIndex + direction));
+    videosTrack.style.transform = `translateX(${currentVideoIndex * (videoCards[0].offsetWidth + 25)}px)`;
 }
 
 function toggleVideo(overlay) {
