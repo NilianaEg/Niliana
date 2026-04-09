@@ -18,6 +18,8 @@
     --sage: #9caf88;
     --cream: #faf8f5;
     --leaf: #4a7c59;
+    --alert-red: #dc2626;
+    --alert-dark: #991b1b;
 }
 
 * {
@@ -34,14 +36,37 @@ body {
     line-height: 1.8;
 }
 
-/* ===== شريط التوصيل المجاني ===== */
+/* ===== شريط التحذير الأحمر ===== */
+.alert-bar {
+    background: linear-gradient(90deg, var(--alert-dark), var(--alert-red), var(--alert-dark));
+    color: #ffffff;
+    text-align: center;
+    padding: 18px 20px;
+    font-weight: 700;
+    font-size: 1.1rem;
+    border-bottom: 3px solid #fca5a5;
+    letter-spacing: 1px;
+    animation: alertPulse 2s infinite;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+@keyframes alertPulse {
+    0%, 100% { 
+        background: linear-gradient(90deg, var(--alert-dark), var(--alert-red), var(--alert-dark));
+    }
+    50% { 
+        background: linear-gradient(90deg, #b91c1c, #ef4444, #b91c1c);
+    }
+}
+
+/* ===== شريط التوصيل ===== */
 .delivery-bar {
     background: linear-gradient(90deg, var(--forest), var(--emerald-deep), var(--forest));
     color: var(--gold);
     text-align: center;
     padding: 15px;
     font-weight: 600;
-    font-size: 0.95rem;
+    font-size: 1rem;
     border-bottom: 1px solid rgba(212, 175, 55, 0.3);
     letter-spacing: 1px;
 }
@@ -112,19 +137,25 @@ body {
     display: inline-flex;
     align-items: center;
     gap: 12px;
-    background: rgba(10, 31, 21, 0.6);
-    border: 1px solid var(--gold);
+    background: rgba(220, 38, 38, 0.2);
+    border: 2px solid var(--alert-red);
     padding: 15px 35px;
     border-radius: 30px;
     font-size: 1.1rem;
-    color: var(--champagne);
-    font-weight: 600;
+    color: #ffffff;
+    font-weight: 700;
     position: relative;
     z-index: 1;
     backdrop-filter: blur(5px);
+    animation: urgentGlow 2s infinite;
 }
 
-/* ===== الهيدر مع Animation للشعار ===== */
+@keyframes urgentGlow {
+    0%, 100% { box-shadow: 0 0 10px rgba(220, 38, 38, 0.3); }
+    50% { box-shadow: 0 0 25px rgba(220, 38, 38, 0.6); }
+}
+
+/* ===== الهيدر ===== */
 header {
     background: linear-gradient(180deg, var(--forest) 0%, var(--royal-green) 100%);
     padding: 70px 20px 50px;
@@ -195,18 +226,10 @@ header::before {
 }
 
 @keyframes logoFloat {
-    0%, 100% {
-        transform: translateY(0) rotateY(0deg);
-    }
-    25% {
-        transform: translateY(-8px) rotateY(2deg);
-    }
-    50% {
-        transform: translateY(-5px) rotateY(0deg);
-    }
-    75% {
-        transform: translateY(-8px) rotateY(-2deg);
-    }
+    0%, 100% { transform: translateY(0) rotateY(0deg); }
+    25% { transform: translateY(-8px) rotateY(2deg); }
+    50% { transform: translateY(-5px) rotateY(0deg); }
+    75% { transform: translateY(-8px) rotateY(-2deg); }
 }
 
 .logo-underline {
@@ -219,14 +242,12 @@ header::before {
 }
 
 @keyframes underlineExpand {
-    to {
-        transform: scaleX(1);
-    }
+    to { transform: scaleX(1); }
 }
 
 .logo-subtitle {
     color: var(--sage);
-    font-size: 0.85rem;
+    font-size: 0.9rem;
     letter-spacing: 8px;
     text-transform: uppercase;
     margin-top: 20px;
@@ -236,17 +257,11 @@ header::before {
 }
 
 @keyframes fadeInUp {
-    to {
-        opacity: 0.7;
-        transform: translateY(0);
-    }
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
+    to { opacity: 0.7; transform: translateY(0); }
+    from { opacity: 0; transform: translateY(20px); }
 }
 
-/* ===== Carousel للصور ===== */
+/* ===== Carousel للصور - تصليح العرض ===== */
 .images-carousel-section {
     background: var(--royal-green);
     padding: 60px 20px;
@@ -254,29 +269,35 @@ header::before {
 }
 
 .images-carousel-container {
-    max-width: 900px;
+    max-width: 1000px;
     margin: 0 auto;
     position: relative;
-    padding: 0 60px;
+    padding: 0 70px;
 }
 
 .images-wrapper {
     overflow: hidden;
-    border-radius: 25px;
+    border-radius: 20px;
     border: 2px solid rgba(212, 175, 55, 0.2);
     box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+    background: var(--forest);
+    aspect-ratio: 16/10;
+    position: relative;
 }
 
 .images-track {
     display: flex;
+    height: 100%;
     transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .carousel-image {
     min-width: 100%;
-    height: 500px;
-    object-fit: cover;
+    height: 100%;
+    object-fit: contain;
     display: block;
+    padding: 10px;
+    background: var(--forest);
 }
 
 .carousel-btn {
@@ -304,30 +325,32 @@ header::before {
     transform: translateY(-50%) scale(1.1);
 }
 
-.carousel-btn.prev { right: 0; }
-.carousel-btn.next { left: 0; }
+.carousel-btn.prev { right: 10px; }
+.carousel-btn.next { left: 10px; }
 
 .carousel-dots {
     display: flex;
     justify-content: center;
     gap: 12px;
     margin-top: 25px;
+    flex-wrap: wrap;
 }
 
 .dot {
-    width: 12px;
-    height: 12px;
+    width: 14px;
+    height: 14px;
     border-radius: 50%;
     background: rgba(212, 175, 55, 0.3);
     cursor: pointer;
     transition: all 0.3s ease;
-    border: 1px solid transparent;
+    border: 2px solid transparent;
 }
 
 .dot.active {
     background: var(--gold);
     transform: scale(1.2);
     box-shadow: 0 0 15px rgba(212, 175, 55, 0.5);
+    border-color: var(--champagne);
 }
 
 .dot:hover {
@@ -347,7 +370,7 @@ header::before {
     border: 1px solid rgba(212, 175, 55, 0.2);
     border-radius: 25px;
     padding: 35px;
-    max-width: 600px;
+    max-width: 700px;
     margin: 0 auto 50px;
     backdrop-filter: blur(10px);
     position: relative;
@@ -365,10 +388,11 @@ header::before {
 }
 
 .testimonial-text {
-    font-size: 1.15rem;
+    font-size: 1.2rem;
     color: var(--cream);
     font-style: italic;
     line-height: 2;
+    font-weight: 500;
 }
 
 .product-title {
@@ -378,6 +402,13 @@ header::before {
     margin-bottom: 20px;
     font-weight: 700;
     letter-spacing: 1px;
+}
+
+.product-subtitle {
+    color: #aaa;
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+    font-weight: 400;
 }
 
 /* ===== صور المنتج ===== */
@@ -442,10 +473,11 @@ header::before {
 
 .feature-text {
     color: var(--cream);
-    font-size: 0.95rem;
+    font-size: 1rem;
+    font-weight: 500;
 }
 
-/* ===== قسم التفاصيل المنسدلة ===== */
+/* ===== قسم التفاصيل المنسدلة - تصليح الكلام ===== */
 .details-section {
     background: linear-gradient(180deg, var(--royal-green) 0%, var(--forest) 50%, var(--royal-green) 100%);
     padding: 80px 20px;
@@ -463,6 +495,7 @@ header::before {
     display: inline-block;
     left: 50%;
     transform: translateX(-50%);
+    white-space: nowrap;
 }
 
 .section-title::after {
@@ -472,12 +505,13 @@ header::before {
     left: 50%;
     transform: translateX(-50%);
     width: 60px;
-    height: 2px;
+    height: 3px;
     background: var(--gold);
+    border-radius: 2px;
 }
 
 .accordion-container {
-    max-width: 800px;
+    max-width: 900px;
     margin: 0 auto;
 }
 
@@ -499,17 +533,18 @@ header::before {
     width: 100%;
     background: transparent;
     border: none;
-    padding: 30px;
+    padding: 25px 30px;
     color: var(--gold);
     font-family: 'Cairo', sans-serif;
-    font-size: 1.2rem;
-    font-weight: 600;
+    font-size: 1.3rem;
+    font-weight: 700;
     text-align: right;
     cursor: pointer;
     display: flex;
     justify-content: space-between;
     align-items: center;
     transition: all 0.3s;
+    white-space: nowrap;
 }
 
 .accordion-header i:first-child {
@@ -535,7 +570,7 @@ header::before {
 }
 
 .accordion-item.active .accordion-content {
-    max-height: 1000px;
+    max-height: 1200px;
     padding: 0 30px 30px;
 }
 
@@ -544,13 +579,14 @@ header::before {
 }
 
 .accordion-content ul li {
-    padding: 15px 0;
+    padding: 18px 0;
     border-bottom: 1px solid rgba(212, 175, 55, 0.1);
     display: flex;
     align-items: start;
     gap: 15px;
-    color: #ccc;
-    line-height: 1.8;
+    color: #e5e5e5;
+    line-height: 1.9;
+    font-size: 1.05rem;
 }
 
 .accordion-content ul li:last-child {
@@ -560,10 +596,16 @@ header::before {
 .accordion-content ul li i {
     color: var(--gold);
     margin-top: 5px;
-    font-size: 0.9rem;
+    font-size: 1rem;
+    min-width: 20px;
 }
 
-/* ===== قسم العروض ===== */
+.accordion-content ul li strong {
+    color: var(--champagne);
+    font-weight: 600;
+}
+
+/* ===== قسم العروض - تصليح الأسعار ===== */
 .offers-section {
     background: linear-gradient(135deg, var(--forest) 0%, var(--royal-green) 50%, var(--forest) 100%);
     padding: 80px 20px;
@@ -587,22 +629,29 @@ header::before {
 
 .offers-badge {
     display: inline-block;
-    background: rgba(212, 175, 55, 0.2);
-    color: var(--gold);
+    background: rgba(220, 38, 38, 0.2);
+    color: #fca5a5;
     padding: 8px 25px;
     border-radius: 50px;
-    font-weight: 600;
-    font-size: 0.9rem;
+    font-weight: 700;
+    font-size: 1rem;
     margin-bottom: 20px;
-    border: 1px solid var(--gold);
+    border: 2px solid var(--alert-red);
     letter-spacing: 1px;
+    animation: badgePulse 2s infinite;
+}
+
+@keyframes badgePulse {
+    0%, 100% { box-shadow: 0 0 10px rgba(220, 38, 38, 0.3); }
+    50% { box-shadow: 0 0 20px rgba(220, 38, 38, 0.6); }
 }
 
 .offers-title {
     font-family: 'Libre Baskerville', serif;
-    font-size: 2.2rem;
+    font-size: 2.4rem;
     color: var(--gold);
     font-weight: 700;
+    white-space: nowrap;
 }
 
 .offers-grid {
@@ -648,64 +697,82 @@ header::before {
     transform: translateX(-50%);
     background: var(--gold);
     color: var(--royal-green);
-    padding: 5px 20px;
+    padding: 6px 22px;
     border-radius: 20px;
-    font-size: 0.8rem;
-    font-weight: 700;
+    font-size: 0.85rem;
+    font-weight: 800;
     letter-spacing: 1px;
+    white-space: nowrap;
 }
 
 .quantity {
-    width: 70px;
-    height: 70px;
+    width: 75px;
+    height: 75px;
     background: var(--forest);
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     margin: 0 auto 20px;
-    border: 2px solid var(--gold);
-    font-size: 1.8rem;
+    border: 3px solid var(--gold);
+    font-size: 2rem;
     font-weight: 800;
     color: var(--gold);
-    box-shadow: 0 0 20px rgba(212, 175, 55, 0.2);
+    box-shadow: 0 0 25px rgba(212, 175, 55, 0.2);
 }
 
 .offer-name {
-    font-size: 1.2rem;
+    font-size: 1.3rem;
     margin-bottom: 15px;
     color: var(--cream);
-    font-weight: 500;
+    font-weight: 600;
+    white-space: nowrap;
 }
 
 .price-row {
-    margin: 20px 0;
+    margin: 25px 0;
+    padding: 15px 0;
+    border-top: 1px solid rgba(212, 175, 55, 0.1);
+    border-bottom: 1px solid rgba(212, 175, 55, 0.1);
 }
 
 .original-price {
     text-decoration: line-through;
-    color: #666;
-    font-size: 1rem;
+    color: #888;
+    font-size: 1.1rem;
     display: block;
-    margin-bottom: 5px;
+    margin-bottom: 8px;
+    font-weight: 500;
 }
 
 .current-price {
-    font-size: 2.2rem;
+    font-size: 2.4rem;
     color: var(--gold);
     font-weight: 800;
     font-family: 'Libre Baskerville', serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.currency {
+    font-size: 1.4rem;
+    font-weight: 600;
 }
 
 .save-badge {
-    background: rgba(212, 175, 55, 0.2);
-    color: var(--gold);
-    padding: 5px 15px;
+    background: rgba(220, 38, 38, 0.15);
+    color: #fca5a5;
+    padding: 6px 18px;
     border-radius: 20px;
-    font-size: 0.85rem;
+    font-size: 0.95rem;
     display: inline-block;
-    margin-top: 10px;
-    border: 1px solid var(--gold);
+    margin-top: 15px;
+    border: 1px solid var(--alert-red);
+    font-weight: 600;
+    white-space: nowrap;
 }
 
 .order-btn {
@@ -713,28 +780,48 @@ header::before {
     background: transparent;
     color: var(--gold);
     border: 2px solid var(--gold);
-    padding: 15px;
+    padding: 16px;
     border-radius: 50px;
     font-family: 'Cairo', sans-serif;
     font-weight: 700;
     cursor: pointer;
     transition: all 0.3s ease;
-    margin-top: 20px;
-    font-size: 1.1rem;
+    margin-top: 25px;
+    font-size: 1.15rem;
     letter-spacing: 1px;
+    white-space: nowrap;
 }
 
 .order-btn:hover {
     background: var(--gold);
     color: var(--royal-green);
     box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3);
+    transform: translateY(-2px);
 }
 
-/* ===== قسم فيديوهات التجارب ===== */
+/* ===== قسم فيديوهات التجارب - تصليح العنوان ===== */
 .videos-section {
     background: linear-gradient(180deg, var(--royal-green) 0%, var(--forest) 50%, var(--royal-green) 100%);
     padding: 80px 20px;
     position: relative;
+}
+
+.videos-title {
+    text-align: center;
+    font-family: 'Libre Baskerville', serif;
+    font-size: 2.5rem;
+    color: var(--gold);
+    margin-bottom: 15px;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.videos-subtitle {
+    text-align: center;
+    color: #aaa;
+    font-size: 1.1rem;
+    margin-bottom: 50px;
+    font-style: italic;
 }
 
 .videos-carousel-container {
@@ -849,14 +936,24 @@ header::before {
 .video-carousel-btn.prev { right: 0; }
 .video-carousel-btn.next { left: 0; }
 
-/* ===== الأسئلة المتكررة ===== */
+/* ===== الأسئلة المتكررة - تصليح العنوان ===== */
 .faq-section {
     background: var(--forest);
     padding: 80px 20px;
 }
 
+.faq-title {
+    text-align: center;
+    font-family: 'Libre Baskerville', serif;
+    font-size: 2.5rem;
+    color: var(--gold);
+    margin-bottom: 50px;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
 .faq-container {
-    max-width: 800px;
+    max-width: 900px;
     margin: 0 auto;
 }
 
@@ -877,10 +974,10 @@ header::before {
     width: 100%;
     background: transparent;
     border: none;
-    padding: 30px;
+    padding: 25px 30px;
     color: var(--cream);
     font-family: 'Cairo', sans-serif;
-    font-size: 1.15rem;
+    font-size: 1.2rem;
     font-weight: 600;
     text-align: right;
     cursor: pointer;
@@ -888,6 +985,7 @@ header::before {
     justify-content: space-between;
     align-items: center;
     transition: all 0.3s;
+    line-height: 1.6;
 }
 
 .faq-question:hover {
@@ -898,6 +996,8 @@ header::before {
     color: var(--gold);
     transition: transform 0.3s ease;
     font-size: 1.1rem;
+    margin-right: 15px;
+    min-width: 20px;
 }
 
 .faq-item.active .faq-question i {
@@ -909,8 +1009,9 @@ header::before {
     overflow: hidden;
     transition: max-height 0.4s ease, padding 0.4s ease;
     padding: 0 30px;
-    color: #aaa;
-    line-height: 1.9;
+    color: #bbb;
+    line-height: 2;
+    font-size: 1.05rem;
 }
 
 .faq-item.active .faq-answer {
@@ -919,6 +1020,20 @@ header::before {
 }
 
 /* ===== السوشيال ميديا ===== */
+.social-section {
+    padding: 60px 20px;
+    text-align: center;
+}
+
+.social-title {
+    color: var(--gold);
+    margin-bottom: 30px;
+    font-family: 'Libre Baskerville', serif;
+    font-size: 1.8rem;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
 .social-links {
     display: flex;
     justify-content: center;
@@ -972,6 +1087,7 @@ header::before {
     color: var(--cream);
     font-weight: 500;
     font-size: 0.95rem;
+    white-space: nowrap;
 }
 
 .visitor-count {
@@ -1010,6 +1126,7 @@ header::before {
     letter-spacing: 3px;
     margin-bottom: 8px;
     text-transform: uppercase;
+    white-space: nowrap;
 }
 
 .designer-signature .name {
@@ -1019,6 +1136,7 @@ header::before {
     display: block;
     margin-top: 10px;
     font-family: 'Libre Baskerville', serif;
+    white-space: nowrap;
 }
 
 .designer-signature i {
@@ -1027,49 +1145,65 @@ header::before {
 }
 
 .designer-signature .link-hint {
-    font-size: 0.8rem;
+    font-size: 0.85rem;
     color: rgba(212, 175, 55, 0.6);
     margin-top: 10px;
     display: block;
+    white-space: nowrap;
 }
 
 footer {
     padding: 40px;
     text-align: center;
     background: var(--royal-green);
-    color: #666;
+    color: #888;
     border-top: 1px solid rgba(212, 175, 55, 0.1);
-    font-size: 0.9rem;
+    font-size: 0.95rem;
 }
 
-/* Responsive */
+/* ===== Responsive ===== */
 @media (max-width: 768px) {
+    .alert-bar { font-size: 0.95rem; padding: 15px 10px; }
     .offers-grid { grid-template-columns: 1fr; }
     .offer-card.best { transform: scale(1); order: -1; }
     .offer-card.best:hover { transform: scale(1) translateY(-10px); }
     .video-card { min-width: calc(50% - 13px); }
-    .accordion-header { font-size: 1.1rem; padding: 25px; }
-    .faq-question { font-size: 1.05rem; padding: 25px; }
+    .accordion-header { font-size: 1.15rem; padding: 20px; }
+    .faq-question { font-size: 1.1rem; padding: 20px; }
     header { padding: 50px 20px 40px; }
     .main-logo-img { max-width: 320px; }
     .teaser-title { font-size: 1.7rem; }
     .product-title { font-size: 2.2rem; }
-    .section-title { font-size: 2rem; }
-    .carousel-image { height: 350px; }
-    .images-carousel-container { padding: 0 40px; }
+    .section-title, .videos-title, .faq-title, .offers-title { font-size: 1.9rem; }
+    .images-carousel-container { padding: 0 50px; }
+    .carousel-btn { width: 40px; height: 40px; }
+    .carousel-image { padding: 5px; }
+    .current-price { font-size: 2rem; }
+    .quantity { width: 65px; height: 65px; font-size: 1.7rem; }
 }
 
 @media (max-width: 480px) {
     .video-card { min-width: 100%; }
     .product-title { font-size: 1.9rem; }
-    .section-title { font-size: 1.7rem; }
+    .section-title, .videos-title, .faq-title, .offers-title { font-size: 1.6rem; }
     .main-logo-img { max-width: 280px; }
-    .carousel-image { height: 250px; }
+    .images-wrapper { aspect-ratio: 4/3; }
+    .accordion-content ul li { font-size: 0.95rem; }
+    .faq-answer { font-size: 0.95rem; }
+    .current-price { font-size: 1.8rem; }
+    .currency { font-size: 1.2rem; }
+    .offer-name { font-size: 1.1rem; }
+    .alert-bar { font-size: 0.85rem; }
 }
 </style>
 </head>
 
 <body>
+
+<!-- ===== شريط التحذير الأحمر ===== -->
+<div class="alert-bar">
+    ⚠️ تنبيه هام: الكمية محدودة جداً - احجزي الآن قبل نفاد المخزون ⚠️
+</div>
 
 <div class="delivery-bar">🚚 توصيل مجاني لكل المحافظات اليوم فقط 🌿</div>
 
@@ -1089,7 +1223,7 @@ footer {
     </div>
 </section>
 
-<!-- ===== الهيدر مع Animation للشعار ===== -->
+<!-- ===== الهيدر ===== -->
 <header>
     <div class="logo-container">
         <img src="images/logo.jpg" alt="Niliana" class="main-logo-img">
@@ -1109,12 +1243,12 @@ footer {
         
         <div class="images-wrapper">
             <div class="images-track" id="imagesTrack">
-                <img src="images/new1.jpg" alt="Niliana 1" class="carousel-image">
-                <img src="images/new2.jpg" alt="Niliana 2" class="carousel-image">
-                <img src="images/new3.jpeg" alt="Niliana 3" class="carousel-image">
-                <img src="images/new4.jpeg" alt="Niliana 4" class="carousel-image">
-                <img src="images/new5.png" alt="Niliana 5" class="carousel-image">
-                <img src="images/new6.png" alt="Niliana 6" class="carousel-image">
+                <img src="images/new1.jpg" alt="Niliana Product 1" class="carousel-image">
+                <img src="images/new2.jpg" alt="Niliana Product 2" class="carousel-image">
+                <img src="images/new3.jpeg" alt="Niliana Product 3" class="carousel-image">
+                <img src="images/new4.jpeg" alt="Niliana Product 4" class="carousel-image">
+                <img src="images/new5.png" alt="Niliana Product 5" class="carousel-image">
+                <img src="images/new6.png" alt="Niliana Product 6" class="carousel-image">
             </div>
         </div>
         
@@ -1140,17 +1274,29 @@ footer {
     </div>
 
     <h2 class="product-title">قناع الكولاجين الكوري</h2>
-    <p style="color: #aaa; font-size: 1.1rem; margin-bottom: 30px;">السرّ لترطيب عميق ونضارة فورية من أول ليلة</p>
+    <p class="product-subtitle">السرّ لترطيب عميق ونضارة فورية من أول ليلة</p>
 
     <div class="product-showcase">
         <img src="images/product-main.jpg" alt="Niliana Mask" class="product-image">
     </div>
 
     <div class="features-grid">
-        <div class="feature-item"><div class="feature-icon">✨</div><div class="feature-text">نضارة زجاجية فورية</div></div>
-        <div class="feature-item"><div class="feature-icon">🌙</div><div class="feature-text">ثبات كامل أثناء النوم</div></div>
-        <div class="feature-item"><div class="feature-icon">💎</div><div class="feature-text">شدّ وتقليل الخطوط</div></div>
-        <div class="feature-item"><div class="feature-icon">💧</div><div class="feature-text">ترطيب هيدروجيل مكثف</div></div>
+        <div class="feature-item">
+            <div class="feature-icon">✨</div>
+            <div class="feature-text">نضارة زجاجية فورية</div>
+        </div>
+        <div class="feature-item">
+            <div class="feature-icon">🌙</div>
+            <div class="feature-text">ثبات كامل أثناء النوم</div>
+        </div>
+        <div class="feature-item">
+            <div class="feature-icon">💎</div>
+            <div class="feature-text">شدّ وتقليل الخطوط</div>
+        </div>
+        <div class="feature-item">
+            <div class="feature-icon">💧</div>
+            <div class="feature-text">ترطيب هيدروجيل مكثف</div>
+        </div>
     </div>
 </section>
 
@@ -1160,7 +1306,7 @@ footer {
 
 <section class="hero-section" style="padding-top:0;">
     <h3 style="color: var(--gold); font-size: 2rem; margin-bottom: 25px; font-family: 'Libre Baskerville', serif;">لماذا تختارين نيليانا؟</h3>
-    <p style="max-width: 600px; margin: 0 auto; color: #aaa; font-size: 1.1rem; line-height: 2;">
+    <p style="max-width: 700px; margin: 0 auto; color: #bbb; font-size: 1.15rem; line-height: 2;">
         تصميم القناع يسمح لبشرتك بامتصاص السيروم تدريجياً، ليعطيكِ مظهر النضارة الطبيعي وكأنكِ في جلسة سبا محترفة في منزلك.
     </p>
     
@@ -1239,22 +1385,22 @@ footer {
             <div class="quantity">1</div>
             <div class="offer-name">ماسك واحد</div>
             <div class="price-row">
-                <span class="original-price">350 جنيه</span>
-                <span class="current-price">275 ج</span>
+                <span class="original-price">350 EGP</span>
+                <span class="current-price">275 <span class="currency">EGP</span></span>
             </div>
-            <span class="save-badge">وفر 75 ج</span>
-            <button class="order-btn" onclick="orderNow(1, 275)">اطلبي الآن</button>
+            <span class="save-badge">وفر 75 EGP</span>
+            <button class="order-btn">اطلبي الآن</button>
         </div>
 
         <div class="offer-card">
             <div class="quantity">2</div>
             <div class="offer-name">ماسكين</div>
             <div class="price-row">
-                <span class="original-price">550 جنيه</span>
-                <span class="current-price">500 ج</span>
+                <span class="original-price">550 EGP</span>
+                <span class="current-price">500 <span class="currency">EGP</span></span>
             </div>
-            <span class="save-badge">وفر 50 ج</span>
-            <button class="order-btn" onclick="orderNow(2, 500)">اطلبي الآن</button>
+            <span class="save-badge">وفر 50 EGP</span>
+            <button class="order-btn">اطلبي الآن</button>
         </div>
 
         <div class="offer-card best">
@@ -1262,19 +1408,19 @@ footer {
             <div class="quantity">4</div>
             <div class="offer-name">4 ماسكات</div>
             <div class="price-row">
-                <span class="original-price">1100 جنيه</span>
-                <span class="current-price">800 ج</span>
+                <span class="original-price">1100 EGP</span>
+                <span class="current-price">800 <span class="currency">EGP</span></span>
             </div>
-            <span class="save-badge">وفر 300 ج</span>
-            <button class="order-btn" onclick="orderNow(4, 800)">اطلبي الآن</button>
+            <span class="save-badge">وفر 300 EGP</span>
+            <button class="order-btn">اطلبي الآن</button>
         </div>
     </div>
 </section>
 
 <!-- ===== قسم فيديوهات التجارب ===== -->
 <section class="videos-section">
-    <h2 class="section-title">تجارب حقيقية من عملائنا</h2>
-    <p style="text-align: center; color: #888; margin-bottom: 50px; font-style: italic;">شوفي بنفسك النتائج المذهلة بعد استخدام قناع نيليانا</p>
+    <h2 class="videos-title">آراء عملائنا</h2>
+    <p class="videos-subtitle">شوفي بنفسك النتائج المذهلة بعد استخدام قناع نيليانا</p>
     
     <div class="videos-carousel-container">
         <button class="video-carousel-btn prev" onclick="moveVideoCarousel(-1)">
@@ -1326,12 +1472,12 @@ footer {
 
 <!-- ===== الأسئلة المتكررة ===== -->
 <section class="faq-section">
-    <h2 class="section-title">الأسئلة المتكررة</h2>
+    <h2 class="faq-title">الأسئلة المتكررة</h2>
     
     <div class="faq-container">
         <div class="faq-item">
             <button class="faq-question" onclick="toggleFaq(this)">
-                هل القناع مناسب للبشرة الحساسة؟
+                <span>هل القناع مناسب للبشرة الحساسة؟</span>
                 <i class="fas fa-chevron-down"></i>
             </button>
             <div class="faq-answer">
@@ -1341,7 +1487,7 @@ footer {
 
         <div class="faq-item">
             <button class="faq-question" onclick="toggleFaq(this)">
-                متى أشوف النتيجة؟
+                <span>متى أشوف النتيجة؟</span>
                 <i class="fas fa-chevron-down"></i>
             </button>
             <div class="faq-answer">
@@ -1351,7 +1497,7 @@ footer {
 
         <div class="faq-item">
             <button class="faq-question" onclick="toggleFaq(this)">
-                هل القناع بيقع مني وأنا نايمة؟
+                <span>هل القناع بيقع مني وأنا نايمة؟</span>
                 <i class="fas fa-chevron-down"></i>
             </button>
             <div class="faq-answer">
@@ -1361,7 +1507,7 @@ footer {
 
         <div class="faq-item">
             <button class="faq-question" onclick="toggleFaq(this)">
-                كم مرة أستخدمه في الأسبوع؟
+                <span>كم مرة أستخدمه في الأسبوع؟</span>
                 <i class="fas fa-chevron-down"></i>
             </button>
             <div class="faq-answer">
@@ -1371,7 +1517,7 @@ footer {
 
         <div class="faq-item">
             <button class="faq-question" onclick="toggleFaq(this)">
-                هل فيه توصيل لكل المحافظات؟
+                <span>هل فيه توصيل لكل المحافظات؟</span>
                 <i class="fas fa-chevron-down"></i>
             </button>
             <div class="faq-answer">
@@ -1381,10 +1527,11 @@ footer {
     </div>
 </section>
 
-<section style="padding: 60px 20px; text-align: center;">
-    <h3 style="color: var(--gold); margin-bottom: 30px; font-family: 'Libre Baskerville', serif; font-size: 1.8rem;">تابعينا لمعرفة جديدنا</h3>
+<!-- ===== السوشيال ميديا ===== -->
+<section class="social-section">
+    <h3 class="social-title">تابعينا لمعرفة جديدنا</h3>
     <div class="social-links">
-        <a href="https://www.facebook.com/share/1DmqQysbE4/" target="_blank" onclick="handleFacebookClick(event)">
+        <a href="https://www.facebook.com/share/1DmqQysbE4/" target="_blank">
             <i class="fab fa-facebook-f"></i>
         </a>
         <a href="https://www.instagram.com/niliana.eg" target="_blank">
@@ -1413,9 +1560,6 @@ footer {
 </div>
 
 <script>
-// ===== Animation للشعار =====
-// Already handled by CSS animations on page load
-
 // ===== Carousel للصور =====
 let currentImageIndex = 0;
 const imagesTrack = document.getElementById('imagesTrack');
@@ -1425,7 +1569,6 @@ let imagesAutoPlayInterval;
 function updateImagesCarousel() {
     imagesTrack.style.transform = `translateX(${currentImageIndex * 100}%)`;
     
-    // Update dots
     document.querySelectorAll('.dot').forEach((dot, index) => {
         dot.classList.toggle('active', index === currentImageIndex);
     });
@@ -1446,7 +1589,7 @@ function goToImage(index) {
 function startImagesAutoPlay() {
     imagesAutoPlayInterval = setInterval(() => {
         moveImagesCarousel(1);
-    }, 4000); // Change every 4 seconds
+    }, 4000);
 }
 
 function resetImagesAutoPlay() {
@@ -1454,10 +1597,8 @@ function resetImagesAutoPlay() {
     startImagesAutoPlay();
 }
 
-// Start autoplay on page load
 startImagesAutoPlay();
 
-// Pause on hover
 document.querySelector('.images-wrapper').addEventListener('mouseenter', () => {
     clearInterval(imagesAutoPlayInterval);
 });
@@ -1466,7 +1607,7 @@ document.querySelector('.images-wrapper').addEventListener('mouseleave', () => {
     startImagesAutoPlay();
 });
 
-// ===== أكورديون الفوائد والمكونات =====
+// ===== أكورديون =====
 function toggleAccordion(element) {
     const item = element.parentElement;
     const isActive = item.classList.contains('active');
@@ -1480,7 +1621,7 @@ function toggleAccordion(element) {
     }
 }
 
-// ===== الأسئلة المتكررة =====
+// ===== FAQ =====
 function toggleFaq(element) {
     const item = element.parentElement;
     const isActive = item.classList.contains('active');
@@ -1492,46 +1633,6 @@ function toggleFaq(element) {
     if (!isActive) {
         item.classList.add('active');
     }
-}
-
-// ===== باقي الفنكشنز =====
-function orderNow(qty, price) {
-    const msg = `أهلاً نيليانا! 👋\\n\\nعايزة أطلب ${qty} ماسك كولاجين\\nالسعر: ${price} جنيه\\n\\nمن فضلك أكدي لي الطلب`;
-    window.open(`https://wa.me/201109048989?text=${encodeURIComponent(msg)}`, '_blank');
-}
-
-function handleFacebookClick(e) {
-    e.preventDefault();
-    window.open("https://www.facebook.com/share/1DmqQysbE4/", '_blank');
-    showNotification("جاري فتح صفحة الفيسبوك... تابعنا للحصول على عروض حصرية! 🌿");
-}
-
-function showNotification(message) {
-    const notif = document.createElement('div');
-    notif.style.cssText = `
-        position: fixed;
-        top: 20px;
-        right: 20px;
-        background: var(--forest);
-        color: var(--cream);
-        padding: 20px 30px;
-        border-radius: 15px;
-        border: 1px solid var(--gold);
-        z-index: 10000;
-        font-family: 'Cairo', sans-serif;
-        animation: slideIn 0.3s ease;
-        max-width: 320px;
-        text-align: center;
-        box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-        backdrop-filter: blur(10px);
-    `;
-    notif.textContent = message;
-    document.body.appendChild(notif);
-    
-    setTimeout(() => {
-        notif.style.animation = 'slideOut 0.3s ease';
-        setTimeout(() => notif.remove(), 300);
-    }, 4000);
 }
 
 // ===== Video Carousel =====
@@ -1566,7 +1667,7 @@ function toggleVideo(overlay) {
     }
 }
 
-// ===== عداد الزوار =====
+// ===== Visitor Counter =====
 function initVisitorCounter() {
     const baseCount = Math.floor(Math.random() * 30) + 15;
     document.getElementById('visitorCount').textContent = baseCount;
@@ -1579,21 +1680,6 @@ function initVisitorCounter() {
     }, Math.random() * 5000 + 5000);
 }
 
-// ===== CSS Animations =====
-const style = document.createElement('style');
-style.textContent = `
-    @keyframes slideIn {
-        from { transform: translateX(100%); opacity: 0; }
-        to { transform: translateX(0); opacity: 1; }
-    }
-    @keyframes slideOut {
-        from { transform: translateX(0); opacity: 1; }
-        to { transform: translateX(100%); opacity: 0; }
-    }
-`;
-document.head.appendChild(style);
-
-// Initialize
 initVisitorCounter();
 </script>
 
